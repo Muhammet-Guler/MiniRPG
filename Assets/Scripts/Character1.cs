@@ -17,11 +17,11 @@ public class Character1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerMovementController.Durdur==true)
+        if (PlayerMovementController.Stop == true)
         {
             Idle.Play("Idle");
         }
-        if (PlayerMovementController.Durdur == false)
+        if (PlayerMovementController.Stop == false)
         {
             Walk.Play("WalkForward");
         }

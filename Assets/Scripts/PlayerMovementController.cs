@@ -8,11 +8,11 @@ public class PlayerMovementController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Rigidbody playerRigiBody;
     [SerializeField] private FixedJoystick fixedJoystick;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed=100;
     [SerializeField] private Transform playerChildTransform;
     [SerializeField] private AnimationController animationController;
     public Animator Walk;
-    public bool Durdur;
+    public bool Stop;
 
 
     private float _horizontal;
@@ -44,13 +44,13 @@ public class PlayerMovementController : MonoBehaviour
         {
             playerChildTransform.rotation=Quaternion.LookRotation(GetNewVelocity());
             animationController.SetBoolean(animationType: "Walk", value: true);
-            Durdur = false;
+            Stop = false;
             
         }
         else
         {
             animationController.SetBoolean(animationType: "Walk", value: false);
-            Durdur = true;
+            Stop = true;
         }
     }
     private Vector3 GetNewVelocity()
