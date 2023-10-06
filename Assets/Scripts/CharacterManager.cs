@@ -10,52 +10,52 @@ public class CharacterManager : MonoBehaviour
     public Text nameText;
     public SpriteRenderer artworkSprite;
 
-    private int SelectedOption = 0;
+    private int SelectedCharacter = 0;
     void Start()
     {
         if (!PlayerPrefs.HasKey("selectedOption"))
         {
-            SelectedOption = 0;
+            SelectedCharacter = 0;
         }
         else
         {
             Load();
         }
-        UpdateCharacter(SelectedOption);
+        ChangeCharacter(SelectedCharacter);
     }
     public void NextOption()
     {
-        SelectedOption++;
-        if (SelectedOption>=characterDB.CharacterCount)
+        SelectedCharacter++;
+        if (SelectedCharacter >= characterDB.CharacterCount)
         {
-            SelectedOption = 0;
+            SelectedCharacter = 0;
         }
-        UpdateCharacter(SelectedOption);
+        ChangeCharacter(SelectedCharacter);
         Save();
     }
     public void BackOption()
     {
-        SelectedOption--;
-        if (SelectedOption <0)
+        SelectedCharacter--;
+        if (SelectedCharacter < 0)
         {
-            SelectedOption = characterDB.CharacterCount-1;
+            SelectedCharacter = characterDB.CharacterCount-1;
         }
-        UpdateCharacter(SelectedOption);
+        ChangeCharacter(SelectedCharacter);
         Save();
     }
-    private void UpdateCharacter(int SelectedOption)
+    private void ChangeCharacter(int SelectedCharacter)
     {
-        Character character=characterDB.GetCharacter(SelectedOption);
+        Character character=characterDB.GetCharacters(SelectedCharacter);
         artworkSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
     }
     private void Load()
     {
-        SelectedOption = PlayerPrefs.GetInt("selectedOption");
+        SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
     }
     private void Save()
     {
-        PlayerPrefs.SetInt("selectedOption",SelectedOption);
+        PlayerPrefs.SetInt("SelectedCharacter", SelectedCharacter);
     }
     public void ChangeScene()
     {

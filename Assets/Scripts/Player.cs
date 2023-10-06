@@ -6,27 +6,27 @@ public class Player : MonoBehaviour
 {
     public CharacterDatabase characterDB;
     public SpriteRenderer artworkSprite;
-    private int SelectedOption = 0;
+    private int SelectedCharacter = 0;
     void Start()
     {
 
-        if (!PlayerPrefs.HasKey("selectedOption"))
+        if (!PlayerPrefs.HasKey("SelectedCharacter"))
         {
-            SelectedOption = 0;
+            SelectedCharacter = 0;
         }
         else
         {
             Load();
         }
-        UpdateCharacter(SelectedOption);
+        ChangeCharacter(SelectedCharacter);
     }
-    private void UpdateCharacter(int SelectedOption)
+    private void ChangeCharacter(int SelectedCharacter)
     {
-        Character character = characterDB.GetCharacter(SelectedOption);
+        Character character = characterDB.GetCharacters(SelectedCharacter);
         artworkSprite.sprite = character.characterSprite;
     }
     private void Load()
     {
-        SelectedOption = PlayerPrefs.GetInt("selectedOption");
+        SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
     }
 }

@@ -14,7 +14,7 @@ public class CharacterDatabase : ScriptableObject
         }
     }
 
-    public Character GetCharacter(int index) { 
+    public Character GetCharacters(int index) { 
         return character[index];
     }
 }

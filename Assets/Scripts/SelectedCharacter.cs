@@ -9,15 +9,13 @@ public class SelectedCharacter : MonoBehaviour
     public GameObject[] Characters;
     void Start()
     {
-        Characters[0].SetActive(false);
-        Characters[1].SetActive(false);
-        Characters[2].SetActive(false);
-        Characters[3].SetActive(false); 
-        chooseCharacter = PlayerPrefs.GetInt("selectedOption");
-        for (int i = 0; i <= chooseCharacter; i++)
+        chooseCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+        for (int i = 0; i <= Characters.Length; i++)
         {
+            Characters[i].SetActive(false);
             if (chooseCharacter == i)
             {
+
                 Characters[i].SetActive(true);
             }
         }
