@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character1 : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Character1 : MonoBehaviour
     private bool isAnimationPlaying = true;
     public float countdownDuration = 1f;
     private int SelectedCharacter;
+    public UnityEngine.UI.Button btn1,btn2,btn3;
+
     void Start()
     {
         Walk = GetComponent<Animator>();
@@ -40,7 +43,7 @@ public class Character1 : MonoBehaviour
     {
         if (SelectedCharacter==0)
         {
-            Walk.Play("attack00");
+            Walk.Play("Attack1 0");
         }
         if (SelectedCharacter == 1)
         {
@@ -61,7 +64,7 @@ public class Character1 : MonoBehaviour
     {
         if (SelectedCharacter == 0)
         {
-            Walk.Play("attack01");
+            Walk.Play("Attack1 4");
         }
         if (SelectedCharacter == 1)
         {
@@ -82,7 +85,7 @@ public class Character1 : MonoBehaviour
     {
         if (SelectedCharacter == 0)
         {
-            Walk.Play("attack02");
+            Walk.Play("SpinAttack_TwoWeapons");
         }
         if (SelectedCharacter == 1)
         {
@@ -106,7 +109,13 @@ public class Character1 : MonoBehaviour
         while (currentTime > 0)
         {
             currentTime -= 1f;
+            btn1.interactable = false;
+            btn2.interactable = false;
+            btn3.interactable = false;
             yield return new WaitForSeconds(1f);
+            btn1.interactable = true;
+            btn2.interactable = true;
+            btn3.interactable = true;
         }
         isAnimationPlaying = true;
     }

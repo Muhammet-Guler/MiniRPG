@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: New Character Database
   m_EditorClassIdentifier: 
   character:
-  - characterName: Berserker
-    characterSprite: {fileID: 21300000, guid: 4e6549ead2012a14fb572dfb5a4fea6d, type: 3}
+  - characterName: Priest Two
+    characterSprite: {fileID: 21300000, guid: 2574caccfcad1eb42a63a7ccfe55b8ae, type: 3}
   - characterName: Priest
     characterSprite: {fileID: 21300000, guid: e2f2763e7e8758d47b113a5fa1e85968, type: 3}
   - characterName: Warrior
