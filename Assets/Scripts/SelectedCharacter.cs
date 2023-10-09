@@ -15,7 +15,6 @@ public class SelectedCharacter : MonoBehaviour
             Characters[i].SetActive(false);
             if (chooseCharacter == i)
             {
-
                 Characters[i].SetActive(true);
             }
         }
