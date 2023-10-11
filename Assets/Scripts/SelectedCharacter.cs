@@ -18,7 +18,7 @@ public class SelectedCharacter : MonoBehaviour
                 Characters[i].SetActive(true);
             }
         }
-       
+
 
     }
 

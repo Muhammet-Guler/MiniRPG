@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterAnimations : MonoBehaviour
+public class Character1 : MonoBehaviour
 {
     // Start is called before the first frame update
     public Animator Walk;

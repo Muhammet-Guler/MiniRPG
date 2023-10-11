@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
 
 public class Yonet : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
+    public int SelectedCharacter;
+    //public static CanvasManager Instance { get; private set; }
+    //public Transform CanvasTransform { get; private set; }
+
+
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -25,14 +31,16 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("lobiye girildi");
-        PhotonNetwork.JoinOrCreateRoom("oda", new RoomOptions { MaxPlayers = 8, IsOpen = true, IsVisible = true }, TypedLobby.Default);
+        //PhotonNetwork.JoinOrCreateRoom("oda", new RoomOptions { MaxPlayers = 8, IsOpen = true, IsVisible = true }, TypedLobby.Default);
     }
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("odaya girildi");
-        GameObject nesne=PhotonNetwork.Instantiate("kup",Vector3.zero, Quaternion.identity,0,null);
+    //public override void OnJoinedRoom()
+    //{
+    //    Debug.Log("odaya girildi");
+    //    GameObject mage = PhotonNetwork.Instantiate("Mage", Vector3.zero, Quaternion.identity, 0, null);
+    //    GameObject joy= PhotonNetwork.Instantiate("FixedJoystick", new Vector3((float)126.2, (float)100.2, 0), Quaternion.identity, 0, null);
+    //    joy.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(),false);
 
-    }
+    //}
     public override void OnLeftRoom()
     {
         Debug.Log("odadan cikildi");
