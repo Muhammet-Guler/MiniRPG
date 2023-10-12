@@ -1,8 +1,10 @@
+using JetBrains.Annotations;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class CharacterAnimations : MonoBehaviour
 {
@@ -25,8 +27,6 @@ public class CharacterAnimations : MonoBehaviour
         SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
     }
 
-    // Update is called once per frame
-    [PunRPC]
     void Update()
     {
         if (isAnimationPlaying == true)
@@ -42,73 +42,84 @@ public class CharacterAnimations : MonoBehaviour
             Walk.Play("Walk");
         }
     }
-    [PunRPC]
-    public void AttackSkill()
+    public void MageSkills()
     {
-        if (SelectedCharacter==0)
+        btn1.onClick.AddListener(() =>
         {
+
             Walk.Play("Attack1 0");
-        }
-        if (SelectedCharacter == 1)
+        });
+        btn2.onClick.AddListener(() =>
         {
-            Walk.Play("Attack1 1");
-        }
-        if (SelectedCharacter == 2)
+
+            Walk.Play("Attack1 4");
+        });
+        btn3.onClick.AddListener(() =>
         {
-            Walk.Play("Attack1 2");
-        }
-        if (SelectedCharacter == 3)
-        {
-            Walk.Play("Attack1 3");
-        }
+
+            Walk.Play("SpinAttack_TwoWeapons");
+        });
         isAnimationPlaying = false;
        StartCoroutine(StartCountdown());
     }
-    [PunRPC]
-    public void AttackSkill2()
+    public void PriestSkills()
     {
-        if (SelectedCharacter == 0)
+        btn1.onClick.AddListener(() =>
         {
-            Walk.Play("Attack1 4");
-        }
-        if (SelectedCharacter == 1)
-        {
+
             Walk.Play("Attack1 5");
-        }
-        if (SelectedCharacter == 2)
+        });
+        btn2.onClick.AddListener(() =>
         {
-            Walk.Play("Attack1 6");
-        }
-        if (SelectedCharacter == 3)
+
+            Walk.Play("Attack1 1");
+        });
+        btn3.onClick.AddListener(() =>
         {
-            Walk.Play("SpinAttack_TwoWeapons");
-        }
-        isAnimationPlaying = false;
-        StartCoroutine(StartCountdown());
-    }
-    [PunRPC]
-    public void Ulti()
-    {
-        if (SelectedCharacter == 0)
-        {
-            Walk.Play("SpinAttack_TwoWeapons");
-        }
-        if (SelectedCharacter == 1)
-        {
+
             Walk.Play("Punch");
-        }
-        if (SelectedCharacter == 2)
-        {
-            Walk.Play("Punch 0");
-        }
-        if (SelectedCharacter == 3)
-        {
-            Walk.Play("Punch 1");
-        }
+        });
         isAnimationPlaying = false;
         StartCoroutine(StartCountdown());
     }
-    [PunRPC]
+    public void WarriorSkilss()
+    {
+        btn1.onClick.AddListener(() =>
+        {
+
+            Walk.Play("Attack1 2");
+        });
+        btn2.onClick.AddListener(() =>
+        {
+
+            Walk.Play("Attack1 1");
+        });
+        btn3.onClick.AddListener(() =>
+        {
+
+            Walk.Play("Attack1 6");
+        });
+        isAnimationPlaying = false;
+        StartCoroutine(StartCountdown());
+    }
+    public void PriestTwoSkilss()
+    {
+        btn1.onClick.AddListener(() =>
+        {
+
+            Walk.Play("Punch 0");
+        });
+        btn2.onClick.AddListener(() =>
+        {
+
+            Walk.Play("Punch 1");
+        });
+        btn3.onClick.AddListener(() =>
+        {
+
+            Walk.Play("Attack1 3");
+        });
+    }
     private IEnumerator StartCountdown()
     {
         float currentTime = countdownDuration;

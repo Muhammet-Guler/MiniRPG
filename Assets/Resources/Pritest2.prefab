@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100174, guid: d1a1ae6328466f84a876805226cc4f43, type: 3}
       propertyPath: m_Name
-      value: Pritest2 Variant
+      value: Pritest2
       objectReference: {fileID: 0}
     - target: {fileID: 400174, guid: d1a1ae6328466f84a876805226cc4f43, type: 3}
       propertyPath: m_RootOrder

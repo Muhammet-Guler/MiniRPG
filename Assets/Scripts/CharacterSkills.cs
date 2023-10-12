@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class Character1 : MonoBehaviour
+public class CharacterSkills : MonoBehaviour
 {
     public Animator Walk;
     public Animator Idle;
@@ -44,10 +44,10 @@ public class Character1 : MonoBehaviour
         if (SelectedCharacter == 3)
         {
             btn1.onClick.AddListener(() =>
-        {
+            {
 
-            Walk.Play("Attack1 0");
-        });
+                Walk.Play("Attack1 0");
+            });
             btn2.onClick.AddListener(() =>
             {
 
@@ -64,7 +64,7 @@ public class Character1 : MonoBehaviour
     }
     public void PriestSkills()
     {
-        if (SelectedCharacter==1)
+        if (SelectedCharacter == 1)
         {
             btn1.onClick.AddListener(() =>
             {
@@ -84,11 +84,12 @@ public class Character1 : MonoBehaviour
             isAnimationPlaying = false;
             StartCoroutine(StartCountdown());
         }
-        
+
     }
     public void WarriorSkilss()
     {
-        if (SelectedCharacter==2) {
+        if (SelectedCharacter == 2)
+        {
             btn1.onClick.AddListener(() =>
             {
 
@@ -107,17 +108,17 @@ public class Character1 : MonoBehaviour
             isAnimationPlaying = false;
             StartCoroutine(StartCountdown());
         }
-        
+
     }
     public void PriestTwoSkilss()
     {
         if (SelectedCharacter == 0)
         {
             btn1.onClick.AddListener(() =>
-        {
+            {
 
-            Walk.Play("Punch 0");
-        });
+                Walk.Play("Punch 0");
+            });
             btn2.onClick.AddListener(() =>
             {
 

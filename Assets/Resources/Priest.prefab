@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 2128859580872917005}
   Idle: {fileID: 2128859580872917005}
-  Attack: {fileID: 0}
+  Attack: {fileID: 2128859580872917005}
   PlayerMovementController: {fileID: 1613840566}
   countdownDuration: 1
   btn1: {fileID: 0}

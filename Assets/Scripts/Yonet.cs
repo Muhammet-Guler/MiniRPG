@@ -14,6 +14,9 @@ public class Yonet : MonoBehaviourPunCallbacks
     public TMP_InputField input_Create;
     public TMP_InputField input_Join;
     public GameObject Mage;
+    public GameObject Warrior;
+    public GameObject Priest;
+    public GameObject PriestTwo;
     public Button Btn1;
     public FixedJoystick joystick;
     public Canvas canvas;
@@ -26,10 +29,23 @@ public class Yonet : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
         if (PhotonNetwork.IsConnected)
-        {
-            //PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
-            //PhotonNetwork.Instantiate(Btn1.name,new Vector3((float)282.22,(float)-190.15, 0),Quaternion.identity);
-            //Btn1.transform.parent=canvas.transform;
+        { int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+            if (selectedCharacter == 0)
+            {
+                PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
+            }
+            if (selectedCharacter == 1)
+            {
+                PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
+            }
+            if (selectedCharacter == 2)
+            {
+                PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
+            }
+            if (selectedCharacter==3)
+            {
+                PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
+            }
             //PhotonNetwork.Instantiate(joystick.name, new Vector3((float)282.22, (float)-190.15, 0), Quaternion.identity);
         }
     }

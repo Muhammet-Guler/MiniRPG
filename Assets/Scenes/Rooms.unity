@@ -3479,6 +3479,10 @@ MonoBehaviour:
   input_Create: {fileID: 1184006809}
   input_Join: {fileID: 868939428}
   Mage: {fileID: 5705139486202823429, guid: 5cb5296f468bb2d4f82d31934b578cd3, type: 3}
+  Warrior: {fileID: 5916376108772803837, guid: 9f5f19f2e4d02a840996ec23cbe0946e, type: 3}
+  Priest: {fileID: 2128859580863463929, guid: ee4b77c547dc2b34cbe384085e47b02a, type: 3}
+  PriestTwo: {fileID: 6656323454611010535, guid: 40d946a45e72c2c4da9ba3e8baf3bd26,
+    type: 3}
   Btn1: {fileID: 5224276628272579170, guid: 6968ec97d1727664b921c8a21b8e832e, type: 3}
   joystick: {fileID: 0}
   canvas: {fileID: 0}
