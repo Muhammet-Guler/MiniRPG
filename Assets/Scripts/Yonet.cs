@@ -4,11 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Yonet : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     public int SelectedCharacter;
+    public TMP_InputField input_Create;
+    public TMP_InputField input_Join;
+    public GameObject Mage;
+    public Button Btn1;
+    public FixedJoystick joystick;
+    public Canvas canvas;
     //public static CanvasManager Instance { get; private set; }
     //public Transform CanvasTransform { get; private set; }
 
@@ -16,6 +24,14 @@ public class Yonet : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.AutomaticallySyncScene = true;
+        if (PhotonNetwork.IsConnected)
+        {
+            //PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
+            //PhotonNetwork.Instantiate(Btn1.name,new Vector3((float)282.22,(float)-190.15, 0),Quaternion.identity);
+            //Btn1.transform.parent=canvas.transform;
+            //PhotonNetwork.Instantiate(joystick.name, new Vector3((float)282.22, (float)-190.15, 0), Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -36,9 +52,10 @@ public class Yonet : MonoBehaviourPunCallbacks
     //public override void OnJoinedRoom()
     //{
     //    Debug.Log("odaya girildi");
-    //    GameObject mage = PhotonNetwork.Instantiate("Mage", Vector3.zero, Quaternion.identity, 0, null);
-    //    GameObject joy= PhotonNetwork.Instantiate("FixedJoystick", new Vector3((float)126.2, (float)100.2, 0), Quaternion.identity, 0, null);
-    //    joy.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(),false);
+    //    GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
+    //    //GameObject joy = PhotonNetwork.Instantiate("FixedJoystick", new Vector3((float)126.2, (float)100.2, 0), Quaternion.identity, 0, null);
+    //    //joy.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
+    //    Debug.Log("asd");
 
     //}
     public override void OnLeftRoom()
@@ -64,5 +81,23 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.LogWarningFormat("oyundan cikildi");
+    }
+    public void CreateRoom()
+    {
+        PhotonNetwork.CreateRoom(input_Create.text);
+
+    }
+    public void JoinRoom()
+    {
+        PhotonNetwork.JoinRoom(input_Join.text);
+    }
+    public void JoinRoomList(string roomName)
+    {
+        PhotonNetwork.JoinRoom(roomName);
+    }
+    public override void OnJoinedRoom()
+    {
+        PhotonNetwork.LoadLevel("Map1");
+        //GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
     }
 }

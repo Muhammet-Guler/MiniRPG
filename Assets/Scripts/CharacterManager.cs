@@ -13,7 +13,7 @@ public class CharacterManager : MonoBehaviour
     private int SelectedCharacter = 0;
     void Start()
     {
-        if (!PlayerPrefs.HasKey("selectedOption"))
+        if (!PlayerPrefs.HasKey("SelectedCharacter"))
         {
             SelectedCharacter = 0;
         }

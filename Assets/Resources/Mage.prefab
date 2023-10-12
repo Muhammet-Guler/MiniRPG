@@ -2964,7 +2964,7 @@ MonoBehaviour:
   Attack: {fileID: 5705139486202823430}
   PlayerMovementController: {fileID: 855765243404385928}
   countdownDuration: 1
-  btn1: {fileID: 0}
+  btn1: {fileID: 5224276628272579170, guid: 6968ec97d1727664b921c8a21b8e832e, type: 3}
   btn2: {fileID: 0}
   btn3: {fileID: 0}
 --- !u!114 &855765243404385928

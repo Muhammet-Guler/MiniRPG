@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class SelectedCharacter : MonoBehaviour
     // Start is called before the first frame update
     public int chooseCharacter;
     public GameObject[] Characters;
+    [PunRPC]
     void Start()
     {
         chooseCharacter = PlayerPrefs.GetInt("SelectedCharacter");

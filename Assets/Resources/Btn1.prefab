@@ -94,8 +94,9 @@ GameObject:
   - component: {fileID: 5224276628272579172}
   - component: {fileID: 5224276628272579173}
   - component: {fileID: 5224276628272579170}
+  - component: {fileID: -8508462064917814514}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Btn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,8 +205,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Character1, Assembly-CSharp
+      - m_Target: {fileID: 5705139486202823426, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+          type: 3}
+        m_TargetAssemblyTypeName: CharacterAnimations, Assembly-CSharp
         m_MethodName: AttackSkill
         m_Mode: 1
         m_Arguments:
@@ -252,3 +254,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-8508462064917814514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224276628272579168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

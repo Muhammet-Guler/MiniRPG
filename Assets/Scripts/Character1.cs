@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class CharacterAnimations : MonoBehaviour
     private int SelectedCharacter;
     public UnityEngine.UI.Button btn1,btn2,btn3;
 
+    [PunRPC]
     void Start()
     {
         Walk = GetComponent<Animator>();
@@ -24,6 +26,7 @@ public class CharacterAnimations : MonoBehaviour
     }
 
     // Update is called once per frame
+    [PunRPC]
     void Update()
     {
         if (isAnimationPlaying == true)
@@ -39,6 +42,7 @@ public class CharacterAnimations : MonoBehaviour
             Walk.Play("Walk");
         }
     }
+    [PunRPC]
     public void AttackSkill()
     {
         if (SelectedCharacter==0)
@@ -60,6 +64,7 @@ public class CharacterAnimations : MonoBehaviour
         isAnimationPlaying = false;
        StartCoroutine(StartCountdown());
     }
+    [PunRPC]
     public void AttackSkill2()
     {
         if (SelectedCharacter == 0)
@@ -81,6 +86,7 @@ public class CharacterAnimations : MonoBehaviour
         isAnimationPlaying = false;
         StartCoroutine(StartCountdown());
     }
+    [PunRPC]
     public void Ulti()
     {
         if (SelectedCharacter == 0)
@@ -102,6 +108,7 @@ public class CharacterAnimations : MonoBehaviour
         isAnimationPlaying = false;
         StartCoroutine(StartCountdown());
     }
+    [PunRPC]
     private IEnumerator StartCountdown()
     {
         float currentTime = countdownDuration;
