@@ -36,6 +36,7 @@ public class CharacterSkills : MonoBehaviour
         {
             btn3.onClick.AddListener(ButtonClickAction);
         }
+        Walk=gameObject.AddComponent<Animator>();
     }
     void ButtonClickAction()
     {

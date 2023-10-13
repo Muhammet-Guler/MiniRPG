@@ -1147,9 +1147,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'left
-
-'
+  m_Text: Back
 --- !u!222 &860766518
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2916,6 +2914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a829ae2372fb4a8c06dc19579a67a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
 --- !u!114 &1560123561
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ public class PlayerMovementController : MonoBehaviour
             playerChildTransform.rotation=Quaternion.LookRotation(GetNewVelocity());
             animationController.SetBoolean(animationType: "Walk", value: true);
             Stop = false;
+            Debug.Log("ABCcalisti");
             
         }
         else
