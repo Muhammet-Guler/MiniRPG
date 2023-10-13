@@ -16,14 +16,40 @@ public class CharacterSkills : MonoBehaviour
     private bool isAnimationPlaying = true;
     public float countdownDuration = 1f;
     private int SelectedCharacter;
-    public UnityEngine.UI.Button btn1, btn2, btn3;
+    //public UnityEngine.UI.Button btn4, btn2, btn3;
+    [SerializeField]
+    private UnityEngine.UI.Button btn1, btn2, btn3;
     void Start()
     {
         Walk = GetComponent<Animator>();
         Idle = GetComponent<Animator>();
         SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+        if (btn1 != null)
+        {
+            btn1.onClick.AddListener(ButtonClickAction);
+        }
+        if (btn2 != null)
+        {
+            btn2.onClick.AddListener(ButtonClickAction);
+        }
+        if (btn3 != null)
+        {
+            btn3.onClick.AddListener(ButtonClickAction);
+        }
     }
-
+    void ButtonClickAction()
+    {
+        Debug.Log("Button clicked!");
+        if (Walk!=null)
+        {
+            Walk.Play("Attack1 2");
+            
+        }
+        if (Walk==null)
+        {
+            Debug.Log("calismadi");
+        }
+    }
     void Update()
     {
         if (isAnimationPlaying == true)

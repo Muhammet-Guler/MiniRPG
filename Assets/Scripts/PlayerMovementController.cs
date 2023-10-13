@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FixedJoystick))]
 public class PlayerMovementController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -19,12 +20,16 @@ public class PlayerMovementController : MonoBehaviour
     void Start()
     {
         Walk = GetComponent<Animator>();
+        fixedJoystick = GetComponent<FixedJoystick>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetMovementInputs();
+        if (fixedJoystick!=null)
+        {
+            GetMovementInputs();
+        }
     }
     private void FixedUpdate()
     {

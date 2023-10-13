@@ -6,6 +6,7 @@ using Photon.Realtime;
 using Photon.Pun;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Yonet : MonoBehaviourPunCallbacks
 {
@@ -17,7 +18,7 @@ public class Yonet : MonoBehaviourPunCallbacks
     public GameObject Warrior;
     public GameObject Priest;
     public GameObject PriestTwo;
-    public Button Btn1;
+    public UnityEngine.UI.Button Btn1;
     public FixedJoystick joystick;
     public Canvas canvas;
     //public static CanvasManager Instance { get; private set; }
@@ -47,7 +48,14 @@ public class Yonet : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
             }
             //PhotonNetwork.Instantiate(joystick.name, new Vector3((float)282.22, (float)-190.15, 0), Quaternion.identity);
+
         }
+    }
+    private void Awake()
+    {
+        // Klonlanan karakterlerin içindeki scriptte Button referansýný güncelle
+        // Örneðin, bu koda baþka bir script veya klonlama iþlemi sýrasýnda eriþebilirsiniz.
+        Btn1 = GetComponentInChildren<UnityEngine.UI.Button>();
     }
 
     // Update is called once per frame
