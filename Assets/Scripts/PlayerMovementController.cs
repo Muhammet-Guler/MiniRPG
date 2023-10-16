@@ -15,8 +15,8 @@ public class PlayerMovementController : MonoBehaviour
     public bool Stop;
 
 
-    private float _horizontal;
-    private float _vertical;
+    public float _horizontal;
+    public float _vertical;
     void Start()
     {
         Walk = GetComponent<Animator>();
@@ -49,7 +49,6 @@ public class PlayerMovementController : MonoBehaviour
             playerChildTransform.rotation=Quaternion.LookRotation(GetNewVelocity());
             animationController.SetBoolean(animationType: "Walk", value: true);
             Stop = false;
-            Debug.Log("ABCcalisti");
             
         }
         else
@@ -66,5 +65,6 @@ public class PlayerMovementController : MonoBehaviour
     {
         _horizontal = fixedJoystick.Horizontal;
         _vertical = fixedJoystick.Vertical;
+        //Debug.Log(_horizontal);
     }
 }
