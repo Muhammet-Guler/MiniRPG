@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     private CharacterSkills skilss;
     public float locationX;
@@ -12,25 +14,32 @@ public class GameManager : MonoBehaviour
     private GameObject mage;
     public Vector3 konum;
     public float donmeHizi = 10.0f;
+    [SerializeField]
+    private UnityEngine.UI.Button btn1, btn2, btn3;
+    public float countdownDuration = 1f;
+    PhotonView view;
     void Start()
     {
-        
+        view=GetComponent<PhotonView>();
     }
 
     void Update()
     {
-        mage = GameObject.Find("Mage(Clone)");
-        //mage.transform = GameObject.Find("Mage(Clone)").transform;
-        locationX = joystick.Horizontal;
-        locationY = joystick.Vertical;
-        konum = mage.transform.position;
-        Debug.Log("Oyuncu karakterinin konumu: " + konum);
-        mage.transform.position = new Vector3(mage.transform.position.x+locationX*((float)0.005),mage.transform.position.y, mage.transform.position.z + locationY * ((float)0.005));
-        if (joystick.Horizontal!=0&& joystick.Vertical!=0)
+        if (view.IsMine)
         {
-            WalkAnimation();
-            Vector3 yeniYon =new Vector3(joystick.Horizontal,0, joystick.Vertical);
-            mage.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
+            skilss = GameObject.Find("Mage(Clone)").GetComponent<CharacterSkills>();
+            mage = GameObject.Find("Mage(Clone)");
+            //mage.transform = GameObject.Find("Mage(Clone)").transform;
+            locationX = joystick.Horizontal;
+            locationY = joystick.Vertical;
+            konum = mage.transform.position;
+            mage.transform.position = new Vector3(mage.transform.position.x + locationX * ((float)0.005), mage.transform.position.y, mage.transform.position.z + locationY * ((float)0.005));
+            if (joystick.Horizontal != 0 && joystick.Vertical != 0)
+            {
+                WalkAnimation();
+                Vector3 yeniYon = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+                mage.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
+            }
         }
     }
     //MageLocationX=skills.mage.transform.position.x;
@@ -47,23 +56,43 @@ public class GameManager : MonoBehaviour
     {
         if (mage != null)
         {
-            Animator karakterAnimasyonu = mage.GetComponent<Animator>();
-            if (karakterAnimasyonu != null)
+            Animator CharacterAnimation = mage.GetComponent<Animator>();
+            if (CharacterAnimation != null)
             {
-                karakterAnimasyonu.Play("Walk");
-            }
-            else
-            {
-                Debug.LogError("Karakterin Animator bileþeni bulunamadý.");
+                CharacterAnimation.Play("Walk");
             }
         }
-        else
+    }
+    private IEnumerator StartCountdown()
+    {
+        float currentTime = countdownDuration;
+
+        while (currentTime > 0)
         {
-            Debug.LogError("Karakter bulunamadý.");
+            currentTime -= 1f;
+            btn1.interactable = false;
+            btn2.interactable = false;
+            btn3.interactable = false;
+            yield return new WaitForSeconds(1f);
+            btn1.interactable = true;
+            btn2.interactable = true;
+            btn3.interactable = true;
+            skilss.isCharacterAnimationPlaying = false;
         }
     }
     public void attackOne()
     {
         skilss.MageSkillsOne();
+        StartCoroutine(StartCountdown());
+    }
+    public void attackTwo()
+    {
+        skilss.MageSkillsTwo();
+        StartCoroutine(StartCountdown());
+    }
+    public void attackThree()
+    {
+        skilss.MageSkillsThree();
+        StartCoroutine(StartCountdown());
     }
 }

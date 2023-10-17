@@ -2884,7 +2884,7 @@ GameObject:
   - component: {fileID: 5705139486202823427}
   - component: {fileID: 5705139486202823424}
   - component: {fileID: 5705139486202823425}
-  - component: {fileID: 8384857873362191778}
+  - component: {fileID: 8831267317696003627}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -2961,11 +2961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 5705139486202823430}
   Idle: {fileID: 5705139486202823430}
-  countdownDuration: 1
-  btn1: {fileID: 0}
-  btn2: {fileID: 0}
-  btn3: {fileID: 0}
-  mage: {fileID: 0}
+  isCharacterAnimationPlaying: 0
 --- !u!114 &855765243404385929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,7 +2996,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 5705139486202823424}
   - {fileID: 5705139486202823425}
-  - {fileID: 8384857873362191778}
+  - {fileID: 8831267317696003627}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3038,7 +3034,7 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!114 &8384857873362191778
+--- !u!114 &8831267317696003627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3062,7 +3058,7 @@ MonoBehaviour:
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 5

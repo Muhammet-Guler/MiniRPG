@@ -20,7 +20,6 @@ public class Yonet : MonoBehaviourPunCallbacks
     public GameObject PriestTwo;
     public UnityEngine.UI.Button Btn1;
     public FixedJoystick joystick;
-    public Canvas canvas;
     //public static CanvasManager Instance { get; private set; }
     //public Transform CanvasTransform { get; private set; }
 
@@ -48,7 +47,6 @@ public class Yonet : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
             }
             //PhotonNetwork.Instantiate(joystick.name, new Vector3((float)282.22, (float)-190.15, 0), Quaternion.identity);
-
         }
     }
     private void Awake()

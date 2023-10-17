@@ -12,24 +12,23 @@ public class CharacterSkills : MonoBehaviourPunCallbacks
     public Animator Idle;
     //public Animator Attack;
     //public PlayerMovementController PlayerMovementController;
-    private float currentTime;
-    private bool isAnimationPlaying = true;
-    public float countdownDuration = 1f;
     private int SelectedCharacter;
     //public UnityEngine.UI.Button btn4, btn2, btn3;
-    [SerializeField]
-    private UnityEngine.UI.Button btn1, btn2, btn3;
    // public GameManager gameManager;
-    public GameObject mage;
+    private GameObject mage;
     private GameManager gameManager;
+    private Animator CharacterAnimation;
+    public bool isCharacterAnimationPlaying;
+    PhotonView view;
     void Start()
     {
-     //   gameManager.attackOne();
+        //gameManager.attackOne();
         Walk = GetComponent<Animator>();
         Idle = GetComponent<Animator>();
         SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
         gameManager = FindObjectOfType<GameManager>();
-
+        isCharacterAnimationPlaying = false;
+        view = GetComponent < PhotonView >();
         //if (btn1 != null)
         //{
         //    btn1.onClick.AddListener(ButtonClickAction);
@@ -59,42 +58,47 @@ public class CharacterSkills : MonoBehaviourPunCallbacks
     //}
     void Update()
     {
-        
-            if (isAnimationPlaying == true)
+        if (view.IsMine)
+        {
+            mage = GameObject.Find("Mage(Clone)");
+            if (gameManager.joystick.Horizontal == 0 && gameManager.joystick.Vertical == 0 && isCharacterAnimationPlaying == false)
             {
-                if (gameManager.joystick.Horizontal==0&& gameManager.joystick.Vertical==0)
-                {
-                    Idle.Play("Idle");
-                }
+                Idle.Play("Idle");
             }
-            if(gameManager.joystick.Horizontal != 0 && gameManager.joystick.Vertical != 0)
+
+            if (gameManager.joystick.Horizontal != 0 && gameManager.joystick.Vertical != 0)
             {
                 Walk.Play("WalkForward");
                 Walk.Play("Walk");
+                isCharacterAnimationPlaying = false;
             }
-        
+            CharacterAnimation = mage.GetComponent<Animator>();
+        }
         
     }
     public void MageSkillsOne()
     {
-
-      Walk.Play("Attack1 0");
-      isAnimationPlaying = false;
-        
+        if (view.IsMine)
+        {
+            CharacterAnimation.Play("Attack1 0");
+            isCharacterAnimationPlaying = true;
+        }
     }
     public void MageSkillsTwo()
     {
-
-      Walk.Play("Attack1 4");
-      isAnimationPlaying = false;
-        
+        if (view.IsMine)
+        {
+            CharacterAnimation.Play("Attack1 4");
+            isCharacterAnimationPlaying = true;
+        }
     }
     public void MageSkillsThree()
     {
-
-     Walk.Play("SpinAttack_TwoWeapons");
-     isAnimationPlaying = false;
-        
+        if (view.IsMine)
+        {
+            CharacterAnimation.Play("SpinAttack_TwoWeapons");
+            isCharacterAnimationPlaying = true;
+        }
     }
     public void PriestSkills()
     {
@@ -164,22 +168,5 @@ public class CharacterSkills : MonoBehaviourPunCallbacks
         //        Walk.Play("Attack1 3");
         //    });
         //}
-    }
-    private IEnumerator StartCountdown()
-    {
-        float currentTime = countdownDuration;
-
-        while (currentTime > 0)
-        {
-            currentTime -= 1f;
-            btn1.interactable = false;
-            btn2.interactable = false;
-            btn3.interactable = false;
-            yield return new WaitForSeconds(1f);
-            btn1.interactable = true;
-            btn2.interactable = true;
-            btn3.interactable = true;
-        }
-        isAnimationPlaying = true;
     }
 }

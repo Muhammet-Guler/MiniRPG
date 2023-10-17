@@ -776,11 +776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 2128859580872917005}
   Idle: {fileID: 2128859580872917005}
-  countdownDuration: 1
-  btn1: {fileID: 0}
-  btn2: {fileID: 0}
-  btn3: {fileID: 0}
-  mage: {fileID: 0}
+  isCharacterAnimationPlaying: 0
 --- !u!114 &1613840569
 MonoBehaviour:
   m_ObjectHideFlags: 0

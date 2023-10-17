@@ -5173,7 +5173,6 @@ MonoBehaviour:
   Btn1: {fileID: 5224276628272579170, guid: 6968ec97d1727664b921c8a21b8e832e, type: 3}
   joystick: {fileID: 2938696503017501431, guid: 87f7559b3faa85f45a4ce79c099a2820,
     type: 3}
-  canvas: {fileID: 640816032201649496}
 --- !u!4 &2110272098
 Transform:
   m_ObjectHideFlags: 0
@@ -5604,9 +5603,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4957605393916756792}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: MageSkills
+      - m_Target: {fileID: 23647078}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: attackTwo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6142,9 +6141,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4957605393916756792}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: MageSkills
+      - m_Target: {fileID: 23647078}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: attackThree
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7017,11 +7016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 1621121081}
   Idle: {fileID: 1621121081}
-  countdownDuration: 1
-  btn1: {fileID: 640816032051444643}
-  btn2: {fileID: 640816031892362135}
-  btn3: {fileID: 640816032607412878}
-  mage: {fileID: 0}
+  isCharacterAnimationPlaying: 0
 --- !u!114 &2128859580863551633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7306,6 +7301,21 @@ PrefabInstance:
       objectReference: {fileID: 2936125511065708443}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
+      propertyPath: btn1
+      value: 
+      objectReference: {fileID: 640816032051444643}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
+      propertyPath: btn2
+      value: 
+      objectReference: {fileID: 640816031892362135}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
+      propertyPath: btn3
+      value: 
+      objectReference: {fileID: 640816032607412878}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
       propertyPath: skills
       value: 
       objectReference: {fileID: 5705139486202823426, guid: 5cb5296f468bb2d4f82d31934b578cd3,
@@ -7314,8 +7324,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skilss
       value: 
-      objectReference: {fileID: 5705139486202823426, guid: 5cb5296f468bb2d4f82d31934b578cd3,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
       propertyPath: joystick
@@ -7354,6 +7363,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2936125511065708444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936125511065708442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
+--- !u!114 &2936125511065708445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936125511065708442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2936125511065708444}
+  sceneViewId: 7
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2959081780487133596
 GameObject:
   m_ObjectHideFlags: 0
@@ -11091,11 +11141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 4957605393916756784}
   Idle: {fileID: 4957605393916756784}
-  countdownDuration: 1
-  btn1: {fileID: 640816032051444643}
-  btn2: {fileID: 640816031892362135}
-  btn3: {fileID: 640816032607412878}
-  mage: {fileID: 0}
+  isCharacterAnimationPlaying: 0
 --- !u!114 &4957605393916756793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13942,11 +13988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 148310051}
   Idle: {fileID: 148310051}
-  countdownDuration: 1
-  btn1: {fileID: 640816032051444643}
-  btn2: {fileID: 640816031892362135}
-  btn3: {fileID: 640816032607412878}
-  mage: {fileID: 0}
+  isCharacterAnimationPlaying: 0
 --- !u!114 &6656323453763306529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14251,11 +14293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 7077101355356237184}
   Idle: {fileID: 7077101355356237184}
-  countdownDuration: 1
-  btn1: {fileID: 640816032051444643}
-  btn2: {fileID: 640816031892362135}
-  btn3: {fileID: 640816032607412878}
-  mage: {fileID: 0}
+  isCharacterAnimationPlaying: 0
 --- !u!114 &7077101355356237246
 MonoBehaviour:
   m_ObjectHideFlags: 0
