@@ -2878,13 +2878,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5705139486202823431}
   - component: {fileID: 5705139486202823430}
+  - component: {fileID: 6592696860039064122}
   - component: {fileID: 855765243404385931}
-  - component: {fileID: 5705139486202823426}
   - component: {fileID: 855765243404385929}
   - component: {fileID: 5705139486202823427}
   - component: {fileID: 5705139486202823424}
   - component: {fileID: 5705139486202823425}
-  - component: {fileID: 8831267317696003627}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -2931,6 +2930,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &6592696860039064122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705139486202823429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441140f2c6a1aee43af6d00a0f0a91f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  characterSprite: {fileID: 0}
+  Health: 0
+  Range: 0
+  Speed: 0
+  Damage: 0
+  AttackPower: 0
+  Defence: 0
+  SkillOneCoolDown: 0
+  SkillTwoCoolDown: 0
+  SkillThreeCoolDown: 0
+  SkillFourCoolDown: 0
+  SkillFiveCoolDown: 0
+  sprite: {fileID: 0}
+  mage: {fileID: 5705139486202823429}
+  CharacterAnimation: {fileID: 5705139486202823430}
+  isCharacterAnimationPlaying: 0
 --- !u!54 &855765243404385931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2947,21 +2975,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5705139486202823426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5705139486202823429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Walk: {fileID: 5705139486202823430}
-  Idle: {fileID: 5705139486202823430}
-  isCharacterAnimationPlaying: 0
 --- !u!114 &855765243404385929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2996,7 +3009,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 5705139486202823424}
   - {fileID: 5705139486202823425}
-  - {fileID: 8831267317696003627}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -3014,7 +3026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!114 &5705139486202823425
 MonoBehaviour:
@@ -3034,39 +3046,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!114 &8831267317696003627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5705139486202823429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!1 &5705139486205219059
 GameObject:
   m_ObjectHideFlags: 0

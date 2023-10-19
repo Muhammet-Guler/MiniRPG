@@ -11,6 +11,7 @@ public class CharacterManager : MonoBehaviour
     public SpriteRenderer artworkSprite;
 
     private int SelectedCharacter = 0;
+    private string selectedCharacter;
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -22,6 +23,13 @@ public class CharacterManager : MonoBehaviour
             Load();
         }
         ChangeCharacter(SelectedCharacter);
+    }
+    public void Update()
+    {
+        if (SelectedCharacter==0)
+        {
+            selectedCharacter = "Mage(Clone)";
+        }
     }
     public void NextOption()
     {

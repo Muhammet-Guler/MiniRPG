@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: New Character Database
   m_EditorClassIdentifier: 
   character:
-  - characterName: Priest Two
-    characterSprite: {fileID: 21300000, guid: 2574caccfcad1eb42a63a7ccfe55b8ae, type: 3}
-  - characterName: Priest
-    characterSprite: {fileID: 21300000, guid: e2f2763e7e8758d47b113a5fa1e85968, type: 3}
-  - characterName: Warrior
-    characterSprite: {fileID: 21300000, guid: 7b204d64dbbabbe4ea2406bde508c122, type: 3}
-  - characterName: Mage
-    characterSprite: {fileID: 21300000, guid: 75e31cfecb243cf4bb202f7f00a34d2e, type: 3}
+  - {fileID: 6592696860039064122, guid: 5cb5296f468bb2d4f82d31934b578cd3, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

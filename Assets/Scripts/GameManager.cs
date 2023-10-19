@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Pun.Demo.PunBasics;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    private CharacterSkills skilss;
     public float locationX;
     public float locationY;
     public FixedJoystick joystick;
@@ -18,16 +18,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     private UnityEngine.UI.Button btn1, btn2, btn3;
     public float countdownDuration = 1f;
     PhotonView view;
+    public Mage SelectedCharacter;
     void Start()
     {
         view=GetComponent<PhotonView>();
+        SelectedCharacter = new Mage();
+        SelectedCharacter.skillOne();
     }
 
     void Update()
     {
-        if (view.IsMine)
-        {
-            skilss = GameObject.Find("Mage(Clone)").GetComponent<CharacterSkills>();
+            SelectedCharacter = GameObject.Find("Mage(Clone)").GetComponent<Mage>();
             mage = GameObject.Find("Mage(Clone)");
             //mage.transform = GameObject.Find("Mage(Clone)").transform;
             locationX = joystick.Horizontal;
@@ -39,8 +40,12 @@ public class GameManager : MonoBehaviourPunCallbacks
                 WalkAnimation();
                 Vector3 yeniYon = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
                 mage.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
-            }
-        }
+             }
+             if (joystick.Horizontal == 0 && joystick.Vertical == 0 && SelectedCharacter.isCharacterAnimationPlaying == false)
+              {
+                    IdleAnimation();
+              }
+
     }
     //MageLocationX=skills.mage.transform.position.x;
     //MageLocationY= skills.mage.transform.position.y;
@@ -60,6 +65,18 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (CharacterAnimation != null)
             {
                 CharacterAnimation.Play("Walk");
+                CharacterAnimation.Play("WalkForward");
+            }
+        }
+    }
+    public void IdleAnimation()
+    {
+        if (mage != null)
+        {
+            Animator CharacterAnimation = mage.GetComponent<Animator>();
+            if (CharacterAnimation != null)
+            {
+                CharacterAnimation.Play("Idle");
             }
         }
     }
@@ -77,22 +94,22 @@ public class GameManager : MonoBehaviourPunCallbacks
             btn1.interactable = true;
             btn2.interactable = true;
             btn3.interactable = true;
-            skilss.isCharacterAnimationPlaying = false;
+            SelectedCharacter.isCharacterAnimationPlaying = false;
         }
     }
     public void attackOne()
     {
-        skilss.MageSkillsOne();
+        SelectedCharacter.skillOne();
         StartCoroutine(StartCountdown());
     }
     public void attackTwo()
     {
-        skilss.MageSkillsTwo();
+        SelectedCharacter.skillTwo();
         StartCoroutine(StartCountdown());
     }
     public void attackThree()
     {
-        skilss.MageSkillsThree();
+        SelectedCharacter.skillThree();
         StartCoroutine(StartCountdown());
     }
 }

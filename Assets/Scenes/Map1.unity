@@ -7332,6 +7332,12 @@ PrefabInstance:
       objectReference: {fileID: 640816032439082495}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
+      propertyPath: SelectedCharacter
+      value: 
+      objectReference: {fileID: 6592696860039064122, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
       propertyPath: playerMovementController
       value: 
       objectReference: {fileID: 0}

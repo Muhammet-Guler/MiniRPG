@@ -3483,7 +3483,6 @@ MonoBehaviour:
     type: 3}
   Btn1: {fileID: 5224276628272579170, guid: 6968ec97d1727664b921c8a21b8e832e, type: 3}
   joystick: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &2119054257
 GameObject:
   m_ObjectHideFlags: 0
