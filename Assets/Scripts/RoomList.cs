@@ -24,6 +24,7 @@ public class RoomList : MonoBehaviourPunCallbacks
             {
                 GameObject Room = Instantiate(RoomPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Content").transform);
                 Room.GetComponent<Room>().Name.text = roomList[i].Name;
+                Debug.Log(PhotonNetwork.CurrentRoom.Name);
                 AllRooms[i] = Room;
             }
         }

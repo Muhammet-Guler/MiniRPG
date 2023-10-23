@@ -20,15 +20,14 @@ public class Cube : MonoBehaviourPun, IOnEventCallback
 
     public void ChangeCubeColor()
     {
-        if (photonView.IsMine)
-        {
+        
             Color newColor = new Color(Random.value, Random.value, Random.value);
             cubeRenderer.material.color = newColor;
 
             object[] data = new object[] { newColor.r, newColor.g, newColor.b };
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
             PhotonNetwork.RaiseEvent(1, data, raiseEventOptions, SendOptions.SendUnreliable);
-        }
+        
     }
 
     public void OnEvent(EventData photonEvent)

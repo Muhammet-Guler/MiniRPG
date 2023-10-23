@@ -275,7 +275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1328e34a079a6b14c95750ebbcef6ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 14353979}
 --- !u!114 &23647078 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,

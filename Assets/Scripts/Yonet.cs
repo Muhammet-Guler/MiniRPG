@@ -30,7 +30,6 @@ public class Yonet : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         if (PhotonNetwork.IsConnected)
         { int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
-            Debug.Log("baglanti kuruldu");
             if (selectedCharacter == 0)
             {
                 PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
@@ -47,7 +46,6 @@ public class Yonet : MonoBehaviourPunCallbacks
             {
                 PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
             }
-            //PhotonNetwork.Instantiate(joystick.name, new Vector3((float)282.22, (float)-190.15, 0), Quaternion.identity);
         }
     }
     private void Awake()
@@ -107,12 +105,12 @@ public class Yonet : MonoBehaviourPunCallbacks
     }
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(input_Create.text);
-
+        PhotonNetwork.CreateRoom("asd");
     }
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom(input_Join.text);
+        PhotonNetwork.JoinRoom("asd");
+        Debug.Log("input join:"+input_Join.text);
     }
     public void JoinRoomList(string roomName)
     {
@@ -121,10 +119,6 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Map1");
-        if (SelectedCharacter==3)
-        {
-            PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
-        }
         //GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
     }
 }
