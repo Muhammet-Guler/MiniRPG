@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 [System.Serializable]
-public abstract class Character:MonoBehaviour
+public abstract class Character:MonoBehaviourPun
 {
     public string characterName;
     public Sprite characterSprite;

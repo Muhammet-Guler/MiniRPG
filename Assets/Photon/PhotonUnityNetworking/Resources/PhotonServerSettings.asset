@@ -46,6 +46,12 @@ MonoBehaviour:
   - Ulti
   - Update
   - PriestSkills
+  - SetSyncedColor
+  - ChangeCubeColor
+  - StartAnimationRPC
+  - StopAnimationRPC
+  - ChangeColor
+  - SyncColor
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

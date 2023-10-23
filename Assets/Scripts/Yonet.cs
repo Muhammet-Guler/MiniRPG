@@ -30,6 +30,7 @@ public class Yonet : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         if (PhotonNetwork.IsConnected)
         { int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+            Debug.Log("baglanti kuruldu");
             if (selectedCharacter == 0)
             {
                 PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
@@ -120,6 +121,10 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Map1");
+        if (SelectedCharacter==3)
+        {
+            PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
+        }
         //GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
     }
 }

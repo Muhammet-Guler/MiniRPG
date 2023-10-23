@@ -2636,6 +2636,7 @@ GameObject:
   - component: {fileID: 1574899195}
   - component: {fileID: 1574899196}
   - component: {fileID: 1574899197}
+  - component: {fileID: -4368816354969681649}
   m_Layer: 0
   m_Name: Pritest2
   m_TagString: Untagged
@@ -2711,7 +2712,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Walk: {fileID: 6656323454618419657}
   Idle: {fileID: 6656323454618419657}
-  isCharacterAnimationPlaying: 0
 --- !u!114 &1574899190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,6 +2783,27 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &-4368816354969681649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6656323454611010535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7410dcf2131c1449f69434d343da95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Priest Two
+  characterSprite: {fileID: 21300000, guid: 2574caccfcad1eb42a63a7ccfe55b8ae, type: 3}
+  Health: 0
+  Range: 0
+  Speed: 0
+  Damage: 0
+  AttackPower: 0
+  Defence: 0
+  sprite: {fileID: 21300000, guid: 2574caccfcad1eb42a63a7ccfe55b8ae, type: 3}
 --- !u!1 &6656323454611010537
 GameObject:
   m_ObjectHideFlags: 0

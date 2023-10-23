@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class CharacterManager : MonoBehaviour
 
     private int SelectedCharacter = 0;
     private string selectedCharacter;
+    public GameObject UsernamePage;
+    public UnityEngine.UI.Text MyUsername;
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -23,10 +26,20 @@ public class CharacterManager : MonoBehaviour
             Load();
         }
         ChangeCharacter(SelectedCharacter);
+        if (PlayerPrefs.GetString("Username") == "" || PlayerPrefs.GetString("Username") == null)
+        {
+            UsernamePage.SetActive(true);
+        }
+        else
+        {
+            PhotonNetwork.NickName = PlayerPrefs.GetString("Username");
+            MyUsername.text = PlayerPrefs.GetString("Username");
+            UsernamePage.SetActive(false);
+        }
     }
     public void Update()
     {
-        if (SelectedCharacter==0)
+        if (SelectedCharacter==3)
         {
             selectedCharacter = "Mage(Clone)";
         }

@@ -5,8 +5,11 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using Photon.Pun.Demo.PunBasics;
+using Unity.VisualScripting;
+using System.IO;
+using System.Runtime.Serialization;
 
-public class GameManager : MonoBehaviourPunCallbacks
+public class GameManager : MonoBehaviourPun
 {
     public float locationX;
     public float locationY;
@@ -19,14 +22,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     public float countdownDuration = 1f;
     PhotonView view;
     public Mage SelectedCharacter;
+    public GameObject cube;
+    private Color syncedColor = Color.red;
     void Start()
     {
         view=GetComponent<PhotonView>();
         SelectedCharacter = new Mage();
         SelectedCharacter.skillOne();
+        cube.GetComponent<Renderer>().material.color = syncedColor;
     }
 
-    void Update()
+
+
+void Update()
     {
             SelectedCharacter = GameObject.Find("Mage(Clone)").GetComponent<Mage>();
             mage = GameObject.Find("Mage(Clone)");
@@ -34,7 +42,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             locationX = joystick.Horizontal;
             locationY = joystick.Vertical;
             konum = mage.transform.position;
-            mage.transform.position = new Vector3(mage.transform.position.x + locationX * ((float)0.005), mage.transform.position.y, mage.transform.position.z + locationY * ((float)0.005));
+            mage.transform.position = new Vector3(mage.transform.position.x + locationX * ((float)2)*Time.deltaTime, mage.transform.position.y* Time.deltaTime, mage.transform.position.z + locationY * ((float)2) * Time.deltaTime);
             if (joystick.Horizontal != 0 && joystick.Vertical != 0)
             {
                 WalkAnimation();
@@ -99,8 +107,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     public void attackOne()
     {
-        SelectedCharacter.skillOne();
-        StartCoroutine(StartCountdown());
+        //SelectedCharacter.skillOne();
+        //StartCoroutine(StartCountdown());
     }
     public void attackTwo()
     {
@@ -112,4 +120,5 @@ public class GameManager : MonoBehaviourPunCallbacks
         SelectedCharacter.skillThree();
         StartCoroutine(StartCountdown());
     }
+   
 }
