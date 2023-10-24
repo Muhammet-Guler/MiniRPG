@@ -105,16 +105,18 @@ public class Yonet : MonoBehaviourPunCallbacks
     }
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom("asd");
+        PhotonNetwork.CreateRoom(input_Create.text);
+        Debug.Log("input create:" + input_Create.text);
     }
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRoom("asd");
+        PhotonNetwork.JoinRoom(input_Join.text);
         Debug.Log("input join:"+input_Join.text);
     }
-    public void JoinRoomList(string roomName)
+    public void JoinRoomInList(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
+        Debug.Log("roomName:" + roomName);
     }
     public override void OnJoinedRoom()
     {

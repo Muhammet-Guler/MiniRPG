@@ -8,6 +8,6 @@ public class Room : MonoBehaviour
     public Text Name;
     public void JoinRoom()
     {
-        GameObject.Find("Yonet").GetComponent<Yonet>().JoinRoomList(Name.text);
+        GameObject.Find("Yonet").GetComponent<Yonet>().JoinRoomInList(Name.text);
     }
 }

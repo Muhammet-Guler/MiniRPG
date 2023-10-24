@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Photon.Pun;
 
 public class Mage : Character
 {
@@ -9,9 +11,24 @@ public class Mage : Character
     public GameObject mage;
     public Animator CharacterAnimation;
     public bool isCharacterAnimationPlaying;
+    public UnityEngine.UI.Text nickName;
     public void Update()
     {
         CharacterAnimation = mage.GetComponent<Animator>();
+        nickName.transform.rotation = new Quaternion(0,0,0,0);
+    }
+    public void Start()
+    {
+        if (photonView.IsMine)
+        {
+
+            nickName.text = PhotonNetwork.NickName;
+        }
+        if (!photonView.IsMine)
+        {
+
+            nickName.text = GetComponent<PhotonView>().Controller.NickName;
+        }
     }
     public void MageClass()
     {

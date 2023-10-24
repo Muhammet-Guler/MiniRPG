@@ -3,46 +3,27 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class Cube : MonoBehaviourPun, IOnEventCallback
+public class Cube : MonoBehaviourPun
 {
-
-    private Color cubeColor;
-    private Renderer cubeRenderer;
-
-    private void Start()
+    public void OnSendButtonClick()
     {
-        cubeRenderer = GetComponent<Renderer>();
-        cubeColor = cubeRenderer.material.color;
+        // Týklama iþlemi gerçekleþtiðinde bu iþlev çaðrýlacak.
 
-        PhotonNetwork.AddCallbackTarget(this);
-        PhotonNetwork.ConnectUsingSettings();
-    }
+        // Göndermek istediðiniz mesajý oluþturun veya ayarlayýn.
+        string message = "Merhaba, diðer oyuncular!";
 
-    public void ChangeCubeColor()
-    {
-        
-            Color newColor = new Color(Random.value, Random.value, Random.value);
-            cubeRenderer.material.color = newColor;
-
-            object[] data = new object[] { newColor.r, newColor.g, newColor.b };
-            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
-            PhotonNetwork.RaiseEvent(1, data, raiseEventOptions, SendOptions.SendUnreliable);
-        
-    }
-
-    public void OnEvent(EventData photonEvent)
-    {
-        if (photonEvent.Code == 1)
+        // Mesajý diðer oyunculara göndermek için PhotonView'ýn RPC iþlemini kullanabilirsiniz.
+        PhotonView photonView = GetComponent<PhotonView>();
+        if (photonView != null)
         {
-            object[] data = (object[])photonEvent.CustomData;
-            if (data.Length == 3)
-            {
-                float r = (float)data[0];
-                float g = (float)data[1];
-                float b = (float)data[2];
-                Color receivedColor = new Color(r, g, b);
-                cubeRenderer.material.color = receivedColor;
-            }
+            photonView.RPC("ReceiveMessage", RpcTarget.All, message);
         }
+    }
+
+    [PunRPC]
+    private void ReceiveMessage(string message)
+    {
+        // Mesajý almak ve iþlemek için bu iþlevi kullanabilirsiniz.
+        Debug.Log("Alýnan Mesaj: " + message);
     }
 }

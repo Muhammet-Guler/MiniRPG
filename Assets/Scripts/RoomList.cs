@@ -17,6 +17,7 @@ public class RoomList : MonoBehaviourPunCallbacks
                 Destroy(AllRooms[i]);   
             }
         }
+        AllRooms = new GameObject[roomList.Count];
 
         for (int i=0;i<roomList.Count; i++)
         {
@@ -24,7 +25,7 @@ public class RoomList : MonoBehaviourPunCallbacks
             {
                 GameObject Room = Instantiate(RoomPrefab, Vector3.zero, Quaternion.identity, GameObject.Find("Content").transform);
                 Room.GetComponent<Room>().Name.text = roomList[i].Name;
-                Debug.Log(PhotonNetwork.CurrentRoom.Name);
+                Debug.Log("roomList:"+roomList[i].Name);
                 AllRooms[i] = Room;
             }
         }

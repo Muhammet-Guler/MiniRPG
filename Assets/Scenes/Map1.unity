@@ -258,7 +258,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 14353986}
   - {fileID: 14353984}
   sceneViewId: 10
   InstantiationId: 0
@@ -5890,7 +5889,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 14353986}
         m_TargetAssemblyTypeName: Cube, Assembly-CSharp
-        m_MethodName: ChangeCubeColor
+        m_MethodName: OnSendButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11649,7 +11648,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4957605394009774165}
-  m_LocalRotation: {x: 0.022658478, y: 0.034481525, z: -0.1530235, w: -0.98736084}
+  m_LocalRotation: {x: 0.02265848, y: 0.034481525, z: -0.15302351, w: -0.98736084}
   m_LocalPosition: {x: -0.14114596, y: 0.026662856, z: -0.0031975273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
