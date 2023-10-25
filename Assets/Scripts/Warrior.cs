@@ -15,6 +15,7 @@ public class Warrior : Character
         Damage = 9;
         AttackPower = 10;
         Defence = 10;
+        Description = "";
     }
     public override void skillOne()
     {

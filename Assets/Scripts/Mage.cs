@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using Photon.Pun;
 
-public class Mage : Character
+public class Mage : Character, IPunObservable
 {
     public int SkillOneCoolDown, SkillTwoCoolDown, SkillThreeCoolDown, SkillFourCoolDown, SkillFiveCoolDown=0;
     public Sprite sprite;
@@ -12,6 +12,9 @@ public class Mage : Character
     public Animator CharacterAnimation;
     public bool isCharacterAnimationPlaying;
     public UnityEngine.UI.Text nickName;
+
+    private Animator animator;
+    public AnimationSync animationSync;
     public void Update()
     {
         CharacterAnimation = mage.GetComponent<Animator>();
@@ -41,6 +44,7 @@ public class Mage : Character
         AttackPower = 10;
         Defence = 10;
         isCharacterAnimationPlaying = false;
+        Description = "";
     }
     public  override void skillOne()
     {
@@ -75,5 +79,30 @@ public class Mage : Character
     public override void RecieveDamage()
     {
 
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        animationSync = new AnimationSync();
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // Senkronize edilecek verileri yaz
+            stream.SendNext(animator.GetBool("isPlaying"));
+            stream.SendNext(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+        }
+        else
+        {
+            // Senkronize edilen verileri oku ve animasyonlarý ayarla
+            animationSync.isPlaying = (bool)stream.ReceiveNext();
+            animationSync.currentAnimation = (string)stream.ReceiveNext();
+
+            animator.SetBool("isPlaying", animationSync.isPlaying);
+            animator.Play(animationSync.currentAnimation);
+        }
     }
 }

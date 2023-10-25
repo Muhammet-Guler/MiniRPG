@@ -3089,6 +3089,7 @@ MonoBehaviour:
   Damage: 0
   AttackPower: 0
   Defence: 0
+  Description: 
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
   SkillThreeCoolDown: 0
@@ -3099,6 +3100,9 @@ MonoBehaviour:
   CharacterAnimation: {fileID: 5705139486202823430}
   isCharacterAnimationPlaying: 0
   nickName: {fileID: 7229748624387568182}
+  animationSync:
+    isPlaying: 0
+    currentAnimation: 
 --- !u!54 &855765243404385931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3147,6 +3151,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 6592696860039064122}
   - {fileID: 5705139486202823424}
   - {fileID: 5705139486202823425}
   sceneViewId: 0

@@ -14,6 +14,7 @@ public abstract class Character:MonoBehaviourPun
     public int Damage;
     public int AttackPower;
     public int Defence;
+    public string Description;
 
     public abstract void skillOne();
 

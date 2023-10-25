@@ -15,6 +15,7 @@ public class Priest : Character
         Damage = 6;
         AttackPower = 10;
         Defence = 10;
+        Description = "";
     }
     public override void skillOne()
     {
