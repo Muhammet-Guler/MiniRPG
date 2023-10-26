@@ -45,24 +45,24 @@ public class Mage : Character, IPunObservable
         Defence = 10;
         isCharacterAnimationPlaying = false;
         Description = "";
+        instantieName = "Mage(Clone)";
+        //skil_1 = 1;
+        //skil_id = 2;
+        //skil_id = 3;
+        //skil_id = 4;
+        //skil_id = 5;
     }
-    public  override void skillOne()
+    public  override void skillOne(/*skilid*/)
     {
-        this.SkillOneCoolDown = 5;
-        CharacterAnimation.Play("Attack1 0");
-        isCharacterAnimationPlaying = true;
+        
     }
-    public override void skillTwo()
+    public override void skillTwo(/*skilid*/)
     {
-        this.SkillOneCoolDown = 5;
-        CharacterAnimation.Play("Attack1 1");
-        isCharacterAnimationPlaying = true;
+  
     }
-    public override void skillThree()
+    public override void skillThree(/*skilid*/)
     {
-        this.SkillOneCoolDown = 5;
-        CharacterAnimation.Play("Attack1 2");
-        isCharacterAnimationPlaying = true;
+
     }
     public override void skillFour()
     {
@@ -105,4 +105,13 @@ public class Mage : Character, IPunObservable
             animator.Play(animationSync.currentAnimation);
         }
     }
+
+    public void sskill_()
+    {
+        this.SkillOneCoolDown = 5;
+        CharacterAnimation.Play("Attack1 0");
+        isCharacterAnimationPlaying = true;
+    }
+
+
 }

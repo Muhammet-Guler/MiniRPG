@@ -15,6 +15,10 @@ public class CharacterManager : MonoBehaviour
     private string selectedCharacter;
     public GameObject UsernamePage;
     public UnityEngine.UI.Text MyUsername;
+    public GameObject Mage;
+    public GameObject Warrior;
+    public GameObject Priest;
+    public GameObject PriestTwo;
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -39,34 +43,32 @@ public class CharacterManager : MonoBehaviour
     }
     public void Update()
     {
-        if (SelectedCharacter==3)
-        {
-            selectedCharacter = "Mage(Clone)";
-        }
+
     }
     public void NextOption()
     {
         SelectedCharacter++;
-        if (SelectedCharacter >= characterDB.CharacterCount)
+        if (SelectedCharacter >= characterDB.characters.Length)
         {
             SelectedCharacter = 0;
         }
         ChangeCharacter(SelectedCharacter);
         Save();
+        characterDB.getAllcharacters();
     }
     public void BackOption()
     {
         SelectedCharacter--;
         if (SelectedCharacter < 0)
         {
-            SelectedCharacter = characterDB.CharacterCount-1;
+            SelectedCharacter = characterDB.characters.Length-1;
         }
         ChangeCharacter(SelectedCharacter);
         Save();
     }
     private void ChangeCharacter(int SelectedCharacter)
     {
-        Character character=characterDB.GetCharacters(SelectedCharacter);
+        Character character=characterDB.GetCharacter(SelectedCharacter);
         artworkSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
     }
@@ -81,5 +83,9 @@ public class CharacterManager : MonoBehaviour
     public void ChangeScene()
     {
         SceneManager.LoadScene(2);
+    }
+    public void SelectCharacter()
+    {
+        
     }
 }

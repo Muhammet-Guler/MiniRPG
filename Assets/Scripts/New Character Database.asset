@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35743fe40e672b5408b8a53b15ef23a5, type: 3}
   m_Name: New Character Database
   m_EditorClassIdentifier: 
-  character:
+  characters:
   - {fileID: -4368816354969681649, guid: 40d946a45e72c2c4da9ba3e8baf3bd26, type: 3}
   - {fileID: -2221766957142396074, guid: ee4b77c547dc2b34cbe384085e47b02a, type: 3}
   - {fileID: -3036355717365440933, guid: 9f5f19f2e4d02a840996ec23cbe0946e, type: 3}

@@ -14,42 +14,67 @@ public class GameManager : MonoBehaviourPun
     public float locationX;
     public float locationY;
     public FixedJoystick joystick;
-    private GameObject mage;
+    private GameObject SelectedCharacter;
     public Vector3 konum;
     public float donmeHizi = 10.0f;
     [SerializeField]
     private UnityEngine.UI.Button btn1, btn2, btn3;
     public float countdownDuration = 1f;
     PhotonView view;
-    public Mage SelectedCharacter;
+    public Mage Mage;
+    public Priest Priest;
+    public PriestTwo PriestTwo;
+    public Warrior Warrior;
     public GameObject cube;
     private Color syncedColor = Color.red;
+    private int selectedCharacterValue;
     void Start()
     {
         view=GetComponent<PhotonView>();
-        SelectedCharacter = new Mage();
-        SelectedCharacter.skillOne();
-        cube.GetComponent<Renderer>().material.color = syncedColor;
+        Mage = new Mage();
+        Priest = new Priest();
+        PriestTwo = new PriestTwo();
+        Warrior = new Warrior();
+        //Mage.skillOne();
+        //cube.GetComponent<Renderer>().material.color = syncedColor;
     }
 
 
 
 void Update()
     {
-            SelectedCharacter = GameObject.Find("Mage(Clone)").GetComponent<Mage>();
-            mage = GameObject.Find("Mage(Clone)");
-            //mage.transform = GameObject.Find("Mage(Clone)").transform;
+         selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
+        if (selectedCharacterValue == 0)
+        {
+            PriestTwo = GameObject.Find("Pritest2(Clone)").GetComponent<PriestTwo>();
+            SelectedCharacter = GameObject.Find("Pritest2(Clone)");
+        }
+        if (selectedCharacterValue == 1)
+        {
+            Priest = GameObject.Find("Priest(Clone)").GetComponent<Priest>();
+            SelectedCharacter = GameObject.Find("Priest(Clone)");
+        }
+        if (selectedCharacterValue == 2)
+        {
+            Warrior = GameObject.Find("Warrior(Clone)").GetComponent<Warrior>();
+            SelectedCharacter = GameObject.Find("Warrior(Clone)");
+        }
+        if (selectedCharacterValue == 3)
+        {
+            Mage = GameObject.Find("Mage(Clone)").GetComponent<Mage>();
+            SelectedCharacter = GameObject.Find("Mage(Clone)");
+        }
             locationX = joystick.Horizontal;
             locationY = joystick.Vertical;
-            konum = mage.transform.position;
-            mage.transform.position = new Vector3(mage.transform.position.x + locationX * ((float)2)*Time.deltaTime, mage.transform.position.y* Time.deltaTime, mage.transform.position.z + locationY * ((float)2) * Time.deltaTime);
+            konum = SelectedCharacter.transform.position;
+        SelectedCharacter.transform.position = new Vector3(SelectedCharacter.transform.position.x + locationX * ((float)2)*Time.deltaTime, SelectedCharacter.transform.position.y* Time.deltaTime, SelectedCharacter.transform.position.z + locationY * ((float)2) * Time.deltaTime);
             if (joystick.Horizontal != 0 && joystick.Vertical != 0)
             {
                 WalkAnimation();
                 Vector3 yeniYon = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
-                mage.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
+            SelectedCharacter.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
              }
-             if (joystick.Horizontal == 0 && joystick.Vertical == 0 && SelectedCharacter.isCharacterAnimationPlaying == false)
+             if (joystick.Horizontal == 0 && joystick.Vertical == 0 && Mage.isCharacterAnimationPlaying == false && Priest.isCharacterAnimationPlaying == false && PriestTwo.isCharacterAnimationPlaying == false && Warrior.isCharacterAnimationPlaying == false)
               {
                     IdleAnimation();
               }
@@ -67,9 +92,9 @@ void Update()
 
     public void WalkAnimation()
     {
-        if (mage != null)
+        if (SelectedCharacter != null)
         {
-            Animator CharacterAnimation = mage.GetComponent<Animator>();
+            Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
             if (CharacterAnimation != null)
             {
                 CharacterAnimation.Play("Walk");
@@ -79,9 +104,9 @@ void Update()
     }
     public void IdleAnimation()
     {
-        if (mage != null)
+        if (SelectedCharacter != null)
         {
-            Animator CharacterAnimation = mage.GetComponent<Animator>();
+            Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
             if (CharacterAnimation != null)
             {
                 CharacterAnimation.Play("Idle");
@@ -102,23 +127,150 @@ void Update()
             btn1.interactable = true;
             btn2.interactable = true;
             btn3.interactable = true;
-            SelectedCharacter.isCharacterAnimationPlaying = false;
+            Mage.isCharacterAnimationPlaying = false;
+            Priest.isCharacterAnimationPlaying = false;
+            PriestTwo.isCharacterAnimationPlaying = false;
+            Warrior.isCharacterAnimationPlaying = false;
         }
     }
     public void attackOne()
     {
-        //SelectedCharacter.skillOne();
-        //StartCoroutine(StartCountdown());
+        selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
+        switch (selectedCharacterValue)
+        {
+            case 0:
+                PriestTwo.skillOne();
+                StartCoroutine(StartCountdown());
+                break;
+                case 1:
+                Priest.skillOne();
+                StartCoroutine(StartCountdown());
+                break;
+                case 2:
+                Warrior.skillOne();
+                StartCoroutine(StartCountdown());
+                break;
+                case 3:
+                Mage.skillOne();
+                StartCoroutine(StartCountdown());
+                break;
+            default:
+                break;
+        }
+        //if (selectedCharacterValue == 0)
+        //{
+
+        //    PriestTwo.skillOne();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 1)
+        //{
+        //    Priest.skillOne();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 2)
+        //{
+        //    Warrior.skillOne();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 3)
+        //{
+        //    Mage.skillOne();
+        //    StartCoroutine(StartCountdown());
+        //}
+        
     }
     public void attackTwo()
     {
-        SelectedCharacter.skillTwo();
-        StartCoroutine(StartCountdown());
+        selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
+        // if (selectedCharacterValue == 0)
+        //{
+
+        //    PriestTwo.skillTwo();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 1)
+        //{
+        //    Priest.skillTwo();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 2)
+        //{
+        //    Warrior.skillTwo();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 3)
+        //{
+        //    Mage.skillTwo();
+        //    StartCoroutine(StartCountdown());
+        //}
+        switch (selectedCharacterValue)
+        {
+            case 0:
+                PriestTwo.skillTwo();
+                StartCoroutine(StartCountdown());
+                break;
+            case 1:
+                Priest.skillTwo();
+                StartCoroutine(StartCountdown());
+                break;
+            case 2:
+                Warrior.skillTwo();
+                StartCoroutine(StartCountdown());
+                break;
+            case 3:
+                Mage.skillTwo();
+                StartCoroutine(StartCountdown());
+                break;
+            default:
+                break;
+        }
     }
     public void attackThree()
     {
-        SelectedCharacter.skillThree();
-        StartCoroutine(StartCountdown());
+        selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
+        // if (selectedCharacterValue == 0)
+        //{
+
+        //    PriestTwo.skillThree();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 1)
+        //{
+        //    Priest.skillThree();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 2)
+        //{
+        //    Warrior.skillThree();
+        //    StartCoroutine(StartCountdown());
+        //}
+        //else if (selectedCharacterValue == 3)
+        //{
+        //    Mage.skillThree();
+        //    StartCoroutine(StartCountdown());
+        //}
+        switch (selectedCharacterValue)
+        {
+            case 0:
+                PriestTwo.skillThree();
+                StartCoroutine(StartCountdown());
+                break;
+            case 1:
+                Priest.skillThree();
+                StartCoroutine(StartCountdown());
+                break;
+            case 2:
+                Warrior.skillThree();
+                StartCoroutine(StartCountdown());
+                break;
+            case 3:
+                Mage.skillThree();
+                StartCoroutine(StartCountdown());
+                break;
+            default:
+                break;
+        }
     }
    
 }

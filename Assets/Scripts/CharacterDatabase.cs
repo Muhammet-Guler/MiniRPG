@@ -5,16 +5,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class CharacterDatabase : ScriptableObject
 {
-    public Character[] character;
-
-    public int CharacterCount
-    {
-        get {
-            return character.Length;
-        }
+    public Character[] characters;
+    public Character GetCharacter(int index) { 
+        return characters[index];
     }
-
-    public Character GetCharacters(int index) { 
-        return character[index];
+    public Character[] getAllcharacters()
+    {
+        return characters;
     }
 }

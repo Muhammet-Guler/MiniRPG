@@ -7,6 +7,7 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.TextCore.Text;
 
 public class Yonet : MonoBehaviourPunCallbacks
 {
@@ -20,6 +21,7 @@ public class Yonet : MonoBehaviourPunCallbacks
     public GameObject PriestTwo;
     public UnityEngine.UI.Button Btn1;
     public FixedJoystick joystick;
+    public Mage character;
     //public static CanvasManager Instance { get; private set; }
     //public Transform CanvasTransform { get; private set; }
 
@@ -29,23 +31,30 @@ public class Yonet : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.AutomaticallySyncScene = true;
         if (PhotonNetwork.IsConnected)
-        { int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
-            if (selectedCharacter == 0)
-            {
-                PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
-            }
-            if (selectedCharacter == 1)
-            {
-                PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
-            }
-            if (selectedCharacter == 2)
-            {
-                PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
-            }
-            if (selectedCharacter==3)
-            {
-                PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
-            }
+        {
+            //int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+            //if (selectedCharacter == 0)
+            //{
+            //    PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
+            //}
+            //if (selectedCharacter == 1)
+            //{
+            //    PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
+            //}
+            //if (selectedCharacter == 2)
+            //{
+            //    PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
+            //}
+            //if (selectedCharacter == 3)
+            //{
+            //    PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
+            //}
+            character.Health = 100;
+            Debug.Log(character.Health);
+            Debug.Log("start calisti");
+            //character.CreateCharacter();
+            //Debug.Log("characterType:" + character.characterType.ToString());
+            //PhotonNetwork.Instantiate(character.characterType.name, Vector3.zero, Quaternion.identity);
         }
     }
     private void Awake()

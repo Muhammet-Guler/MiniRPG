@@ -5324,6 +5324,8 @@ MonoBehaviour:
   Btn1: {fileID: 5224276628272579170, guid: 6968ec97d1727664b921c8a21b8e832e, type: 3}
   joystick: {fileID: 2938696503017501431, guid: 87f7559b3faa85f45a4ce79c099a2820,
     type: 3}
+  character: {fileID: 6592696860039064122, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+    type: 3}
 --- !u!4 &2110272098
 Transform:
   m_ObjectHideFlags: 0
@@ -5766,42 +5768,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7077101355356237245}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: WarriorSkilss
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2128859580863551632}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: PriestSkills
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6656323453763306528}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: PriestTwoSkilss
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &640816032051444641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5887,9 +5853,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14353986}
-        m_TargetAssemblyTypeName: Cube, Assembly-CSharp
-        m_MethodName: OnSendButtonClick
+      - m_Target: {fileID: 23647078}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: attackOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6295,42 +6261,6 @@ MonoBehaviour:
       - m_Target: {fileID: 23647078}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: attackThree
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7077101355356237245}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: WarriorSkilss
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2128859580863551632}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: PriestSkills
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6656323453763306528}
-        m_TargetAssemblyTypeName: CharacterSkills, Assembly-CSharp
-        m_MethodName: PriestTwoSkilss
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7451,6 +7381,12 @@ PrefabInstance:
       objectReference: {fileID: 14353979}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
+      propertyPath: Mage
+      value: 
+      objectReference: {fileID: 6592696860039064122, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
       propertyPath: Walk
       value: 
       objectReference: {fileID: 2936125511065708443}
@@ -7476,6 +7412,12 @@ PrefabInstance:
       objectReference: {fileID: 14353979}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
+      propertyPath: Priest
+      value: 
+      objectReference: {fileID: -2221766957142396074, guid: ee4b77c547dc2b34cbe384085e47b02a,
+        type: 3}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
       propertyPath: skills
       value: 
       objectReference: {fileID: 5705139486202823426, guid: 5cb5296f468bb2d4f82d31934b578cd3,
@@ -7487,9 +7429,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
+      propertyPath: Warrior
+      value: 
+      objectReference: {fileID: -3036355717365440933, guid: 9f5f19f2e4d02a840996ec23cbe0946e,
+        type: 3}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 640816032439082495}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
+      propertyPath: PriestTwo
+      value: 
+      objectReference: {fileID: -4368816354969681649, guid: 40d946a45e72c2c4da9ba3e8baf3bd26,
+        type: 3}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
       propertyPath: yeniRenk.b
