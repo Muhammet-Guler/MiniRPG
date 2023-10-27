@@ -3083,13 +3083,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Mage
   characterSprite: {fileID: 21300000, guid: 75e31cfecb243cf4bb202f7f00a34d2e, type: 3}
-  Health: 0
+  Health: 100
   Range: 0
   Speed: 0
   Damage: 0
   AttackPower: 0
   Defence: 0
   Description: 
+  instantieName: 
+  characterType: {fileID: 0}
+  database: {fileID: 0}
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
   SkillThreeCoolDown: 0

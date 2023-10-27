@@ -32,23 +32,23 @@ public class Yonet : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         if (PhotonNetwork.IsConnected)
         {
-            //int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
-            //if (selectedCharacter == 0)
-            //{
-            //    PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
-            //}
-            //if (selectedCharacter == 1)
-            //{
-            //    PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
-            //}
-            //if (selectedCharacter == 2)
-            //{
-            //    PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
-            //}
-            //if (selectedCharacter == 3)
-            //{
-            //    PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
-            //}
+            int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+            if (selectedCharacter == 0)
+            {
+                PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
+            }
+            if (selectedCharacter == 1)
+            {
+                PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
+            }
+            if (selectedCharacter == 2)
+            {
+                PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
+            }
+            if (selectedCharacter == 3)
+            {
+                PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
+            }
             character.Health = 100;
             Debug.Log(character.Health);
             Debug.Log("start calisti");
