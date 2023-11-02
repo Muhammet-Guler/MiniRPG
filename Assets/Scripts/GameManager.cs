@@ -28,9 +28,10 @@ public class GameManager : MonoBehaviourPun
     public GameObject cube;
     private Color syncedColor = Color.red;
     private int selectedCharacterValue;
+    private Skills skill;
     void Start()
     {
-        view=GetComponent<PhotonView>();
+        view = GetComponent<PhotonView>();
         Mage = new Mage();
         Priest = new Priest();
         PriestTwo = new PriestTwo();
@@ -41,9 +42,9 @@ public class GameManager : MonoBehaviourPun
 
 
 
-void Update()
+    void Update()
     {
-         selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
+        selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
         if (selectedCharacterValue == 0)
         {
             PriestTwo = GameObject.Find("Pritest2(Clone)").GetComponent<PriestTwo>();
@@ -64,20 +65,20 @@ void Update()
             Mage = GameObject.Find("Mage(Clone)").GetComponent<Mage>();
             SelectedCharacter = GameObject.Find("Mage(Clone)");
         }
-            locationX = joystick.Horizontal;
-            locationY = joystick.Vertical;
-            konum = SelectedCharacter.transform.position;
-        SelectedCharacter.transform.position = new Vector3(SelectedCharacter.transform.position.x + locationX * ((float)2)*Time.deltaTime, SelectedCharacter.transform.position.y* Time.deltaTime, SelectedCharacter.transform.position.z + locationY * ((float)2) * Time.deltaTime);
-            if (joystick.Horizontal != 0 && joystick.Vertical != 0)
-            {
-                WalkAnimation();
-                Vector3 yeniYon = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+        locationX = joystick.Horizontal;
+        locationY = joystick.Vertical;
+        konum = SelectedCharacter.transform.position;
+        SelectedCharacter.transform.position = new Vector3(SelectedCharacter.transform.position.x + locationX * ((float)2) * Time.deltaTime, SelectedCharacter.transform.position.y * Time.deltaTime, SelectedCharacter.transform.position.z + locationY * ((float)2) * Time.deltaTime);
+        if (joystick.Horizontal != 0 && joystick.Vertical != 0)
+        {
+            WalkAnimation();
+            Vector3 yeniYon = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
             SelectedCharacter.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
-             }
-             if (joystick.Horizontal == 0 && joystick.Vertical == 0 && Mage.isCharacterAnimationPlaying == false && Priest.isCharacterAnimationPlaying == false && PriestTwo.isCharacterAnimationPlaying == false && Warrior.isCharacterAnimationPlaying == false)
-              {
-                    IdleAnimation();
-              }
+        }
+        if (joystick.Horizontal == 0 && joystick.Vertical == 0 && Mage.isCharacterAnimationPlaying == false && Priest.isCharacterAnimationPlaying == false && PriestTwo.isCharacterAnimationPlaying == false && Warrior.isCharacterAnimationPlaying == false)
+        {
+            IdleAnimation();
+        }
 
     }
     //MageLocationX=skills.mage.transform.position.x;
@@ -135,28 +136,6 @@ void Update()
     }
     public void attackOne()
     {
-        selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
-        switch (selectedCharacterValue)
-        {
-            case 0:
-                PriestTwo.skillOne();
-                StartCoroutine(StartCountdown());
-                break;
-                case 1:
-                Priest.skillOne();
-                StartCoroutine(StartCountdown());
-                break;
-                case 2:
-                Warrior.skillOne();
-                StartCoroutine(StartCountdown());
-                break;
-                case 3:
-                Mage.skillOne();
-                StartCoroutine(StartCountdown());
-                break;
-            default:
-                break;
-        }
         //if (selectedCharacterValue == 0)
         //{
 
@@ -178,7 +157,9 @@ void Update()
         //    Mage.skillOne();
         //    StartCoroutine(StartCountdown());
         //}
-        
+        Mage.skillOne();
+        StartCoroutine(StartCountdown());
+
     }
     public void attackTwo()
     {
@@ -203,32 +184,13 @@ void Update()
         //{
         //    Mage.skillTwo();
         //    StartCoroutine(StartCountdown());
+        Mage.skillTwo();
+        StartCoroutine(StartCountdown());
         //}
-        switch (selectedCharacterValue)
-        {
-            case 0:
-                PriestTwo.skillTwo();
-                StartCoroutine(StartCountdown());
-                break;
-            case 1:
-                Priest.skillTwo();
-                StartCoroutine(StartCountdown());
-                break;
-            case 2:
-                Warrior.skillTwo();
-                StartCoroutine(StartCountdown());
-                break;
-            case 3:
-                Mage.skillTwo();
-                StartCoroutine(StartCountdown());
-                break;
-            default:
-                break;
-        }
     }
-    public void attackThree()
-    {
-        selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
+        public void attackThree()
+        {
+            selectedCharacterValue = PlayerPrefs.GetInt("SelectedCharacter");
         // if (selectedCharacterValue == 0)
         //{
 
@@ -250,27 +212,9 @@ void Update()
         //    Mage.skillThree();
         //    StartCoroutine(StartCountdown());
         //}
-        switch (selectedCharacterValue)
-        {
-            case 0:
-                PriestTwo.skillThree();
-                StartCoroutine(StartCountdown());
-                break;
-            case 1:
-                Priest.skillThree();
-                StartCoroutine(StartCountdown());
-                break;
-            case 2:
-                Warrior.skillThree();
-                StartCoroutine(StartCountdown());
-                break;
-            case 3:
-                Mage.skillThree();
-                StartCoroutine(StartCountdown());
-                break;
-            default:
-                break;
-        }
+        Mage.skillThree();
+        StartCoroutine(StartCountdown());
     }
-   
-}
+
+    }
+

@@ -1,19 +1,20 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Warrior : Character,IPunObservable
+public class Warrior : ICharacter,IPunObservable
 {
     public int SkillOneCoolDown, SkillTwoCoolDown, SkillThreeCoolDown, SkillFourCoolDown, SkillFiveCoolDown = 0;
     public Sprite sprite;
     public GameObject warrior;
-    public Animator CharacterAnimation;
     public bool isCharacterAnimationPlaying;
     public UnityEngine.UI.Text nickName;
 
     private Animator animator;
     public AnimationSync animationSync;
+    public Skills skill;
     public void Update()
     {
         CharacterAnimation = warrior.GetComponent<Animator>();
@@ -44,32 +45,7 @@ public class Warrior : Character,IPunObservable
         Defence = 10;
         Description = "";
         instantieName = "Warrior(Clone)";
-    }
-    public override void skillOne()
-    {
-        this.SkillOneCoolDown = 5;
-        CharacterAnimation.Play("Punch 0");
-        isCharacterAnimationPlaying = true;
-    }
-    public override void skillTwo()
-    {
-        this.SkillOneCoolDown = 5;
-        CharacterAnimation.Play("Punch 1");
-        isCharacterAnimationPlaying = true;
-    }
-    public override void skillThree()
-    {
-        this.SkillOneCoolDown = 5;
-        CharacterAnimation.Play("SpinAttack_TwoWeapons");
-        isCharacterAnimationPlaying = true;
-    }
-    public override void skillFour()
-    {
-
-    }
-    public override void skillFive()
-    {
-
+        CharacterAnimation = warrior.GetComponent<Animator>();
     }
     public override void AttackDamage()
     {
@@ -102,5 +78,29 @@ public class Warrior : Character,IPunObservable
             animator.SetBool("isPlaying", animationSync.isPlaying);
             animator.Play(animationSync.currentAnimation);
         }
+    }
+    public void skillOne()
+    {
+        skill.Skill_Attack6();
+        this.SkillOneCoolDown = skill.coolDown;
+        CharacterAnimation.Play(skill.Name);
+        isCharacterAnimationPlaying = true;
+        Debug.Log(skill.Name);
+    }
+    public void skillTwo()
+    {
+        skill.Skill_Attack7();
+        this.SkillOneCoolDown = skill.coolDown;
+        CharacterAnimation.Play(skill.Name);
+        isCharacterAnimationPlaying = true;
+        Debug.Log(skill.Name);
+    }
+    public void skillThree()
+    {
+        skill.Skill_Attack8();
+        this.SkillOneCoolDown = skill.coolDown;
+        CharacterAnimation.Play(skill.Name);
+        isCharacterAnimationPlaying = true;
+        Debug.Log(skill.Name);
     }
 }

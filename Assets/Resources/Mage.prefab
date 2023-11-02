@@ -3018,10 +3018,10 @@ GameObject:
   - component: {fileID: 6592696860039064122}
   - component: {fileID: 855765243404385931}
   - component: {fileID: 855765243404385929}
+  - component: {fileID: 8859056709365333363}
   - component: {fileID: 5705139486202823427}
   - component: {fileID: 5705139486202823424}
   - component: {fileID: 5705139486202823425}
-  - component: {fileID: 1953078949012184575}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -3091,8 +3091,7 @@ MonoBehaviour:
   Defence: 0
   Description: 
   instantieName: 
-  characterType: {fileID: 0}
-  database: {fileID: 0}
+  CharacterAnimation: {fileID: 5705139486202823430}
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
   SkillThreeCoolDown: 0
@@ -3100,12 +3099,12 @@ MonoBehaviour:
   SkillFiveCoolDown: 0
   sprite: {fileID: 21300000, guid: 75e31cfecb243cf4bb202f7f00a34d2e, type: 3}
   mage: {fileID: 5705139486202823429}
-  CharacterAnimation: {fileID: 5705139486202823430}
   isCharacterAnimationPlaying: 0
   nickName: {fileID: 7229748624387568182}
   animationSync:
     isPlaying: 0
     currentAnimation: 
+  skill: {fileID: 8859056709365333363}
 --- !u!54 &855765243404385931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3135,6 +3134,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5705139486202823430}
+--- !u!114 &8859056709365333363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705139486202823429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc0d877fd5a4104f8d74963cac8bcb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  coolDown: 0
 --- !u!114 &5705139486202823427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3194,20 +3207,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
---- !u!136 &1953078949012184575
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5705139486202823429}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.4138184
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7069092, z: 0}
 --- !u!1 &5705139486205219059
 GameObject:
   m_ObjectHideFlags: 0

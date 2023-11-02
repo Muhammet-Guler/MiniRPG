@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 202883702}
   - component: {fileID: 202883703}
   - component: {fileID: 202883704}
+  - component: {fileID: 202883705}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -703,6 +704,26 @@ MonoBehaviour:
   Warrior: {fileID: 5916376108772803837, guid: 9f5f19f2e4d02a840996ec23cbe0946e, type: 3}
   Priest: {fileID: 2128859580863463929, guid: ee4b77c547dc2b34cbe384085e47b02a, type: 3}
   PriestTwo: {fileID: 6656323454611010535, guid: 40d946a45e72c2c4da9ba3e8baf3bd26,
+    type: 3}
+  characterFactory: {fileID: 202883705}
+  mageCharacter: {fileID: 6592696860039064122, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+    type: 3}
+--- !u!114 &202883705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202883697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6524bb4c552d976478b041b9e7414786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 455aae1d83977c346bf712921acb9b7f, type: 2}
+  characterManager: {fileID: 202883704}
+  characterSkills: {fileID: 0}
+  character: {fileID: 6592696860039064122, guid: 5cb5296f468bb2d4f82d31934b578cd3,
     type: 3}
 --- !u!1 &252870276
 GameObject:
@@ -2541,6 +2562,7 @@ GameObject:
   - component: {fileID: 953185716}
   - component: {fileID: 953185715}
   - component: {fileID: 953185714}
+  - component: {fileID: 953185717}
   m_Layer: 0
   m_Name: SelectedCharacter
   m_TagString: Untagged
@@ -2572,6 +2594,8 @@ MonoBehaviour:
   Priest: {fileID: 2128859580863463929, guid: ee4b77c547dc2b34cbe384085e47b02a, type: 3}
   PriestTwo: {fileID: 6656323454611010535, guid: 40d946a45e72c2c4da9ba3e8baf3bd26,
     type: 3}
+  characterFactory: {fileID: 953185717}
+  mageCharacter: {fileID: 0}
 --- !u!212 &953185715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2639,6 +2663,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953185717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953185713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6524bb4c552d976478b041b9e7414786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 0}
+  characterManager: {fileID: 0}
+  characterSkills: {fileID: 0}
+  character: {fileID: 0}
 --- !u!1 &1061272721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,6 +2983,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077730730}
   m_CullTransparentMesh: 1
+--- !u!1001 &1157231718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5705139486202823427, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823429, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_Name
+      value: Mage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -216.43338
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1433.9569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1547861
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705139486202823431, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144855214032541937, guid: 5cb5296f468bb2d4f82d31934b578cd3,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5cb5296f468bb2d4f82d31934b578cd3, type: 3}
 --- !u!1 &1184006807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5592,7 +5711,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 202883704}
         m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
-        m_MethodName: Clicked
+        m_MethodName: LockedCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

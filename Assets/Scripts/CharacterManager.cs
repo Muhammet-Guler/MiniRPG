@@ -22,6 +22,8 @@ public class CharacterManager : MonoBehaviour
     public GameObject Warrior;
     public GameObject Priest;
     public GameObject PriestTwo;
+    public CharacterFactory characterFactory=new CharacterFactory();
+    public Mage mageCharacter;
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -43,10 +45,12 @@ public class CharacterManager : MonoBehaviour
             MyUsername.text = PlayerPrefs.GetString("Username");
             UsernamePage.SetActive(false);
         }
+
+        mageCharacter = new Mage();
     }
     public void Update()
     {
-
+        mageCharacter = GameObject.Find("Mage").GetComponent<Mage>();
     }
     //public void NextOption()
     //{
@@ -107,13 +111,19 @@ public class CharacterManager : MonoBehaviour
         SelectedCharacter = 3;
         Save();
     }
-    public void Clicked()
+    public void LockedCharacter()
     {
-        for (int i = 0; i < characterDB.characters.Length; i++)
+        string[] selectableCharacters=characterFactory.getSelectableCharacters();
+        //Debug.Log(selectableCharacters);
+        for (int i = 0; i < selectableCharacters.Length; i++)
         {
             if (SelectedCharacter==i)
             {
                 characterButtons[i].interactable = true;
+                Debug.Log("MageCharacter:"+mageCharacter);
+                //ICharacter character = characterFactory.CreateCharacter();
+                //Debug.Log("character:"+character.ToString());
+
             }
             else { 
             characterButtons[i].interactable = false;

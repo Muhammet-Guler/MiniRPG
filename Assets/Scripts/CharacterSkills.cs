@@ -8,35 +8,38 @@ using UnityEngine.UIElements;
 
 public class CharacterSkills : MonoBehaviourPunCallbacks
 {
-    public Animator Walk;
-    public Animator Idle;
-    //public Animator Attack;
-    //public PlayerMovementController PlayerMovementController;
-    private int SelectedCharacter;
-    //public UnityEngine.UI.Button btn4, btn2, btn3;
-   // public GameManager gameManager;
-    private GameObject mage;
-    private GameManager gameManager;
-    private Animator CharacterAnimation;
-    private Mage MageCharacterScript;
-    private Warrior WarriorCharacterScript;
-    private Priest PriestCharacterScript;
-    private PriestTwo PriestTwoCharacterScript;
+    private List<string> SelectedSkills;
+    public List<Skills> skillList;
+    public Animator CharacterAnimation;
+    Skills skill;
     void Start()
-    {
-        //gameManager.attackOne();
-        //Walk = GetComponent<Animator>();
-        //Idle = GetComponent<Animator>();
-        //SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
-        //gameManager = FindObjectOfType<GameManager>();
-        
+    {        
     }
     
     void Update()
     {
-            //mage = GameObject.Find("Mage(Clone)");
-            //CharacterAnimation = mage.GetComponent<Animator>();
+          
     }
-    
-    
+    private List<string> getSelectedSkills()
+    {
+       
+        return this.SelectedSkills;
+    }
+
+
+
+    public void useSkill(Skills skill)
+    {
+
+        CharacterAnimation.Play(skill.Name);
+        Invoke(skill.Name,skill.coolDown);
+    }
+    public void addSelectedSkills(string skillName)
+    {
+        this.SelectedSkills.Add(skillName);
+        skill.createSkill(skillName);
+        this.skillList.Add(skill);
+
+    }
+
 }

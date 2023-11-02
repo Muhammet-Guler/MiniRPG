@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     }
     private void ChangeCharacter(int SelectedCharacter)
     {
-        Character character = characterDB.GetCharacter(SelectedCharacter);
+        ICharacter character = characterDB.GetCharacter(SelectedCharacter);
         artworkSprite.sprite = character.characterSprite;
     }
     private void Load()
