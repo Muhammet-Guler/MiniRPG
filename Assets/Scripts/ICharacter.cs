@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-[System.Serializable]
-public abstract class ICharacter:MonoBehaviourPun
+
+public abstract class ICharacter:MonoBehaviour
 { 
     public string characterName;
     public Sprite characterSprite;
@@ -16,9 +15,14 @@ public abstract class ICharacter:MonoBehaviourPun
     public int Defence;
     public string Description;
     public string instantieName;
+    public List<ISkill> skillList;
 
 
     public Animator CharacterAnimation;
+    
+    public ICharacter()
+    {
+    }
 
     public abstract void AttackDamage();
     public abstract void RecieveDamage();

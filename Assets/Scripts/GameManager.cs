@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviourPun
     public GameObject cube;
     private Color syncedColor = Color.red;
     private int selectedCharacterValue;
-    private Skills skill;
+    //private Skill skill;
     void Start()
     {
         view = GetComponent<PhotonView>();

@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class CharacterManager : MonoBehaviour
+
+public class CharacterManager : MonoBehaviourPunCallbacks
 {
     public CharacterDatabase characterDB;
     public Text nameText;
@@ -22,8 +24,9 @@ public class CharacterManager : MonoBehaviour
     public GameObject Warrior;
     public GameObject Priest;
     public GameObject PriestTwo;
-    public CharacterFactory characterFactory=new CharacterFactory();
-    public Mage mageCharacter;
+    public CharacterFactory characterFactory;
+    public ICharacter character;
+    public UnityEngine.UI.Text nickName;
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -45,12 +48,15 @@ public class CharacterManager : MonoBehaviour
             MyUsername.text = PlayerPrefs.GetString("Username");
             UsernamePage.SetActive(false);
         }
+        if (!photonView.IsMine)
+        {
+            nickName.text = PhotonNetwork.NickName;
+        }
 
-        mageCharacter = new Mage();
     }
+
     public void Update()
     {
-        mageCharacter = GameObject.Find("Mage").GetComponent<Mage>();
     }
     //public void NextOption()
     //{
@@ -120,14 +126,28 @@ public class CharacterManager : MonoBehaviour
             if (SelectedCharacter==i)
             {
                 characterButtons[i].interactable = true;
-                Debug.Log("MageCharacter:"+mageCharacter);
-                //ICharacter character = characterFactory.CreateCharacter();
-                //Debug.Log("character:"+character.ToString());
+                this.character = new Mage();
+                Debug.Log("character:"+character);
 
             }
             else { 
             characterButtons[i].interactable = false;
             }
         }
+    }
+    public void skillLock(ISkill skill)
+    {
+        
+        character.skillList.Add(skill);
+    }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        string opponentNickname = newPlayer.NickName;
+        DisplayOpponentNickname(opponentNickname);
+    }
+    public void DisplayOpponentNickname(string opponentNickname)
+    {
+        nickName.text = opponentNickname;
     }
 }

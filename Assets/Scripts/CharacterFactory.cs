@@ -7,19 +7,14 @@ public class CharacterFactory : MonoBehaviour
     public CharacterDatabase characterDB;
     private string selectedCharacter = "Mage";
     public CharacterManager characterManager;
-    public CharacterSkills characterSkills;
-    public Mage character;
+    public ISkill characterSkills;
     public ICharacter CreateCharacter()
     {
-        this.character = new Mage();
-        Debug.Log("mage:"+character);
-        if (character == null)
-        {
-            Debug.LogError("Mage sýnýfý oluþturulamadý.");
-        }
-        return this.character;
+        
+        return new Mage();
         
     }
+
     public string[] getSelectableCharacters()
     {
         Debug.Log("getAllCharacters:" + characterDB.getAllcharacters());

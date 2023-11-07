@@ -129,7 +129,7 @@ public class Yonet : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Map1");
+        PhotonNetwork.LoadLevel("CharacterAndSkillSelection");
         //GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
     }
 }

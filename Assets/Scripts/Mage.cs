@@ -14,45 +14,43 @@ public class Mage : ICharacter, IPunObservable
 
     private Animator animator;
     public AnimationSync animationSync;
-    public Skills skill;
+    public AttackSkill skill;
+
+    public Mage()
+    {
+        this.characterName = "Mage";
+        this.characterSprite = sprite;
+        this.Health = 100;
+        this.Range = 10;
+        this.Speed = 5;
+        this.Damage = 7;
+        this.AttackPower = 10;
+        this.Defence = 10;
+        this.isCharacterAnimationPlaying = false;
+        this.Description = "";
+        this.instantieName = "Mage(Clone)";
+        this.skillList = null;
+    }
 
     public void Update()
     {
-        CharacterAnimation = mage.GetComponent<Animator>();
-        nickName.transform.rotation = new Quaternion(0,0,0,0);
+        //CharacterAnimation = mage.GetComponent<Animator>();
     }
     public void Start()
     {
-        if (photonView.IsMine)
-        {
+        //if (photonView.IsMine)
+        //{
 
-            nickName.text = PhotonNetwork.NickName;
-        }
-        if (!photonView.IsMine)
-        {
+        //    nickName.text = PhotonNetwork.NickName;
+        //}
+        //if (!photonView.IsMine)
+        //{
 
-            nickName.text = GetComponent<PhotonView>().Controller.NickName;
-        }
-    }
-    public void MageClass()
-    {
-        characterName = "Mage";
-        characterSprite = sprite;
-        Health = 100;
-        Range = 10;
-        Speed = 5;
-        Damage = 7;
-        AttackPower = 10;
-        Defence = 10;
-        isCharacterAnimationPlaying = false;
-        Description = "";
-        instantieName = "Mage(Clone)";
-        //skil_1 = 1;
-        //skil_id = 2;
-        //skil_id = 3;
-        //skil_id = 4;
-        //skil_id = 5;
-        CharacterAnimation=mage.GetComponent<Animator>();
+        //    nickName.text = GetComponent<PhotonView>().Controller.NickName;
+        //}
+
+        CharacterAnimation = mage.GetComponent<Animator>();
+        nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
     public override void AttackDamage()
     {
@@ -89,7 +87,7 @@ public class Mage : ICharacter, IPunObservable
 
     public void skillOne()
     {
-        skill.Skill_Spike();
+        //skill.AttackSkill_Spike();
         this.SkillOneCoolDown = skill.coolDown;
         CharacterAnimation.Play(skill.Name);
         isCharacterAnimationPlaying = true;
@@ -97,7 +95,7 @@ public class Mage : ICharacter, IPunObservable
     }
     public void skillTwo()
     {
-        skill.Skill_Attack();
+        //skill.Skill_Attack();
         this.SkillOneCoolDown = skill.coolDown;
         CharacterAnimation.Play(skill.Name);
         isCharacterAnimationPlaying = true;
@@ -105,7 +103,7 @@ public class Mage : ICharacter, IPunObservable
     }
     public void skillThree()
     {
-        skill.Skill_Attack2();
+        //skill.Skill_Attack2();
         this.SkillOneCoolDown = skill.coolDown;
         CharacterAnimation.Play(skill.Name);
         isCharacterAnimationPlaying = true;

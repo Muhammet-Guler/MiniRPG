@@ -1,32 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
-    public CharacterDatabase characterDB;
-    public SpriteRenderer artworkSprite;
-    private int SelectedCharacter = 0;
+
+    public UnityEngine.UI.Text nickName;
     void Start()
     {
+        if (photonView.IsMine)
+        {
 
-        if (!PlayerPrefs.HasKey("SelectedCharacter"))
-        {
-            SelectedCharacter = 0;
+            nickName.text = PhotonNetwork.NickName;
         }
-        else
+        if (!photonView.IsMine)
         {
-            Load();
+
+            nickName.text = GetComponent<PhotonView>().Controller.NickName;
         }
-        ChangeCharacter(SelectedCharacter);
-    }
-    private void ChangeCharacter(int SelectedCharacter)
-    {
-        ICharacter character = characterDB.GetCharacter(SelectedCharacter);
-        artworkSprite.sprite = character.characterSprite;
-    }
-    private void Load()
-    {
-        SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+        nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 }

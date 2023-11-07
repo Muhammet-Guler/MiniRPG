@@ -2177,8 +2177,7 @@ MonoBehaviour:
   Defence: 0
   Description: 
   instantieName: 
-  characterType: {fileID: 0}
-  database: {fileID: 0}
+  skillList: []
   CharacterAnimation: {fileID: 1872433315}
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
@@ -2187,7 +2186,6 @@ MonoBehaviour:
   SkillFiveCoolDown: 0
   sprite: {fileID: 21300000, guid: 7b204d64dbbabbe4ea2406bde508c122, type: 3}
   warrior: {fileID: 5916376108772803837}
-  CharacterAnimation: {fileID: 1872433315}
   isCharacterAnimationPlaying: 0
   nickName: {fileID: 674697783148889132}
   animationSync:
