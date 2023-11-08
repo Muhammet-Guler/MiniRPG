@@ -17,7 +17,6 @@ public class CharacterFactory : MonoBehaviour
 
     public string[] getSelectableCharacters()
     {
-        Debug.Log("getAllCharacters:" + characterDB.getAllcharacters());
         return characterDB.getAllcharacters();
     }
     public void setSelectedCharacter(string selectedcharacter="Mage")

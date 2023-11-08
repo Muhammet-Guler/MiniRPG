@@ -702,6 +702,11 @@ MonoBehaviour:
     type: 3}
   characterFactory: {fileID: 202883705}
   character: {fileID: 0}
+  nickName: {fileID: 0}
+  readyButton: {fileID: 0}
+  currentCountdown: 10
+  countText: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!114 &202883705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2208,6 +2213,11 @@ MonoBehaviour:
     type: 3}
   characterFactory: {fileID: 953185717}
   character: {fileID: 0}
+  nickName: {fileID: 0}
+  readyButton: {fileID: 0}
+  currentCountdown: 10
+  countText: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!212 &953185715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4799,7 +4809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 116.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2119054259

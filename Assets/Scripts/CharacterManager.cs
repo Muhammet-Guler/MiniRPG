@@ -8,7 +8,7 @@ using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 
-public class CharacterManager : MonoBehaviourPunCallbacks
+public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public CharacterDatabase characterDB;
     public Text nameText;
@@ -27,6 +27,12 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     public CharacterFactory characterFactory;
     public ICharacter character;
     public UnityEngine.UI.Text nickName;
+    public UnityEngine.UI.Button readyButton;
+    private int readyCount = 0;
+    public int currentCountdown=10;
+    public UnityEngine.UI.Text countText;
+    public GameObject panel;
+
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -48,43 +54,13 @@ public class CharacterManager : MonoBehaviourPunCallbacks
             MyUsername.text = PlayerPrefs.GetString("Username");
             UsernamePage.SetActive(false);
         }
-        if (!photonView.IsMine)
-        {
-            nickName.text = PhotonNetwork.NickName;
-        }
+
 
     }
 
     public void Update()
     {
     }
-    //public void NextOption()
-    //{
-    //    SelectedCharacter++;
-    //    if (SelectedCharacter >= characterDB.characters.Length)
-    //    {
-    //        SelectedCharacter = 0;
-    //    }
-    //    ChangeCharacter(SelectedCharacter);
-    //    Save();
-    //    characterDB.getAllcharacters();
-    //}
-    //public void BackOption()
-    //{
-    //    SelectedCharacter--;
-    //    if (SelectedCharacter < 0)
-    //    {
-    //        SelectedCharacter = characterDB.characters.Length-1;
-    //    }
-    //    ChangeCharacter(SelectedCharacter);
-    //    Save();
-    //}
-    //private void ChangeCharacter(int SelectedCharacter)
-    //{
-    //    Character character=characterDB.GetCharacter(SelectedCharacter);
-    //    artworkSprite.sprite = character.characterSprite;
-    //    nameText.text = character.characterName;
-    //}
     private void Load()
     {
         SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
@@ -119,25 +95,27 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     }
     public void LockedCharacter()
     {
-        string[] selectableCharacters=characterFactory.getSelectableCharacters();
+        string[] selectableCharacters = characterFactory.getSelectableCharacters();
         //Debug.Log(selectableCharacters);
         for (int i = 0; i < selectableCharacters.Length; i++)
         {
-            if (SelectedCharacter==i)
+            if (SelectedCharacter == i)
             {
                 characterButtons[i].interactable = true;
                 this.character = new Mage();
-                Debug.Log("character:"+character);
+                Debug.Log("character:" + character);
 
             }
-            else { 
-            characterButtons[i].interactable = false;
+            else
+            {
+                characterButtons[i].interactable = false;
             }
         }
+        lockedButton.interactable = false;
     }
     public void skillLock(ISkill skill)
     {
-        
+
         character.skillList.Add(skill);
     }
 
@@ -149,5 +127,55 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     public void DisplayOpponentNickname(string opponentNickname)
     {
         nickName.text = opponentNickname;
+
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+
+            Debug.Log(PhotonNetwork.PlayerList[i].NickName);
+        }
+
+    }
+    public void Ready()
+    {
+        photonView.RPC("ReadyCount", RpcTarget.All);
+    }
+    [PunRPC]
+    public void ReadyCount()
+    {
+        if (lockedButton.interactable == false)
+        {
+            readyCount++;
+            readyButton.interactable = false;
+            if (readyCount == 2)
+            {
+                panel.SetActive(true);
+                StartCoroutine(Countdown());
+            }
+        }
+    }
+    IEnumerator Countdown()
+    {
+        while (currentCountdown > 0)
+        {
+            yield return new WaitForSeconds(1);
+
+            currentCountdown--;
+            countText.text = currentCountdown.ToString();
+            if (currentCountdown == 0)
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(readyCount);
+        }
+        else
+        {
+            readyCount = (int)stream.ReceiveNext();
+        }
     }
 }

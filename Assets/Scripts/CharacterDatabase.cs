@@ -14,13 +14,7 @@ public class CharacterDatabase : ScriptableObject
 
     public string[] getAllcharacters()
     {
-        string[] subfolders = Directory.GetDirectories(Application.dataPath+"/Characters");
-
-        foreach (string subfolderPath in subfolders)
-        {
-            string subfolderName = Path.GetFileName(subfolderPath);
-            Debug.Log("Character klasör isimleri: " + subfolderName);
-        }
-        return subfolders;
+        string[] characters = {"Mage","Priest","Warrior","PriestTwo"};
+        return characters;
     }
 }

@@ -776,8 +776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Walk: {fileID: 2128859580872917005}
-  Idle: {fileID: 2128859580872917005}
+  skillList: []
+  CharacterAnimation: {fileID: 0}
 --- !u!114 &1613840569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,7 +858,9 @@ MonoBehaviour:
   AttackPower: 0
   Defence: 0
   Description: 
-  database: {fileID: 0}
+  instantieName: 
+  skillList: []
+  CharacterAnimation: {fileID: 2128859580872917005}
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
   SkillThreeCoolDown: 0
@@ -866,7 +868,6 @@ MonoBehaviour:
   SkillFiveCoolDown: 0
   sprite: {fileID: 21300000, guid: e2f2763e7e8758d47b113a5fa1e85968, type: 3}
   priest: {fileID: 2128859580863463929}
-  CharacterAnimation: {fileID: 2128859580872917005}
   isCharacterAnimationPlaying: 0
   nickName: {fileID: 7435711503525220457}
   animationSync:
