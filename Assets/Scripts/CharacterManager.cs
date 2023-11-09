@@ -32,7 +32,7 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
     public int currentCountdown=10;
     public UnityEngine.UI.Text countText;
     public GameObject panel;
-
+    public SkillFactory skillFactory;
     void Start()
     {
         if (!PlayerPrefs.HasKey("SelectedCharacter"))
@@ -73,6 +73,39 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         SceneManager.LoadScene(2);
     }
+
+    public void ActiveButton(int i)
+    {
+        characterButtons[i].interactable = true;
+
+    }
+
+    public void deActiveButton(int i)
+    {
+        characterButtons[i].interactable = false;
+
+    }
+
+
+    public void selectCharacter()
+    {
+        for (int i = 0; i < characterButtons.Length; i++)
+        {
+            characterButtons[i].onClick.AddListener(()=>ActiveButton(i));
+            if (selectedCharacter == "Mage")
+            {
+                characterButtons[i].interactable = true;
+
+            }
+            else
+            {
+                characterButtons[i].interactable = false;
+            }
+        }
+        lockedButton.interactable = false;
+
+    }
+
     public void SelectPriestTwo()
     {
         SelectedCharacter = 0;
@@ -93,6 +126,22 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
         SelectedCharacter = 3;
         Save();
     }
+    public void lockCharacterButtons()
+    {
+        for (int i = 0; i < characterButtons.Length; i++)
+        {
+            if (SelectedCharacter == i)
+            {
+                characterButtons[i].interactable = true;
+
+            }
+            else
+            {
+                characterButtons[i].interactable = false;
+            }
+        }
+        lockedButton.interactable = false;
+    }
     public void LockedCharacter()
     {
         string[] selectableCharacters = characterFactory.getSelectableCharacters();
@@ -112,6 +161,12 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
         lockedButton.interactable = false;
+        skillFactory.Start();
+        Debug.Log(skillFactory);
+        Debug.Log("allskilList:"+skillFactory.allSkillList);
+        Debug.Log("selectableSkilllList"+skillFactory.AllSelectableSkillList);
+
+        //character.skillList.add(Iskill selectedList);
     }
     public void skillLock(ISkill skill)
     {

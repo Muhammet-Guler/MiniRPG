@@ -10,14 +10,29 @@ public class ISkill :MonoBehaviour
 {
     private List<string> SelectedSkills;
     public List<ISkill> skillList;
-    public Animator CharacterAnimation;
+    public string description;
+    public string skillName;
+    public string characterType;
     void Start()
     {        
+
     }
     
     void Update()
     {
           
+    }
+   
+
+    
+    public void run()
+    {
+        Invoke(skillName, 0);
+    }
+
+    public void createSkill()
+    {
+
     }
 
 

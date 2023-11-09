@@ -14,7 +14,6 @@ public class Mage : ICharacter, IPunObservable
 
     private Animator animator;
     public AnimationSync animationSync;
-    public AttackSkill skill;
 
     public Mage()
     {
@@ -38,27 +37,8 @@ public class Mage : ICharacter, IPunObservable
     }
     public void Start()
     {
-        //if (photonView.IsMine)
-        //{
-
-        //    nickName.text = PhotonNetwork.NickName;
-        //}
-        //if (!photonView.IsMine)
-        //{
-
-        //    nickName.text = GetComponent<PhotonView>().Controller.NickName;
-        //}
-
         CharacterAnimation = mage.GetComponent<Animator>();
         nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
-    }
-    public override void AttackDamage()
-    {
-
-    }
-    public override void RecieveDamage()
-    {
-
     }
 
     private void Awake()
@@ -88,26 +68,26 @@ public class Mage : ICharacter, IPunObservable
     public void skillOne()
     {
         //skill.AttackSkill_Spike();
-        this.SkillOneCoolDown = skill.coolDown;
-        CharacterAnimation.Play(skill.Name);
-        isCharacterAnimationPlaying = true;
-        Debug.Log(skill.Name);
+        //this.SkillOneCoolDown = skill.coolDown;
+        //CharacterAnimation.Play(skill.Name);
+        //isCharacterAnimationPlaying = true;
+        //Debug.Log(skill.Name);
     }
     public void skillTwo()
     {
         //skill.Skill_Attack();
-        this.SkillOneCoolDown = skill.coolDown;
-        CharacterAnimation.Play(skill.Name);
-        isCharacterAnimationPlaying = true;
-        Debug.Log(skill.Name);
+        //this.SkillOneCoolDown = skill.coolDown;
+        //CharacterAnimation.Play(skill.Name);
+        //isCharacterAnimationPlaying = true;
+        //Debug.Log(skill.Name);
     }
     public void skillThree()
     {
         //skill.Skill_Attack2();
-        this.SkillOneCoolDown = skill.coolDown;
-        CharacterAnimation.Play(skill.Name);
-        isCharacterAnimationPlaying = true;
-        Debug.Log(skill.Name);
+        //this.SkillOneCoolDown = skill.coolDown;
+        //CharacterAnimation.Play(skill.Name);
+        //isCharacterAnimationPlaying = true;
+        //Debug.Log(skill.Name);
     }
 
 }

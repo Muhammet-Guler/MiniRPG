@@ -24,7 +24,5 @@ public abstract class ICharacter:MonoBehaviour
     {
     }
 
-    public abstract void AttackDamage();
-    public abstract void RecieveDamage();
 }
 

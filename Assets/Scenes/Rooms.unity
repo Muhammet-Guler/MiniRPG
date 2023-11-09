@@ -707,6 +707,7 @@ MonoBehaviour:
   currentCountdown: 10
   countText: {fileID: 0}
   panel: {fileID: 0}
+  skillFactory: {fileID: 0}
 --- !u!114 &202883705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,7 +722,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterDB: {fileID: 11400000, guid: 455aae1d83977c346bf712921acb9b7f, type: 2}
   characterManager: {fileID: 202883704}
-  characterSkills: {fileID: 0}
 --- !u!1 &252870276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,6 +2218,7 @@ MonoBehaviour:
   currentCountdown: 10
   countText: {fileID: 0}
   panel: {fileID: 0}
+  skillFactory: {fileID: 0}
 --- !u!212 &953185715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2299,7 +2300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterDB: {fileID: 0}
   characterManager: {fileID: 0}
-  characterSkills: {fileID: 0}
 --- !u!1 &1061272721
 GameObject:
   m_ObjectHideFlags: 0

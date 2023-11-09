@@ -7,7 +7,6 @@ public class CharacterFactory : MonoBehaviour
     public CharacterDatabase characterDB;
     private string selectedCharacter = "Mage";
     public CharacterManager characterManager;
-    public ISkill characterSkills;
     public ICharacter CreateCharacter()
     {
         

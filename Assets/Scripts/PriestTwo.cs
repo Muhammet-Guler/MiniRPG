@@ -37,14 +37,6 @@ public class PriestTwo : ICharacter,IPunObservable
         CharacterAnimation = Priest2.GetComponent<Animator>();
         this.skillList = null;
     }
-    public override void AttackDamage()
-    {
-
-    }
-    public override void RecieveDamage()
-    {
-
-    }
     private void Awake()
     {
         animator = GetComponent<Animator>();

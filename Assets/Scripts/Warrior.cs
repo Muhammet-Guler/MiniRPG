@@ -47,14 +47,6 @@ public class Warrior : ICharacter,IPunObservable
         CharacterAnimation = warrior.GetComponent<Animator>();
         this.skillList = null;
     }
-    public override void AttackDamage()
-    {
-
-    }
-    public override void RecieveDamage()
-    {
-
-    }
     private void Awake()
     {
         animator = GetComponent<Animator>();

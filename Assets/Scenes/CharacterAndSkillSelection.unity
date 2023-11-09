@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 456695034}
   - component: {fileID: 456695033}
   - component: {fileID: 456695035}
+  - component: {fileID: 456695036}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -864,8 +865,10 @@ MonoBehaviour:
   character: {fileID: 0}
   nickName: {fileID: 1147377888}
   readyButton: {fileID: 1734547502}
+  currentCountdown: 10
   countText: {fileID: 1595275843}
   panel: {fileID: 1793974216}
+  skillFactory: {fileID: 456695036}
 --- !u!114 &456695034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,7 +883,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterDB: {fileID: 11400000, guid: 455aae1d83977c346bf712921acb9b7f, type: 2}
   characterManager: {fileID: 456695033}
-  characterSkills: {fileID: 0}
 --- !u!114 &456695035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,10 +901,25 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 456695033}
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &456695036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456695028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ff5c9e4593df14a91f2ae234275b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSkillList: []
+  AllSelectableSkillList: []
 --- !u!1 &466593543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,7 +2454,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 456695033}
         m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
-        m_MethodName: SelectMage
+        m_MethodName: selectCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

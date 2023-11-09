@@ -81,9 +81,7 @@ public class GameManager : MonoBehaviourPun
         }
 
     }
-    //MageLocationX=skills.mage.transform.position.x;
-    //MageLocationY= skills.mage.transform.position.y;
-    //skills.mage.transform.position=new Vector3(skills.mage.transform.position.x+locationX, skills.mage.transform.position.y+locationY, skills.mage.transform.position.z);
+    
 
 
     private Vector3 GetNewVelocity()
