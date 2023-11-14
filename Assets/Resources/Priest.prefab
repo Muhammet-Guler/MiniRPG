@@ -1102,7 +1102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillList: []
-  CharacterAnimation: {fileID: 0}
+  description: 
+  skillName: 
+  characterType: 
 --- !u!114 &1613840569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1198,7 +1200,11 @@ MonoBehaviour:
   Description: 
   instantieName: 
   skillList: []
+  isCharacterAnimationPlaying: 0
   CharacterAnimation: {fileID: 2128859580872917005}
+  animationSync:
+    isPlaying: 0
+    currentAnimation: 
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
   SkillThreeCoolDown: 0
@@ -1206,11 +1212,7 @@ MonoBehaviour:
   SkillFiveCoolDown: 0
   sprite: {fileID: 21300000, guid: e2f2763e7e8758d47b113a5fa1e85968, type: 3}
   priest: {fileID: 2128859580863463929}
-  isCharacterAnimationPlaying: 0
   nickName: {fileID: 7435711503525220457}
-  animationSync:
-    isPlaying: 0
-    currentAnimation: 
 --- !u!1 &2128859580863464639
 GameObject:
   m_ObjectHideFlags: 0

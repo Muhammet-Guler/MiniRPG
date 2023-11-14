@@ -32,35 +32,30 @@ public class Yonet : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         if (PhotonNetwork.IsConnected)
         {
-            int selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
-            if (selectedCharacter == 0)
+            string selectedCharacter = PlayerPrefs.GetString("selectedCharacter");
+            if (selectedCharacter == "PriestTwo")
             {
                 PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
             }
-            if (selectedCharacter == 1)
+            if (selectedCharacter == "Priest")
             {
                 PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
             }
-            if (selectedCharacter == 2)
+            if (selectedCharacter == "Warrior")
             {
                 PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
             }
-            if (selectedCharacter == 3)
+            if (selectedCharacter == "Mage")
             {
                 PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
             }
             character.Health = 100;
             Debug.Log(character.Health);
             Debug.Log("start calisti");
-            //character.CreateCharacter();
-            //Debug.Log("characterType:" + character.characterType.ToString());
-            //PhotonNetwork.Instantiate(character.characterType.name, Vector3.zero, Quaternion.identity);
         }
     }
     private void Awake()
     {
-        // Klonlanan karakterlerin içindeki scriptte Button referansýný güncelle
-        // Örneðin, bu koda baþka bir script veya klonlama iþlemi sýrasýnda eriþebilirsiniz.
         Btn1 = GetComponentInChildren<UnityEngine.UI.Button>();
     }
 
@@ -77,17 +72,8 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("lobiye girildi");
-        //PhotonNetwork.JoinOrCreateRoom("oda", new RoomOptions { MaxPlayers = 8, IsOpen = true, IsVisible = true }, TypedLobby.Default);
+        
     }
-    //public override void OnJoinedRoom()
-    //{
-    //    Debug.Log("odaya girildi");
-    //    GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
-    //    //GameObject joy = PhotonNetwork.Instantiate("FixedJoystick", new Vector3((float)126.2, (float)100.2, 0), Quaternion.identity, 0, null);
-    //    //joy.transform.SetParent(GameObject.Find("Canvas").GetComponent<Transform>(), false);
-    //    Debug.Log("asd");
-
-    //}
     public override void OnLeftRoom()
     {
         Debug.Log("odadan cikildi");
@@ -130,6 +116,5 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("CharacterAndSkillSelection");
-        //GameObject kup = PhotonNetwork.Instantiate("kup", Vector3.zero, Quaternion.identity, 0, null);
     }
 }

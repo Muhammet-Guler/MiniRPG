@@ -8,21 +8,21 @@ public class PriestTwo : ICharacter,IPunObservable
     public int SkillOneCoolDown, SkillTwoCoolDown, SkillThreeCoolDown, SkillFourCoolDown, SkillFiveCoolDown = 0;
     public Sprite sprite;
     public GameObject Priest2;
-    public bool isCharacterAnimationPlaying;
 
-    private Animator animator;
-    public AnimationSync animationSync;
+    public UnityEngine.UI.Text nickName;
 
     //public Skill skill;
 
     public void Update()
     {
-        CharacterAnimation = Priest2.GetComponent<Animator>();
+        
     }
     public void Start()
     {
+        CharacterAnimation = Priest2.GetComponent<Animator>();
+        nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
-    public void PriestTwoClass()
+    public PriestTwo()
     {
         characterName = "Priest2";
         characterSprite = sprite;
@@ -34,33 +34,9 @@ public class PriestTwo : ICharacter,IPunObservable
         Defence = 10;
         Description = "";
         instantieName = "Priest(Clone)";
-        CharacterAnimation = Priest2.GetComponent<Animator>();
         this.skillList = null;
     }
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        animationSync = new AnimationSync();
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            // Senkronize edilecek verileri yaz
-            stream.SendNext(animator.GetBool("isPlaying"));
-            stream.SendNext(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-        }
-        else
-        {
-            // Senkronize edilen verileri oku ve animasyonlarý ayarla
-            animationSync.isPlaying = (bool)stream.ReceiveNext();
-            animationSync.currentAnimation = (string)stream.ReceiveNext();
-
-            animator.SetBool("isPlaying", animationSync.isPlaying);
-            animator.Play(animationSync.currentAnimation);
-        }
-    }
+    
     public void skillOne()
     {
         //skill.Skill_Attack9();

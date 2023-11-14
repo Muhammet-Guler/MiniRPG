@@ -15,7 +15,7 @@ public class AllSkills : ISkill
     {
         skillName = "sword";
         characterType = "Warrior";
-        description = "%300 demege";
+        description = "%300 demege";    
     }
     public void Start()
     {

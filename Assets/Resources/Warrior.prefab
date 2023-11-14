@@ -2538,7 +2538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillList: []
-  CharacterAnimation: {fileID: 0}
+  description: 
+  skillName: 
+  characterType: 
 --- !u!114 &1872433317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,7 +2598,11 @@ MonoBehaviour:
   Description: 
   instantieName: 
   skillList: []
+  isCharacterAnimationPlaying: 0
   CharacterAnimation: {fileID: 1872433315}
+  animationSync:
+    isPlaying: 0
+    currentAnimation: 
   SkillOneCoolDown: 0
   SkillTwoCoolDown: 0
   SkillThreeCoolDown: 0
@@ -2604,11 +2610,7 @@ MonoBehaviour:
   SkillFiveCoolDown: 0
   sprite: {fileID: 21300000, guid: 7b204d64dbbabbe4ea2406bde508c122, type: 3}
   warrior: {fileID: 5916376108772803837}
-  isCharacterAnimationPlaying: 0
   nickName: {fileID: 674697783148889132}
-  animationSync:
-    isPlaying: 0
-    currentAnimation: 
 --- !u!1 &6083936421342473205
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,10 +2,12 @@ using JetBrains.Annotations;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 
 public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
@@ -13,11 +15,11 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
     public CharacterDatabase characterDB;
     public Text nameText;
     public SpriteRenderer artworkSprite;
-    public Button[] characterButtons;
-    public Button lockedButton;
+    public UnityEngine.UI.Button[] characterButtons;
+    public UnityEngine.UI.Button lockedButton;
 
     private int SelectedCharacter = 0;
-    private string selectedCharacter;
+    public string selectedCharacter;
     public GameObject UsernamePage;
     public UnityEngine.UI.Text MyUsername;
     public GameObject Mage;
@@ -33,17 +35,11 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
     public UnityEngine.UI.Text countText;
     public GameObject panel;
     public SkillFactory skillFactory;
+    public UnityEngine.UI.Image rivalSprite;
+    public static ICharacter icharacter;
+    public GameManager gameManager;
     void Start()
     {
-        if (!PlayerPrefs.HasKey("SelectedCharacter"))
-        {
-            SelectedCharacter = 0;
-        }
-        else
-        {
-            Load();
-        }
-        //ChangeCharacter(SelectedCharacter);
         if (PlayerPrefs.GetString("Username") == "" || PlayerPrefs.GetString("Username") == null)
         {
             UsernamePage.SetActive(true);
@@ -55,118 +51,72 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
             UsernamePage.SetActive(false);
         }
 
-
     }
 
     public void Update()
     {
-    }
-    private void Load()
-    {
-        SelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
-    }
-    private void Save()
-    {
-        PlayerPrefs.SetInt("SelectedCharacter", SelectedCharacter);
+
     }
     public void ChangeScene()
     {
         SceneManager.LoadScene(2);
     }
 
-    public void ActiveButton(int i)
+    public void CharacterLayoutButtons()
     {
-        characterButtons[i].interactable = true;
-
+        
     }
-
-    public void deActiveButton(int i)
-    {
-        characterButtons[i].interactable = false;
-
-    }
-
 
     public void selectCharacter()
     {
-        for (int i = 0; i < characterButtons.Length; i++)
-        {
-            characterButtons[i].onClick.AddListener(()=>ActiveButton(i));
-            if (selectedCharacter == "Mage")
-            {
-                characterButtons[i].interactable = true;
+        UnityEngine.UI.Button clickedButton = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent< UnityEngine.UI.Button>();
 
-            }
-            else
+        if (clickedButton != null)
+        {
+            string buttonText = clickedButton.GetComponentInChildren<Text>().text;
+            selectedCharacter = buttonText;
+            PlayerPrefs.SetString("selectedCharacter", selectedCharacter);
+            Debug.Log("selectedcharacter:" + selectedCharacter);
+            for (int i = 0; i < characterButtons.Length; i++)
             {
-                characterButtons[i].interactable = false;
+                Color characterButtonColor = characterButtons[i].image.color;
+                characterButtonColor.a = 0.5f;
+                characterButtons[i].image.color = characterButtonColor;
+                if (clickedButton.name== characterButtons[i].name)
+                {
+                    Color buttonColor = clickedButton.image.color;
+                    buttonColor.a = 1f;
+                    clickedButton.image.color = buttonColor;
+                }
             }
         }
-        lockedButton.interactable = false;
 
-    }
-
-    public void SelectPriestTwo()
-    {
-        SelectedCharacter = 0;
-        Save();
-    }
-    public void SelectPriest()
-    {
-        SelectedCharacter = 1;
-        Save();
-    }
-    public void SelectWarrior()
-    {
-        SelectedCharacter = 2;
-        Save();
-    }
-    public void SelectMage()
-    {
-        SelectedCharacter = 3;
-        Save();
     }
     public void lockCharacterButtons()
     {
         for (int i = 0; i < characterButtons.Length; i++)
         {
-            if (SelectedCharacter == i)
+            if (characterButtons[i].name == selectedCharacter)
             {
                 characterButtons[i].interactable = true;
-
             }
             else
             {
                 characterButtons[i].interactable = false;
             }
-        }
-        lockedButton.interactable = false;
-    }
-    public void LockedCharacter()
-    {
-        string[] selectableCharacters = characterFactory.getSelectableCharacters();
-        //Debug.Log(selectableCharacters);
-        for (int i = 0; i < selectableCharacters.Length; i++)
-        {
-            if (SelectedCharacter == i)
+            if (!photonView.IsMine)
             {
-                characterButtons[i].interactable = true;
-                this.character = new Mage();
-                Debug.Log("character:" + character);
-
-            }
-            else
-            {
-                characterButtons[i].interactable = false;
+                selectedCharacter = PlayerPrefs.GetString("selectedCharacter");
+                if (characterButtons[i].GetComponentInChildren<Text>().ToString() == selectedCharacter)
+                {
+                    rivalSprite.sprite = characterButtons[i].GetComponent<Sprite>();
+                }
             }
         }
         lockedButton.interactable = false;
-        skillFactory.Start();
-        Debug.Log(skillFactory);
-        Debug.Log("allskilList:"+skillFactory.allSkillList);
-        Debug.Log("selectableSkilllList"+skillFactory.AllSelectableSkillList);
+        icharacter= characterFactory.CreateCharacter();
+        Debug.Log(icharacter.instantieName);
 
-        //character.skillList.add(Iskill selectedList);
     }
     public void skillLock(ISkill skill)
     {
@@ -193,6 +143,7 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
     public void Ready()
     {
         photonView.RPC("ReadyCount", RpcTarget.All);
+        SceneManager.LoadScene(2);
     }
     [PunRPC]
     public void ReadyCount()
@@ -227,10 +178,12 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(readyCount);
+            stream.SendNext(selectedCharacter);
         }
         else
         {
             readyCount = (int)stream.ReceiveNext();
+            selectedCharacter = (string)stream.ReceiveNext();
         }
     }
 }

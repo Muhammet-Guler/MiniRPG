@@ -3282,6 +3282,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4957605393916756784}
+--- !u!1 &555787733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555787735}
+  - component: {fileID: 555787734}
+  m_Layer: 0
+  m_Name: CharacterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &555787734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555787733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f828960f8253a47bbec68e21ba2293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 0}
+  nameText: {fileID: 0}
+  artworkSprite: {fileID: 0}
+  characterButtons: []
+  lockedButton: {fileID: 0}
+  selectedCharacter: 
+  UsernamePage: {fileID: 0}
+  MyUsername: {fileID: 0}
+  Mage: {fileID: 0}
+  Warrior: {fileID: 0}
+  Priest: {fileID: 0}
+  PriestTwo: {fileID: 0}
+  characterFactory: {fileID: 0}
+  character: {fileID: 0}
+  nickName: {fileID: 0}
+  readyButton: {fileID: 0}
+  currentCountdown: 10
+  countText: {fileID: 0}
+  panel: {fileID: 0}
+  skillFactory: {fileID: 0}
+  rivalSprite: {fileID: 0}
+  icharacter: {fileID: 0}
+--- !u!4 &555787735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555787733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1360.2205, y: 638.187, z: 102.26777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6945,7 +7011,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillList: []
-  CharacterAnimation: {fileID: 0}
+  description: 
+  skillName: 
+  characterType: 
 --- !u!114 &2128859580863551633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7318,6 +7386,11 @@ PrefabInstance:
       propertyPath: cubeRenderer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
+        type: 3}
+      propertyPath: characterManager
+      value: 
+      objectReference: {fileID: 555787734}
     - target: {fileID: 2936125511054685439, guid: 79acc142380798a4eacad71f1ded8bfc,
         type: 3}
       propertyPath: SelectedCharacter
@@ -11150,7 +11223,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillList: []
-  CharacterAnimation: {fileID: 0}
+  description: 
+  skillName: 
+  characterType: 
 --- !u!114 &4957605393916756793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13996,7 +14071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillList: []
-  CharacterAnimation: {fileID: 0}
+  description: 
+  skillName: 
+  characterType: 
 --- !u!114 &6656323453763306529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14300,7 +14377,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillList: []
-  CharacterAnimation: {fileID: 0}
+  description: 
+  skillName: 
+  characterType: 
 --- !u!114 &7077101355356237246
 MonoBehaviour:
   m_ObjectHideFlags: 0

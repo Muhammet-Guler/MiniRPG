@@ -6,25 +6,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class ISkill :MonoBehaviour
+public class ISkill:MonoBehaviour
 {
     private List<string> SelectedSkills;
     public List<ISkill> skillList;
     public string description;
     public string skillName;
-    public string characterType;
-    void Start()
-    {        
-
-    }
-    
-    void Update()
-    {
-          
-    }
-   
-
-    
+    public string characterType;     
     public void run()
     {
         Invoke(skillName, 0);

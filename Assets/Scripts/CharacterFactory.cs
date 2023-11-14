@@ -5,28 +5,36 @@ using UnityEngine;
 public class CharacterFactory : MonoBehaviour
 {
     public CharacterDatabase characterDB;
-    private string selectedCharacter = "Mage";
     public CharacterManager characterManager;
+    public ICharacter icharacter = null;
+    private string SelectedCharacter;
     public ICharacter CreateCharacter()
     {
-        
-        return new Mage();
+        SelectedCharacter=PlayerPrefs.GetString("selectedCharacter");
+        if (SelectedCharacter=="Mage")
+        {
+            icharacter = gameObject.AddComponent<Mage>();
+        }
+        else if (SelectedCharacter == "Priest")
+        {
+            icharacter = gameObject.AddComponent<Priest>();
+        }
+        else if (SelectedCharacter == "Warrior")
+        {
+            icharacter = gameObject.AddComponent<Warrior>();
+        }
+        else if (SelectedCharacter == "PriestTwo")
+        {
+            icharacter = gameObject.AddComponent<PriestTwo>();
+        }
+        return icharacter;
         
     }
 
-    public string[] getSelectableCharacters()
-    {
-        return characterDB.getAllcharacters();
-    }
-    public void setSelectedCharacter(string selectedcharacter="Mage")
-    {
-        this.selectedCharacter = selectedcharacter;
-    }
 
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame

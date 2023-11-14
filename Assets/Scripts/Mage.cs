@@ -9,11 +9,9 @@ public class Mage : ICharacter, IPunObservable
     public int SkillOneCoolDown, SkillTwoCoolDown, SkillThreeCoolDown, SkillFourCoolDown, SkillFiveCoolDown=0;
     public Sprite sprite;
     public GameObject mage;
-    public bool isCharacterAnimationPlaying;
     public UnityEngine.UI.Text nickName;
 
-    private Animator animator;
-    public AnimationSync animationSync;
+
 
     public Mage()
     {
@@ -41,29 +39,9 @@ public class Mage : ICharacter, IPunObservable
         nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        animationSync = new AnimationSync();
-    }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            // Senkronize edilecek verileri yaz
-            stream.SendNext(animator.GetBool("isPlaying"));
-            stream.SendNext(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-        }
-        else
-        {
-            // Senkronize edilen verileri oku ve animasyonlarý ayarla
-            animationSync.isPlaying = (bool)stream.ReceiveNext();
-            animationSync.currentAnimation = (string)stream.ReceiveNext();
-            animator.SetBool("isPlaying", animationSync.isPlaying);
-            animator.Play(animationSync.currentAnimation);
-        }
-    }
+
+    
 
     public void skillOne()
     {
