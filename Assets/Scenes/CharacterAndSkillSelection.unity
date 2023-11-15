@@ -892,8 +892,6 @@ MonoBehaviour:
   - {fileID: 1062407288}
   lockedButton: {fileID: 1484163466}
   selectedCharacter: 
-  UsernamePage: {fileID: 0}
-  MyUsername: {fileID: 0}
   Mage: {fileID: 5705139486202823429, guid: 5cb5296f468bb2d4f82d31934b578cd3, type: 3}
   Warrior: {fileID: 5916376108772803837, guid: 9f5f19f2e4d02a840996ec23cbe0946e, type: 3}
   Priest: {fileID: 2128859580863463929, guid: ee4b77c547dc2b34cbe384085e47b02a, type: 3}
@@ -4154,7 +4152,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 456695033}
         m_TargetAssemblyTypeName: CharacterManager, Assembly-CSharp
-        m_MethodName: Ready
+        m_MethodName: OnReadyButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

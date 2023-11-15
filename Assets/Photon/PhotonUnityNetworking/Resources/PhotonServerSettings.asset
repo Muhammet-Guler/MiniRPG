@@ -57,6 +57,9 @@ MonoBehaviour:
   - ReadyCount
   - Countdown
   - UpdateCountdown
+  - StartGame
+  - PlayerReady
+  - ChangeScene
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

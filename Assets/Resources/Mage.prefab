@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3776a52852387345be2df4fe277ff16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nickName: {fileID: 7229748624387568182}
 --- !u!114 &7144855214032541937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3501,7 +3502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b031f7c727d0560438874cbd01821b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nickName: {fileID: 7229748624387568182}
 --- !u!114 &6592696860039064122
 MonoBehaviour:
   m_ObjectHideFlags: 0
