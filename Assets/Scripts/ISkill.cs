@@ -9,10 +9,9 @@ using UnityEngine.UIElements;
 public class ISkill:MonoBehaviour
 {
     private List<string> SelectedSkills;
-    public List<ISkill> skillList;
     public string description;
     public string skillName;
-    public string characterType;     
+    public string characterType;
     public void run()
     {
         Invoke(skillName, 0);

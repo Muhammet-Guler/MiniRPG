@@ -2414,6 +2414,7 @@ GameObject:
   - component: {fileID: 1872433317}
   - component: {fileID: 1872433318}
   - component: {fileID: -3036355717365440933}
+  - component: {fileID: 1136530614552081764}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -2573,7 +2574,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &-3036355717365440933
 MonoBehaviour:
@@ -2598,7 +2599,6 @@ MonoBehaviour:
   Description: 
   instantieName: 
   skillList: []
-  isCharacterAnimationPlaying: 0
   CharacterAnimation: {fileID: 1872433315}
   animationSync:
     isPlaying: 0
@@ -2611,6 +2611,20 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7b204d64dbbabbe4ea2406bde508c122, type: 3}
   warrior: {fileID: 5916376108772803837}
   nickName: {fileID: 674697783148889132}
+--- !u!136 &1136530614552081764
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916376108772803837}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.28694844
+  m_Height: 1.9923393
+  m_Direction: 1
+  m_Center: {x: 0.00088620186, y: 0.9083871, z: 0}
 --- !u!1 &6083936421342473205
 GameObject:
   m_ObjectHideFlags: 0

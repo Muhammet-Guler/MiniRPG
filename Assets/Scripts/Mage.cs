@@ -23,7 +23,6 @@ public class Mage : ICharacter, IPunObservable
         this.Damage = 7;
         this.AttackPower = 10;
         this.Defence = 10;
-        this.isCharacterAnimationPlaying = false;
         this.Description = "";
         this.instantieName = "Mage(Clone)";
         this.skillList = null;

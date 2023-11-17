@@ -23,20 +23,22 @@ public class GameManager : MonoBehaviourPun
     public float countdownDuration = 1f;
     PhotonView view;
     public CharacterManager CManager;
-    private string selectedCharacter;
+    public AllSkills allSkills;
+    public ISkill iSkill;
+    public bool isCharacterAnimationPlaying=false;
+    [SerializeField] private Image healthBarSprite;
+
     //private Skill skill;
     void Start()
     {
+
     }
 
 
 
     void Update()
     {
-        //GameObject.Find(iCharacter.instantieName).GetComponent<ICharacter>();
 
-        Debug.Log("GameManager calisti");
-        Debug.Log("iCharacter:" + CharacterManager.icharacter.instantieName);
         view = GetComponent<PhotonView>();
         SelectedCharacter = GameObject.Find(CharacterManager.icharacter.instantieName.ToString());
         GameObject.Find(CharacterManager.icharacter.instantieName).GetComponent<ICharacter>();
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviourPun
             Vector3 yeniYon = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
             SelectedCharacter.transform.rotation = Quaternion.LookRotation(GetNewVelocity());
         }
-        if (joystick.Horizontal == 0 && joystick.Vertical == 0 && CharacterManager.icharacter.isCharacterAnimationPlaying == false )
+        if (joystick.Horizontal == 0 && joystick.Vertical == 0 && isCharacterAnimationPlaying == false )
         {
             IdleAnimation();
         }
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviourPun
 
         while (currentTime > 0)
         {
+            isCharacterAnimationPlaying = true;
             currentTime -= 1f;
             btn1.interactable = false;
             btn2.interactable = false;
@@ -99,12 +102,24 @@ public class GameManager : MonoBehaviourPun
             btn1.interactable = true;
             btn2.interactable = true;
             btn3.interactable = true;
-            CharacterManager.icharacter.isCharacterAnimationPlaying = false;
+            isCharacterAnimationPlaying = false;
         }
     }
     public void attackOne()
     {
+        allSkills.skillNova();
+        Debug.Log("skill:"+ allSkills.skillName);
+        Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
+        Debug.Log("characterAnimation:" + CharacterAnimation);
+        if (CharacterAnimation != null)
+        CharacterAnimation.Play(allSkills.skillName.ToString());
         StartCoroutine(StartCountdown());
+
+        healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
+        Debug.Log("healthBar:" + healthBarSprite);
+        healthBarSprite.fillAmount += 0.1f;
+            
+        
 
     }
     public void attackTwo()

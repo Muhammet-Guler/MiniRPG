@@ -18,7 +18,6 @@ public  abstract class ICharacter:MonoBehaviourPun
     public string instantieName;
     public List<ISkill> skillList;
 
-    public bool isCharacterAnimationPlaying;
 
     public Animator CharacterAnimation;
 
