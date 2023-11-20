@@ -107,14 +107,13 @@ public class GameManager : MonoBehaviourPun
     }
     public void attackOne()
     {
-        allSkills.skillNova();
-        Debug.Log("skill:"+ allSkills.skillName);
+        //Debug.Log("skill:"+ iSkill.skillName);
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
         Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-        CharacterAnimation.Play(allSkills.skillName.ToString());
+            CharacterAnimation.Play(allSkills.Skillist[0].skillName);
+        Debug.Log("skillname:" + allSkills.Skillist[0].skillName);
         StartCoroutine(StartCountdown());
-
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
         Debug.Log("healthBar:" + healthBarSprite);
         healthBarSprite.fillAmount += 0.1f;

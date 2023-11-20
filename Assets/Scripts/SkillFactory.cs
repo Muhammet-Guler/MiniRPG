@@ -6,16 +6,10 @@ public class SkillFactory : MonoBehaviour
 {
     public List<ISkill> allSkillList;
     public List<ISkill> AllSelectableSkillList;
+    public AllSkills AllSkills;
     public void Start()
     {
-        AllSkills allSkill=new AllSkills();
-        for (int i = 0; i < allSkill.allSkills.Count; i++)
-        {
-            Invoke(allSkill.allSkills[i],0);
-            ISkill skill = allSkill;
-            allSkillList.Add(skill);
-
-        }
+    
     }
 
     // Update is called once per frame
@@ -24,19 +18,14 @@ public class SkillFactory : MonoBehaviour
         
     }
 
-
-    public List<ISkill> getSelectableSkills(ICharacter character)
+    public void addCharacterSkills(ICharacter character)
     {
-
-        for (int i = 0; i < allSkillList.Count; i++)
+        for (int i = 0; i < AllSkills.Skillist.Count; i++)
         {
-            AllSelectableSkillList = null;
-            if (character.characterName == allSkillList[i].characterType) 
-            {
-                AllSelectableSkillList.Add(allSkillList[i]);
+            if (character.characterType == AllSkills.Skillist[i].characterType) {
+                character.skillList.Add(AllSkills.Skillist[i]);
             }
-            
+           
         }
-        return AllSelectableSkillList;
     }
 }

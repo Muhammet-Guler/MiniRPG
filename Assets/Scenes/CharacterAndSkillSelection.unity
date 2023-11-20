@@ -831,6 +831,7 @@ GameObject:
   - component: {fileID: 456695031}
   - component: {fileID: 456695030}
   - component: {fileID: 456695029}
+  - component: {fileID: 456695038}
   - component: {fileID: 456695034}
   - component: {fileID: 456695033}
   - component: {fileID: 456695037}
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkillList: []
   AllSelectableSkillList: []
+  AllSkills: {fileID: 456695037}
 --- !u!114 &456695037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,102 +1068,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4960b6bc4e373c1498477d1057dda997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
-  allSkills:
-  - nova
-  - sword
-  mageSkillSprites:
-  - {fileID: 21300000, guid: 3470248b14cfc4144a1cf55ffd1af7e6, type: 3}
-  - {fileID: 21300000, guid: 6aa2c084e23bc8e469b947725adac0fd, type: 3}
-  - {fileID: 21300000, guid: ac791b5baf68cb440a16c1a0749d35d8, type: 3}
-  - {fileID: 21300000, guid: b0f9db93203770d488537e3059a75676, type: 3}
-  - {fileID: 21300000, guid: 4a59da33ae922924dbd2e6dae5f25353, type: 3}
-  - {fileID: 21300000, guid: 109bacc3a598fc949b5f41dd31e7eba2, type: 3}
-  - {fileID: 21300000, guid: 1f5de622ff473dc43b8a4d774b5a2a2d, type: 3}
-  - {fileID: 21300000, guid: 43126598a750156478cf1011a932b8b5, type: 3}
-  - {fileID: 21300000, guid: 953288f5942deac49844dcfdb92b3410, type: 3}
-  - {fileID: 21300000, guid: b1d0f3bd916dc1946a77ee71952cebbd, type: 3}
-  priestSkillSprites:
-  - {fileID: 21300000, guid: db490fef869ede74681706cdad4bde48, type: 3}
-  - {fileID: 21300000, guid: b285833c001494247805fb3d5399a81a, type: 3}
-  - {fileID: 21300000, guid: 8963414cff11a904ba99f35936116332, type: 3}
-  - {fileID: 21300000, guid: c67cb5ecf78926749a4848e6546d330c, type: 3}
-  - {fileID: 21300000, guid: 57b9783c6d8445448a29d0e30a5f23a3, type: 3}
-  - {fileID: 21300000, guid: fe77b778dcbf2344aa21fa65347166c9, type: 3}
-  - {fileID: 21300000, guid: bc45fcc66a998794393a0bfd40a62575, type: 3}
-  - {fileID: 21300000, guid: 754513e7ccdd28a469ede86fc54eb2c3, type: 3}
-  - {fileID: 21300000, guid: 1b497534119c3594b9debd153c826819, type: 3}
-  - {fileID: 21300000, guid: 48aab667bb174e94b94edcd6a1e41c96, type: 3}
-  warriorSkillSprites:
-  - {fileID: 21300000, guid: 498f84560c1f9f84aa58687338bc7229, type: 3}
-  - {fileID: 21300000, guid: 04aa6d588031cca46a8bd5e5e6582140, type: 3}
-  - {fileID: 21300000, guid: b7d15c2c6f7d8254daeacdfe6570f35c, type: 3}
-  - {fileID: 21300000, guid: bc66cf3c55d63ed46af8b1d82cf84e34, type: 3}
-  - {fileID: 21300000, guid: 11b244da10d941340a9f3c6838e55716, type: 3}
-  - {fileID: 21300000, guid: 88a9b762bcea7a14dbc38d3caa60a343, type: 3}
-  - {fileID: 21300000, guid: e1a91c592705b8d458b7bc8a5b789f0c, type: 3}
-  - {fileID: 21300000, guid: 92f9edc39defc6946b6a6d173b78e4e8, type: 3}
-  - {fileID: 21300000, guid: 92e19d7bbf71f0e4093c6a311416348f, type: 3}
-  - {fileID: 21300000, guid: ec9a21ce586964d4cb814cbcceae79a1, type: 3}
-  priestTwoSkillSprites:
-  - {fileID: 21300000, guid: 487ca9c97a2121c49b97711625081a3b, type: 3}
-  - {fileID: 21300000, guid: 86d981a8742aea349ad18e8b929ca7ff, type: 3}
-  - {fileID: 21300000, guid: 7a48619bff2c6c748b9d7fca6957a7f8, type: 3}
-  - {fileID: 21300000, guid: 60e93a32b81453043a5854138aa820a5, type: 3}
-  - {fileID: 21300000, guid: 40c3b95e1df8141418f11fc33ebc63ff, type: 3}
-  - {fileID: 21300000, guid: 2b9c59422eac9d941996e9b1c8e88cfc, type: 3}
-  - {fileID: 21300000, guid: 99a2865a0e99cb84785c1111f3ba062e, type: 3}
-  - {fileID: 21300000, guid: 3434169aea05eeb4185f2fa72c80bf31, type: 3}
-  - {fileID: 21300000, guid: 3390647031b5c794eba542e6cd263c27, type: 3}
-  - {fileID: 21300000, guid: 5834c9fbe449d4346b017dcbb7954c94, type: 3}
-  mageSkillInformation:
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  priestSkillInformation:
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  warriorSkillInformation:
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  priestTwoSkillInformation:
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  skillInfo: {fileID: 48773747}
+  skillSprite: {fileID: 0}
+  Skillist:
+  - {fileID: 0}
+  - {fileID: 0}
+  skillInfo: {fileID: 0}
+--- !u!114 &456695038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456695028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  skillName: 
+  characterType: 
+  skillSprite: {fileID: 0}
 --- !u!1 &466593543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1369,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill3
+  m_Text: '
+
+'
 --- !u!222 &496992602
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1519,7 +1451,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill11
+  m_Text: 
 --- !u!222 &553205127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1839,7 +1771,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill12
+  m_Text: 
 --- !u!222 &786916065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2121,7 +2053,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill6
+  m_Text: 
 --- !u!222 &901267602
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2399,7 +2331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill2
+  m_Text: 
 --- !u!222 &921404606
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2479,7 +2411,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill5
+  m_Text: '
+
+'
 --- !u!222 &937950872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3085,7 +3019,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill4
+  m_Text: '
+
+'
 --- !u!222 &1185780700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3421,7 +3357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill7
+  m_Text: 
 --- !u!222 &1349003634
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4199,7 +4135,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill1
+  m_Text: '
+
+'
 --- !u!222 &1687813498
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4279,9 +4217,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'skill9
-
-'
+  m_Text: 
 --- !u!222 &1716256622
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4816,7 +4752,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill8
+  m_Text: 
 --- !u!222 &1875065363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5528,7 +5464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: skill10
+  m_Text: 
 --- !u!222 &2116842788
 CanvasRenderer:
   m_ObjectHideFlags: 0

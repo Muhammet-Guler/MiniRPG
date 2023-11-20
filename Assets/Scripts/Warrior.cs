@@ -21,7 +21,7 @@ public class Warrior : ICharacter,IPunObservable
     }
     public  Warrior()
     {
-        characterName = "Warrior";
+        characterType = "Warrior";
         characterSprite = sprite;
         Health = 100;
         Range = 13;

@@ -80,47 +80,53 @@ public class CharacterManager : MonoBehaviourPunCallbacks
                 }
             }
         }
-        if (clickedButton.name=="Mage")
+        if (clickedButton.name == "Mage")
         {
-            for (int i = 0; i < skillButtons.Length-2; i++)
+
+            //skillButtons[0].onClick.AddListener(allSkills.skillNova);
+            allSkills.skillNova();
+            skillButtons[0].image.sprite = allSkills.skillSprite;
+            allSkills.skillSword();
+            skillButtons[1].image.sprite = allSkills.skillSprite;
+            //skillButtons[1].onClick.AddListener(allSkills.skillSword);
+            for (int i = 0; i < skillButtons.Length - 2; i++)
             {
-                skillButtons[i].image.sprite = allSkills.mageSkillSprites[i];
-                Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-                buttonText.text = "";
-                allSkills.skillInfo.text = allSkills.mageSkillInformation[i];
+                //Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
+                //buttonText.text = "";
+                //allSkills.skillInfo.text = allSkills.mageSkillInformation[i];
                 // skillInfo.text =iSkill.description;
             }
         }
-        else if (clickedButton.name == "Priest")
-        {
-            for (int i = 0; i < skillButtons.Length-2; i++)
-            {
-                skillButtons[i].image.sprite = allSkills.priestSkillSprites[i];
-                Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-                buttonText.text = "";
-                allSkills.skillInfo.text = allSkills.priestSkillInformation[i];
-            }
-        }
-        else if (clickedButton.name == "Warrior")
-        {
-            for (int i = 0; i < skillButtons.Length-2; i++)
-            {
-                skillButtons[i].image.sprite = allSkills.warriorSkillSprites[i];
-                Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-                buttonText.text = "";
-                allSkills.skillInfo.text = allSkills.warriorSkillInformation[i];
-            }
-        }
-        else if (clickedButton.name == "PriestTwo")
-        {
-            for (int i = 0; i < skillButtons.Length-2; i++)
-            {
-                skillButtons[i].image.sprite = allSkills.priestTwoSkillSprites[i];
-                Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-                buttonText.text = "";
-                allSkills.skillInfo.text = allSkills.priestTwoSkillInformation[i];
-            }
-        }
+        //else if (clickedButton.name == "Priest")
+        //{
+        //    for (int i = 0; i < skillButtons.Length-2; i++)
+        //    {
+        //        //skillButtons[i].image.sprite = allSkills.priestSkillSprites[i];
+        //        Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
+        //        buttonText.text = "";
+        //        //allSkills.skillInfo.text = allSkills.priestSkillInformation[i];
+        //    }
+        //}
+        //else if (clickedButton.name == "Warrior")
+        //{
+        //    for (int i = 0; i < skillButtons.Length-2; i++)
+        //    {
+        //        //skillButtons[i].image.sprite = allSkills.warriorSkillSprites[i];
+        //        Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
+        //        buttonText.text = "";
+        //        //allSkills.skillInfo.text = allSkills.warriorSkillInformation[i];
+        //    }
+        //}
+        //else if (clickedButton.name == "PriestTwo")
+        //{
+        //    for (int i = 0; i < skillButtons.Length-2; i++)
+        //    {
+        //        //skillButtons[i].image.sprite = allSkills.priestTwoSkillSprites[i];
+        //        Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
+        //        buttonText.text = "";
+        //        //allSkills.skillInfo.text = allSkills.priestTwoSkillInformation[i];
+        //    }
+        //}
 
     }
     public void lockCharacterButtons()

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public  abstract class ICharacter:MonoBehaviourPun
 { 
-    public string characterName;
+    public string characterType;
     public Sprite characterSprite;
     public int Health;
     public float Range;

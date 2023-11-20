@@ -4,30 +4,40 @@ using UnityEngine;
 
 public class AllSkills : ISkill
 {
-    public List<string> allSkills = new List<string>{ "nova", "sword"};
-    public Sprite[] mageSkillSprites;
-    public Sprite[] priestSkillSprites;
-    public Sprite[] warriorSkillSprites;
-    public Sprite[] priestTwoSkillSprites;
-    public string[] mageSkillInformation = { "MageSkill", "MageSkill", "MageSkill", "MageSkill", "MageSkill", "MageSkill", "MageSkill", "MageSkill", "MageSkill", "MageSkill" };
-    public string[] priestSkillInformation = { "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill", "PriestSkill" };
-    public string[] warriorSkillInformation = { "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill", "WarriorSkill" };
-    public string[] priestTwoSkillInformation = { "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill", "PriestTwoSkill" };
+    public List<ISkill> Skillist = new List<ISkill>();
     public UnityEngine.UI.Text skillInfo;
-    public void skillNova()
+
+    public void Awake()
     {
-        skillName = "Attack1 1";
-        characterType = "Mage";
-        description = " fire rainy";
+
+        skillNova();
+        skillSword();
+    }
+
+
+
+    //Nova skill object creater
+    public void  skillNova()
+    {
+        ISkill skill = new ISkill();
+        skill.skillName = "Attack1 1";
+        skill.characterType = "Mage";
+        skill.description = " fire rainy";
+        skillSprite = Resources.Load<Sprite>("Sprites/Dark_6");
+        Skillist.Add(skill);
+
+
+
     }
     public void skillSword()
     {
-        skillName = "sword";
-        characterType = "Warrior";
-        description = "%300 demege";    
+        ISkill skill = new ISkill();
+        skill.skillName = "sword";
+        skill.characterType = "Warrior";
+        skill.description = "%300 demege";
+        skillSprite = Resources.Load<Sprite>("Sprites/Dark_7");
+        Skillist.Add(skill);
     }
-    public void Start()
-    {
 
-    }
+  
 }
