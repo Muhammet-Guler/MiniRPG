@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterFactory : MonoBehaviour
@@ -18,6 +19,7 @@ public class CharacterFactory : MonoBehaviour
         else if (SelectedCharacter == "Priest")
         {
             icharacter = gameObject.AddComponent<Priest>();
+
         }
         else if (SelectedCharacter == "Warrior")
         {

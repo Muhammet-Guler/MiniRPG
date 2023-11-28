@@ -31,7 +31,6 @@ public class Warrior : ICharacter,IPunObservable
         Defence = 10;
         Description = "";
         instantieName = "Warrior(Clone)";
-        this.skillList = null;
     }
     public void skillOne()
     {

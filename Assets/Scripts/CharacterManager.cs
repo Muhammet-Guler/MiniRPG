@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -28,7 +29,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     public GameObject Priest;
     public GameObject PriestTwo;
     public CharacterFactory characterFactory;
-    public ICharacter character;
     public UnityEngine.UI.Text nickName;
     public UnityEngine.UI.Button readyButton;
     private int readyCount = 0;
@@ -52,13 +52,14 @@ public class CharacterManager : MonoBehaviourPunCallbacks
 
     }
 
-    public void CharacterLayoutButtons()
-    {
-        
-    }
-
     public void selectCharacter()
     {
+
+
+        if (icharacter != null)
+        {
+            Destroy(icharacter);
+        }
         UnityEngine.UI.Button clickedButton = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent< UnityEngine.UI.Button>();
 
         if (clickedButton != null)
@@ -67,6 +68,9 @@ public class CharacterManager : MonoBehaviourPunCallbacks
             selectedCharacter = buttonText;
             PlayerPrefs.SetString("selectedCharacter", selectedCharacter);
             Debug.Log("selectedcharacter:" + selectedCharacter);
+            icharacter = characterFactory.CreateCharacter();
+            skillFactory.addCharacterSkills(icharacter);
+
             for (int i = 0; i < characterButtons.Length; i++)
             {
                 Color characterButtonColor = characterButtons[i].image.color;
@@ -79,54 +83,13 @@ public class CharacterManager : MonoBehaviourPunCallbacks
                     clickedButton.image.color = buttonColor;
                 }
             }
-        }
-        if (clickedButton.name == "Mage")
-        {
 
-            //skillButtons[0].onClick.AddListener(allSkills.skillNova);
-            allSkills.skillNova();
-            skillButtons[0].image.sprite = allSkills.skillSprite;
-            allSkills.skillSword();
-            skillButtons[1].image.sprite = allSkills.skillSprite;
-            //skillButtons[1].onClick.AddListener(allSkills.skillSword);
-            for (int i = 0; i < skillButtons.Length - 2; i++)
+            for (int j = 0; j < AllSkills.Skillist.Count; j++)
             {
-                //Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-                //buttonText.text = "";
-                //allSkills.skillInfo.text = allSkills.mageSkillInformation[i];
-                // skillInfo.text =iSkill.description;
+
+                skillButtons[j].image.sprite = Resources.Load<Sprite>(icharacter.skillList[j].skillSprite);
             }
         }
-        //else if (clickedButton.name == "Priest")
-        //{
-        //    for (int i = 0; i < skillButtons.Length-2; i++)
-        //    {
-        //        //skillButtons[i].image.sprite = allSkills.priestSkillSprites[i];
-        //        Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-        //        buttonText.text = "";
-        //        //allSkills.skillInfo.text = allSkills.priestSkillInformation[i];
-        //    }
-        //}
-        //else if (clickedButton.name == "Warrior")
-        //{
-        //    for (int i = 0; i < skillButtons.Length-2; i++)
-        //    {
-        //        //skillButtons[i].image.sprite = allSkills.warriorSkillSprites[i];
-        //        Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-        //        buttonText.text = "";
-        //        //allSkills.skillInfo.text = allSkills.warriorSkillInformation[i];
-        //    }
-        //}
-        //else if (clickedButton.name == "PriestTwo")
-        //{
-        //    for (int i = 0; i < skillButtons.Length-2; i++)
-        //    {
-        //        //skillButtons[i].image.sprite = allSkills.priestTwoSkillSprites[i];
-        //        Text buttonText = skillButtons[i].GetComponentInChildren<Text>();
-        //        buttonText.text = "";
-        //        //allSkills.skillInfo.text = allSkills.priestTwoSkillInformation[i];
-        //    }
-        //}
 
     }
     public void lockCharacterButtons()
@@ -151,13 +114,11 @@ public class CharacterManager : MonoBehaviourPunCallbacks
             }
         }
         lockedButton.interactable = false;
-        icharacter= characterFactory.CreateCharacter();
-        Debug.Log(icharacter.instantieName);
 
     }
     public void skillLock(ISkill skill)
     {
-        character.skillList.Add(skill);
+        icharacter.skillList.Add(skill);
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
@@ -248,4 +209,7 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     //        selectedCharacter = (string)stream.ReceiveNext();
     //    }
     //}
+    public void selectSkill()
+    {
+    }
 }

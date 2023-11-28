@@ -25,7 +25,6 @@ public class Mage : ICharacter, IPunObservable
         this.Defence = 10;
         this.Description = "";
         this.instantieName = "Mage(Clone)";
-        this.skillList = null;
     }
 
     public void Update()

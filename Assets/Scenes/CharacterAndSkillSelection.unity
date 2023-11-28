@@ -829,12 +829,11 @@ GameObject:
   m_Component:
   - component: {fileID: 456695032}
   - component: {fileID: 456695031}
+  - component: {fileID: 456695037}
   - component: {fileID: 456695030}
   - component: {fileID: 456695029}
-  - component: {fileID: 456695038}
   - component: {fileID: 456695034}
   - component: {fileID: 456695033}
-  - component: {fileID: 456695037}
   - component: {fileID: 456695035}
   - component: {fileID: 456695036}
   m_Layer: 5
@@ -994,7 +993,6 @@ MonoBehaviour:
   PriestTwo: {fileID: 6656323454611010535, guid: 40d946a45e72c2c4da9ba3e8baf3bd26,
     type: 3}
   characterFactory: {fileID: 456695034}
-  character: {fileID: 0}
   nickName: {fileID: 1147377888}
   readyButton: {fileID: 1734547502}
   currentCountdown: 10
@@ -1055,7 +1053,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkillList: []
   AllSelectableSkillList: []
-  AllSkills: {fileID: 456695037}
 --- !u!114 &456695037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,27 +1068,8 @@ MonoBehaviour:
   description: 
   skillName: 
   characterType: 
-  skillSprite: {fileID: 0}
-  Skillist:
-  - {fileID: 0}
-  - {fileID: 0}
+  skillSprite: 
   skillInfo: {fileID: 0}
---- !u!114 &456695038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456695028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: 
-  skillName: 
-  characterType: 
-  skillSprite: {fileID: 0}
 --- !u!1 &466593543
 GameObject:
   m_ObjectHideFlags: 0

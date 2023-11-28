@@ -34,7 +34,6 @@ public class PriestTwo : ICharacter,IPunObservable
         Defence = 10;
         Description = "";
         instantieName = "Priest2(Clone)";
-        this.skillList = null;
     }
     
     public void skillOne()
