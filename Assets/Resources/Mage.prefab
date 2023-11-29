@@ -3525,6 +3525,7 @@ MonoBehaviour:
   Defence: 0
   Description: 
   instantieName: 
+  skillList: []
   CharacterAnimation: {fileID: 5705139486202823430}
   animationSync:
     isPlaying: 0

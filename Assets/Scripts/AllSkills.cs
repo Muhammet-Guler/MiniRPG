@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class AllSkills : ISkill
 {
     public static List<ISkill> Skillist = new List<ISkill>();
-    public UnityEngine.UI.Text skillInfo;
     //public System.Action[] mageFunctions;
 
 
@@ -61,7 +60,7 @@ public class AllSkills : ISkill
         ISkill skill = new ISkill();
         skill.skillName = "Attack1 1";
         skill.characterType = "Mage";
-        skill.description = " fire rainy";
+        skill.description = " fire rain";
         skill.skillSprite = "Sprites/Dark_6";
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);

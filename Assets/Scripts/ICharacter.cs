@@ -16,7 +16,7 @@ public  abstract class ICharacter:MonoBehaviourPun
     public int Defence;
     public string Description;
     public string instantieName;
-    public List<ISkill> skillList;
+    public List<ISkill> skillList=new List<ISkill>();
 
 
     public Animator CharacterAnimation;

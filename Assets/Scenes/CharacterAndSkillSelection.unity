@@ -1053,6 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSkillList: []
   AllSelectableSkillList: []
+  allSkills: {fileID: 456695037}
 --- !u!114 &456695037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   skillName: 
   characterType: 
   skillSprite: 
+  Skillist: []
   skillInfo: {fileID: 0}
 --- !u!1 &466593543
 GameObject:

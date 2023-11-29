@@ -68,8 +68,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks
             selectedCharacter = buttonText;
             PlayerPrefs.SetString("selectedCharacter", selectedCharacter);
             Debug.Log("selectedcharacter:" + selectedCharacter);
-            icharacter = characterFactory.CreateCharacter();
-            skillFactory.addCharacterSkills(icharacter);
 
             for (int i = 0; i < characterButtons.Length; i++)
             {
@@ -82,12 +80,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks
                     buttonColor.a = 1f;
                     clickedButton.image.color = buttonColor;
                 }
-            }
-
-            for (int j = 0; j < AllSkills.Skillist.Count; j++)
-            {
-
-                skillButtons[j].image.sprite = Resources.Load<Sprite>(icharacter.skillList[j].skillSprite);
             }
         }
 
@@ -114,6 +106,14 @@ public class CharacterManager : MonoBehaviourPunCallbacks
             }
         }
         lockedButton.interactable = false;
+        icharacter = characterFactory.CreateCharacter();
+        skillFactory.addCharacterSkills(icharacter);
+        Debug.Log("skilllist:"+icharacter.skillList);
+        for (int j = 0; j < AllSkills.Skillist.Count; j++)
+        {
+
+            skillButtons[j].image.sprite = Resources.Load<Sprite>(icharacter.skillList[j].skillSprite);
+        }
 
     }
     public void skillLock(ISkill skill)

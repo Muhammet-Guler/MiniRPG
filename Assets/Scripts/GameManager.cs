@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviourPun
     public CharacterManager CManager;
     public bool isCharacterAnimationPlaying=false;
     [SerializeField] private Image healthBarSprite;
+    public static ICharacter icharacter;
 
 
     //private Skill skill;
@@ -109,8 +110,8 @@ public class GameManager : MonoBehaviourPun
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
         Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-            CharacterAnimation.Play(AllSkills.Skillist[0].skillName);
-        Debug.Log("skillname:" + AllSkills.Skillist[0].skillName);
+            CharacterAnimation.Play(icharacter.skillList[0].skillName);
+        Debug.Log("skillname:" + icharacter.skillList[0].skillName);
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
         Debug.Log("healthBar:" + healthBarSprite);
@@ -124,8 +125,8 @@ public class GameManager : MonoBehaviourPun
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
         Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-            CharacterAnimation.Play(AllSkills.Skillist[1].skillName);
-        Debug.Log("skillname:" + AllSkills.Skillist[1].skillName);
+            CharacterAnimation.Play(icharacter.skillList[1].skillName);
+        Debug.Log("skillname:" + icharacter.skillList[1].skillName);
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
         Debug.Log("healthBar:" + healthBarSprite);
@@ -136,8 +137,8 @@ public class GameManager : MonoBehaviourPun
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
         Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-            CharacterAnimation.Play(AllSkills.Skillist[2].skillName);
-        Debug.Log("skillname:" + AllSkills.Skillist[2].skillName);
+            CharacterAnimation.Play(icharacter.skillList[2].skillName);
+        Debug.Log("skillname:" + icharacter.skillList[2].skillName);
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
         Debug.Log("healthBar:" + healthBarSprite);

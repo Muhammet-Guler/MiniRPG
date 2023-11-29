@@ -18,20 +18,18 @@ public class SkillFactory : MonoBehaviour
         
     }
 
-    public void addCharacterSkills(ICharacter character)
-    {        
-
+    public ICharacter addCharacterSkills(ICharacter character)
+    {
         for (int i = 0; i < AllSkills.Skillist.Count; i++)
         {
-            Debug.Log("characterType:"+character.characterType);
+            Debug.Log("characterType:"+ AllSkills.Skillist.Count);
             if (character.characterType == AllSkills.Skillist[i].characterType)
             {
+                Debug.Log("alskills:"+AllSkills.Skillist[i].description);
                 character.skillList.Add(AllSkills.Skillist[i]);
                 Debug.Log("skillist:" + character.skillList);
-
             }
-           
         }
-        
+        return character;
     }
 }
