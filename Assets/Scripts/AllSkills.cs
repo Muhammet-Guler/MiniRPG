@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AllSkills : ISkill
+public class AllSkills:MonoBehaviour
 {
     public static List<ISkill> Skillist = new List<ISkill>();
     //public System.Action[] mageFunctions;
@@ -30,6 +30,8 @@ public class AllSkills : ISkill
     }
 
 
+
+    
     //Nova skill object creater
     public void  skillNova()
     {
@@ -46,10 +48,10 @@ public class AllSkills : ISkill
     public void skill1()
     {
         ISkill skill = new ISkill();
-        skill.skillName = "Attack1 1";
+        skill.skillName = "Attack1 2";
         skill.characterType = "Mage";
         skill.description = " fire rainy";
-        skill.skillSprite = "Sprites/Dark_6";
+        skill.skillSprite = "Sprites/Dark_8";
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
@@ -58,10 +60,10 @@ public class AllSkills : ISkill
     public void skill2()
     {
         ISkill skill = new ISkill();
-        skill.skillName = "Attack1 1";
+        skill.skillName = "Attack1 3";
         skill.characterType = "Mage";
         skill.description = " fire rain";
-        skill.skillSprite = "Sprites/Dark_6";
+        skill.skillSprite = "Sprites/Dark_9";
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
@@ -70,10 +72,10 @@ public class AllSkills : ISkill
     public void skill3()
     {
         ISkill skill = new ISkill();
-        skill.skillName = "Attack1 1";
+        skill.skillName = "Attack1 4";
         skill.characterType = "Mage";
         skill.description = " fire rainy";
-        skill.skillSprite = "Sprites/Dark_6";
+        skill.skillSprite = "Sprites/Dark_10";
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
@@ -82,7 +84,7 @@ public class AllSkills : ISkill
     public void skillSword()
     {
         ISkill skill = new ISkill();
-        skill.skillName = "Attack1 2";
+        skill.skillName = "Attack1 5";
         skill.characterType = "Warrior";
         skill.description = "%300 demege";
         skill.skillSprite = "Sprites/Dark_7";

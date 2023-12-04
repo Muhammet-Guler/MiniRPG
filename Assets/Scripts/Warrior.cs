@@ -9,7 +9,6 @@ public class Warrior : ICharacter,IPunObservable
     public Sprite sprite;
     public GameObject warrior;
     public UnityEngine.UI.Text nickName;
-    //public Skill skill;
     public void Update()
     {
     }
@@ -31,29 +30,5 @@ public class Warrior : ICharacter,IPunObservable
         Defence = 10;
         Description = "";
         instantieName = "Warrior(Clone)";
-    }
-    public void skillOne()
-    {
-        //skill.Skill_Attack6();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
-    }
-    public void skillTwo()
-    {
-        //skill.Skill_Attack7();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
-    }
-    public void skillThree()
-    {
-        //skill.Skill_Attack8();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
     }
 }

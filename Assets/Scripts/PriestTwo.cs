@@ -11,8 +11,6 @@ public class PriestTwo : ICharacter,IPunObservable
 
     public UnityEngine.UI.Text nickName;
 
-    //public Skill skill;
-
     public void Update()
     {
         
@@ -34,30 +32,5 @@ public class PriestTwo : ICharacter,IPunObservable
         Defence = 10;
         Description = "";
         instantieName = "Priest2(Clone)";
-    }
-    
-    public void skillOne()
-    {
-        //skill.Skill_Attack9();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
-    }
-    public void skillTwo()
-    {
-        //skill.Skill_Attack10();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
-    }
-    public void skillThree()
-    {
-        //skill.Skill_Attack11();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
     }
 }

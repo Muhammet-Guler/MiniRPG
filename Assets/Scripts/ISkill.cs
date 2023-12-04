@@ -7,4 +7,9 @@ public class ISkill:MonoBehaviour
     public string skillName;
     public string characterType;
     public string skillSprite;
+
+    public void Run()
+    {
+
+    }
 }

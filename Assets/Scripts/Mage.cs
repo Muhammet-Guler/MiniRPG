@@ -29,41 +29,11 @@ public class Mage : ICharacter, IPunObservable
 
     public void Update()
     {
-        //CharacterAnimation = mage.GetComponent<Animator>();
     }
     public void Start()
     {
         CharacterAnimation = mage.GetComponent<Animator>();
         nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
-    }
-
-
-
-    
-
-    public void skillOne()
-    {
-        //skill.AttackSkill_Spike();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
-    }
-    public void skillTwo()
-    {
-        //skill.Skill_Attack();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
-    }
-    public void skillThree()
-    {
-        //skill.Skill_Attack2();
-        //this.SkillOneCoolDown = skill.coolDown;
-        //CharacterAnimation.Play(skill.Name);
-        //isCharacterAnimationPlaying = true;
-        //Debug.Log(skill.Name);
     }
 
 }

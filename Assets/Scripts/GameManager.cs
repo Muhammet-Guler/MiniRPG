@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviourPun
     public CharacterManager CManager;
     public bool isCharacterAnimationPlaying=false;
     [SerializeField] private Image healthBarSprite;
-    public static ICharacter icharacter;
+    public ICharacter icharacter;
 
 
-    //private Skill skill;
     void Start()
     {
+
     }
 
 
@@ -106,15 +106,12 @@ public class GameManager : MonoBehaviourPun
     }
     public void attackOne()
     {
-        //Debug.Log("skill:"+ iSkill.skillName);
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
-        Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-            CharacterAnimation.Play(icharacter.skillList[0].skillName);
-        Debug.Log("skillname:" + icharacter.skillList[0].skillName);
+            //CharacterAnimation.Play(CharacterManager.icharacter.skillList[0].skillName);
+            CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count-3].skillName);
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-        Debug.Log("healthBar:" + healthBarSprite);
         healthBarSprite.fillAmount += 0.1f;
             
         
@@ -123,25 +120,24 @@ public class GameManager : MonoBehaviourPun
     public void attackTwo()
     {
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
-        Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-            CharacterAnimation.Play(icharacter.skillList[1].skillName);
-        Debug.Log("skillname:" + icharacter.skillList[1].skillName);
+            //CharacterAnimation.Play(CharacterManager.icharacter.skillList[1].skillName);
+            CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count-2].skillName);
+        StartCoroutine(StartCountdown());
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-        Debug.Log("healthBar:" + healthBarSprite);
         healthBarSprite.fillAmount += 0.1f;
     }
     public void attackThree()
      {
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
-        Debug.Log("characterAnimation:" + CharacterAnimation);
         if (CharacterAnimation != null)
-            CharacterAnimation.Play(icharacter.skillList[2].skillName);
-        Debug.Log("skillname:" + icharacter.skillList[2].skillName);
+            //CharacterAnimation.Play(CharacterManager.icharacter.skillList[2].skillName);
+            CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillName);
+        Debug.Log(CharacterManager.selectedSkillList.Count - 1);
+        StartCoroutine(StartCountdown());
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-        Debug.Log("healthBar:" + healthBarSprite);
         healthBarSprite.fillAmount += 0.1f;
     }
 

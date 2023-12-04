@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 2936125511065708443}
   - component: {fileID: 2936125511065708444}
   - component: {fileID: 2936125511065708445}
-  - component: {fileID: 2936125511065708446}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -167,11 +166,10 @@ MonoBehaviour:
   btn2: {fileID: 640816031892362135}
   btn3: {fileID: 640816032607412878}
   countdownDuration: 1
-  CManager: {fileID: 0}
-  allSkills: {fileID: 2936125511065708447}
-  iSkill: {fileID: 2936125511065708448}
+  CManager: {fileID: 555787734}
   isCharacterAnimationPlaying: 0
   healthBarSprite: {fileID: 0}
+  icharacter: {fileID: 0}
 --- !u!4 &23647079
 Transform:
   m_ObjectHideFlags: 0
@@ -3363,11 +3361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f828960f8253a47bbec68e21ba2293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 0}
-  nameText: {fileID: 0}
-  artworkSprite: {fileID: 0}
   characterButtons: []
   lockedButton: {fileID: 0}
+  lockedSkillButton: {fileID: 0}
   skillButtons: []
   selectedCharacter: 
   Mage: {fileID: 0}
@@ -3375,7 +3371,6 @@ MonoBehaviour:
   Priest: {fileID: 0}
   PriestTwo: {fileID: 0}
   characterFactory: {fileID: 0}
-  character: {fileID: 0}
   nickName: {fileID: 0}
   readyButton: {fileID: 0}
   currentCountdown: 10
@@ -3591,7 +3586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1112617273081936, guid: 0194038e908575a42895d9b24c1fb149, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4924630105445250, guid: 0194038e908575a42895d9b24c1fb149, type: 3}
       propertyPath: m_RootOrder
@@ -5175,7 +5170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &1815732890
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -7144,10 +7139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
+  skillSprite: 
 --- !u!114 &2128859580863551633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7419,18 +7414,6 @@ MonoBehaviour:
   sceneViewId: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2936125511065708446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23647077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fc0d877fd5a4104f8d74963cac8bcb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2936125511065708447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7443,62 +7426,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4960b6bc4e373c1498477d1057dda997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
-  allSkills:
-  - nova
-  - sword
-  mageSkillSprites: []
-  priestSkillSprites: []
-  warriorSkillSprites: []
-  priestTwoSkillSprites: []
-  mageSkillInformation:
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  - MageSkill
-  priestSkillInformation:
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  - PriestSkill
-  warriorSkillInformation:
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  - WarriorSkill
-  priestTwoSkillInformation:
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  - PriestTwoSkill
-  skillInfo: {fileID: 0}
+  skillSprite: 
 --- !u!114 &2936125511065708448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7511,10 +7442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
+  skillSprite: 
 --- !u!1 &2959081780487133596
 GameObject:
   m_ObjectHideFlags: 0
@@ -11250,10 +11181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
+  skillSprite: 
 --- !u!114 &4957605393916756793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14098,10 +14029,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
+  skillSprite: 
 --- !u!114 &6656323453763306529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14404,10 +14335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fa22a079aff6c4486a1cf88b5671fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
   description: 
   skillName: 
   characterType: 
+  skillSprite: 
 --- !u!114 &7077101355356237246
 MonoBehaviour:
   m_ObjectHideFlags: 0

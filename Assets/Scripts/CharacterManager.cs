@@ -15,14 +15,10 @@ using UnityEngine.UIElements;
 
 public class CharacterManager : MonoBehaviourPunCallbacks
 {
-    public CharacterDatabase characterDB;
-    public Text nameText;
-    public SpriteRenderer artworkSprite;
     public UnityEngine.UI.Button[] characterButtons;
     public UnityEngine.UI.Button lockedButton;
+    public UnityEngine.UI.Button lockedSkillButton;
     public UnityEngine.UI.Button[] skillButtons;
-
-    private int SelectedCharacter = 0;
     public string selectedCharacter;
     public GameObject Mage;
     public GameObject Warrior;
@@ -31,7 +27,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     public CharacterFactory characterFactory;
     public UnityEngine.UI.Text nickName;
     public UnityEngine.UI.Button readyButton;
-    private int readyCount = 0;
     public float currentCountdown=3f;
     public UnityEngine.UI.Text countText;
     public GameObject panel;
@@ -42,9 +37,16 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     private bool player1Ready = false;
     private bool player2Ready = false;
     public AllSkills allSkills;
+    public static List<ISkill> selectedSkillList = new List<ISkill>();
+    public UnityEngine.UI.Image[] selectedSkillImage;
     void Start()
     {
-
+        for (int i = 0; i < skillButtons.Length; i++)
+        {
+            Color skillButtonColor = skillButtons[i].image.color;
+            skillButtonColor.a = 0f;
+            skillButtons[i].image.color = skillButtonColor;
+        }
     }
 
     public void Update()
@@ -67,7 +69,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks
             string buttonText = clickedButton.GetComponentInChildren<Text>().text;
             selectedCharacter = buttonText;
             PlayerPrefs.SetString("selectedCharacter", selectedCharacter);
-            Debug.Log("selectedcharacter:" + selectedCharacter);
 
             for (int i = 0; i < characterButtons.Length; i++)
             {
@@ -84,8 +85,28 @@ public class CharacterManager : MonoBehaviourPunCallbacks
         }
 
     }
+    public void selectSkill()
+    {
+        UnityEngine.UI.Button clickedButton = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<UnityEngine.UI.Button>();
+
+        if (clickedButton != null)
+        {
+            selectedSkillList.Add(icharacter.skillList[int.Parse(clickedButton.GetComponentInChildren<Text>().text)]);
+            Debug.Log(":skill"+ int.Parse(clickedButton.GetComponentInChildren<Text>().text));
+            selectedSkillImage[0].sprite = Resources.Load<Sprite>(selectedSkillList[selectedSkillList.Count-1].skillSprite);
+            selectedSkillImage[1].sprite = Resources.Load<Sprite>(selectedSkillList[selectedSkillList.Count - 2].skillSprite);
+            selectedSkillImage[2].sprite = Resources.Load<Sprite>(selectedSkillList[selectedSkillList.Count - 3].skillSprite);
+        }
+
+    }
     public void lockCharacterButtons()
     {
+        for (int i = 0; i < skillButtons.Length; i++)
+        {
+            Color skillButtonColor = skillButtons[i].image.color;
+            skillButtonColor.a = 1f;
+            skillButtons[i].image.color = skillButtonColor;
+        }
         for (int i = 0; i < characterButtons.Length; i++)
         {
             if (characterButtons[i].name == selectedCharacter)
@@ -108,17 +129,20 @@ public class CharacterManager : MonoBehaviourPunCallbacks
         lockedButton.interactable = false;
         icharacter = characterFactory.CreateCharacter();
         skillFactory.addCharacterSkills(icharacter);
-        Debug.Log("skilllist:"+icharacter.skillList);
         for (int j = 0; j < AllSkills.Skillist.Count; j++)
         {
-
             skillButtons[j].image.sprite = Resources.Load<Sprite>(icharacter.skillList[j].skillSprite);
         }
 
     }
-    public void skillLock(ISkill skill)
+    public void skillLock()
     {
-        icharacter.skillList.Add(skill);
+        for (int i = 0; i < skillButtons.Length; i++)
+        {
+            skillButtons[i].interactable = false;
+        }
+        lockedSkillButton.interactable = false;
+
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
@@ -163,7 +187,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks
         }
         if (lockedButton.interactable == false)
         {
-            //readyButton.interactable = false;
             if (player1Ready && player2Ready)
             {
                 if (photonView.IsMine)
@@ -209,7 +232,4 @@ public class CharacterManager : MonoBehaviourPunCallbacks
     //        selectedCharacter = (string)stream.ReceiveNext();
     //    }
     //}
-    public void selectSkill()
-    {
-    }
 }

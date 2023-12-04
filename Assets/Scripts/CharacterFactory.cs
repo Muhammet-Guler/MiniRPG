@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CharacterFactory : MonoBehaviour
 {
-    public CharacterDatabase characterDB;
-    public CharacterManager characterManager;
     public ICharacter icharacter = null;
     private string SelectedCharacter;
     public ICharacter CreateCharacter()

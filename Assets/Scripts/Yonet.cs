@@ -11,7 +11,6 @@ using UnityEngine.TextCore.Text;
 
 public class Yonet : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
     public int SelectedCharacter;
     public TMP_InputField input_Create;
     public TMP_InputField input_Join;
@@ -22,8 +21,6 @@ public class Yonet : MonoBehaviourPunCallbacks
     public UnityEngine.UI.Button Btn1;
     public FixedJoystick joystick;
     public Mage character;
-    //public static CanvasManager Instance { get; private set; }
-    //public Transform CanvasTransform { get; private set; }
 
 
     void Start()
