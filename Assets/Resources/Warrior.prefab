@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.548
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2408,6 +2408,7 @@ GameObject:
   - component: {fileID: 1872433311}
   - component: {fileID: -1430683149803264294}
   - component: {fileID: 1872433315}
+  - component: {fileID: 5497242982690393702}
   - component: {fileID: 1872433314}
   - component: {fileID: 1872433316}
   - component: {fileID: 1872433317}
@@ -2415,7 +2416,7 @@ GameObject:
   - component: {fileID: -3036355717365440933}
   m_Layer: 0
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2466,6 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b031f7c727d0560438874cbd01821b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iskill: {fileID: 0}
 --- !u!95 &1872433315
 Animator:
   serializedVersion: 5
@@ -2486,6 +2488,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &5497242982690393702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916376108772803837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a861ff7b612d6f40b52ad6190d40b3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetHp: 0
+  TargetNickname: 
+  TargetLOcation: {x: 0, y: 0, z: 0}
+  HealthBar: {fileID: 7036333891425917386}
+  characterAnimator: {fileID: 1872433315}
 --- !u!114 &1872433314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2855,6 +2874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7219171092081565410}
   - component: {fileID: 7857032603775334913}
+  - component: {fileID: 9114759947079969207}
   m_Layer: 0
   m_Name: Warrior_Body
   m_TagString: Untagged
@@ -2993,6 +3013,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0036629736, y: -0.09737265, z: -0.019250527}
     m_Extent: {x: 0.7182832, y: 0.92354536, z: 0.18450187}
   m_DirtyAABB: 0
+--- !u!136 &9114759947079969207
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7135599549383738996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.7182832
+  m_Height: 1.8470907
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.90262735, z: 0}
 --- !u!1 &7219063809407979875
 GameObject:
   m_ObjectHideFlags: 0

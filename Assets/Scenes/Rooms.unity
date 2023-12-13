@@ -672,15 +672,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f828960f8253a47bbec68e21ba2293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 11400000, guid: 455aae1d83977c346bf712921acb9b7f, type: 2}
-  nameText: {fileID: 523975669}
-  artworkSprite: {fileID: 0}
   characterButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   lockedButton: {fileID: 0}
+  lockedSkillButton: {fileID: 0}
   skillButtons: []
   selectedCharacter: 
   Mage: {fileID: 5705139486202823429, guid: 5cb5296f468bb2d4f82d31934b578cd3, type: 3}
@@ -698,6 +696,7 @@ MonoBehaviour:
   rivalSprite: {fileID: 0}
   gameManager: {fileID: 0}
   allSkills: {fileID: 0}
+  selectedSkillImage: []
 --- !u!114 &202883705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,8 +709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6524bb4c552d976478b041b9e7414786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 11400000, guid: 455aae1d83977c346bf712921acb9b7f, type: 2}
-  characterManager: {fileID: 202883704}
   icharacter: {fileID: 0}
 --- !u!114 &202883706
 MonoBehaviour:
@@ -2204,11 +2201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f828960f8253a47bbec68e21ba2293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 11400000, guid: 455aae1d83977c346bf712921acb9b7f, type: 2}
-  nameText: {fileID: 523975669}
-  artworkSprite: {fileID: 953185715}
   characterButtons: []
   lockedButton: {fileID: 0}
+  lockedSkillButton: {fileID: 0}
   skillButtons: []
   selectedCharacter: 
   Mage: {fileID: 5705139486202823429, guid: 5cb5296f468bb2d4f82d31934b578cd3, type: 3}
@@ -2226,6 +2221,7 @@ MonoBehaviour:
   rivalSprite: {fileID: 0}
   gameManager: {fileID: 0}
   allSkills: {fileID: 0}
+  selectedSkillImage: []
 --- !u!212 &953185715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2305,8 +2301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6524bb4c552d976478b041b9e7414786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDB: {fileID: 0}
-  characterManager: {fileID: 0}
   icharacter: {fileID: 0}
 --- !u!1 &1061272721
 GameObject:
@@ -4815,7 +4809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 116.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2119054259

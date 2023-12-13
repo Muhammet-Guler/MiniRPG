@@ -35,5 +35,4 @@ public class Mage : ICharacter, IPunObservable
         CharacterAnimation = mage.GetComponent<Animator>();
         nickName.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
-
 }

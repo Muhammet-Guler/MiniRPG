@@ -24,58 +24,43 @@ public class AllSkills:MonoBehaviour
     {
         skillNova();
         skillSword();
-        skill1();
-        skill2();
-        skill3();
+        skillSpeel();
+        skillFire();
+        skillSmash();
+        skillSprint();
+        skillAura();
+        skillHoly();
+        skillHeal();
     }
-
-
-
     
     //Nova skill object creater
     public void  skillNova()
     {
-        ISkill skill = new ISkill();
-        skill.skillName = "Attack1 1";
-        skill.characterType = "Mage";
-        skill.description = " fire rainy";
-        skill.skillSprite = "Sprites/Dark_6";
+        ISkill skill = gameObject.AddComponent<SkillNova>();
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
 
     }
-    public void skill1()
+    public void skillSpeel()
     {
-        ISkill skill = new ISkill();
-        skill.skillName = "Attack1 2";
-        skill.characterType = "Mage";
-        skill.description = " fire rainy";
-        skill.skillSprite = "Sprites/Dark_8";
+        ISkill skill = gameObject.AddComponent<SkillSpeel>();
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
 
     }
-    public void skill2()
+    public void skillFire()
     {
-        ISkill skill = new ISkill();
-        skill.skillName = "Attack1 3";
-        skill.characterType = "Mage";
-        skill.description = " fire rain";
-        skill.skillSprite = "Sprites/Dark_9";
+        ISkill skill = gameObject.AddComponent<SkillFire>();
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
 
     }
-    public void skill3()
+    public void skillSmash()
     {
-        ISkill skill = new ISkill();
-        skill.skillName = "Attack1 4";
-        skill.characterType = "Mage";
-        skill.description = " fire rainy";
-        skill.skillSprite = "Sprites/Dark_10";
+        ISkill skill = gameObject.AddComponent<SkillSmash>();
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
 
@@ -83,14 +68,36 @@ public class AllSkills:MonoBehaviour
     }
     public void skillSword()
     {
-        ISkill skill = new ISkill();
-        skill.skillName = "Attack1 5";
-        skill.characterType = "Warrior";
-        skill.description = "%300 demege";
-        skill.skillSprite = "Sprites/Dark_7";
+        ISkill skill = gameObject.AddComponent<SkillSword>();
+        Skillist.Add(skill);
+        //mageSpriteList.Add(skillSprite);
+    }
+    public void skillSprint()
+    {
+        ISkill skill = gameObject.AddComponent<SkillSprint>();
+        Skillist.Add(skill);
+        //mageSpriteList.Add(skillSprite);
+    }
+    public void skillAura()
+    {
+        ISkill skill = gameObject.AddComponent<SkillAura>();
         Skillist.Add(skill);
         //mageSpriteList.Add(skillSprite);
     }
 
-  
+    public void skillHoly()
+    {
+        ISkill skill = gameObject.AddComponent<SkillHoly>();
+        Skillist.Add(skill);
+        //mageSpriteList.Add(skillSprite);
+    }
+
+    public void skillHeal()
+    {
+        ISkill skill = gameObject.AddComponent<SkillHeal>();
+        Skillist.Add(skill);
+        //mageSpriteList.Add(skillSprite);
+    }
+
+
 }

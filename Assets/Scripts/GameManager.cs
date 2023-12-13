@@ -19,23 +19,36 @@ public class GameManager : MonoBehaviourPun
     public Vector3 konum;
     public float donmeHizi = 10.0f;
     [SerializeField]
-    private UnityEngine.UI.Button btn1, btn2, btn3;
+    private UnityEngine.UI.Button btn1, btn2, btn3,btn4,btn5,btn6;
     public float countdownDuration = 1f;
     PhotonView view;
     public CharacterManager CManager;
     public bool isCharacterAnimationPlaying=false;
     [SerializeField] private Image healthBarSprite;
     public ICharacter icharacter;
-
+    public ISkill iskill;
+    private bool isClickable = true;
+    public Image skillImage1,skillImage2,skillImage3;
+    public UnityEngine.UI.Text skillCountText1, skillCountText2, skillCountText3;
 
     void Start()
     {
-
+        //btn4.image.sprite= Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].skillSprite);
+        //btn5.image.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].skillSprite);
+        //btn6.image.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillSprite);
+        skillImage1.sprite= Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].skillSprite);
+       // skillImage1.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        skillImage2.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].skillSprite);
+        //skillImage2.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        skillImage3.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillSprite);
+        //skillImage3.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
     }
 
 
 
-    void Update()
+
+
+void Update()
     {
 
         view = GetComponent<PhotonView>();
@@ -94,26 +107,89 @@ public class GameManager : MonoBehaviourPun
         {
             isCharacterAnimationPlaying = true;
             currentTime -= 1f;
-            btn1.interactable = false;
-            btn2.interactable = false;
-            btn3.interactable = false;
             yield return new WaitForSeconds(1f);
-            btn1.interactable = true;
-            btn2.interactable = true;
-            btn3.interactable = true;
             isCharacterAnimationPlaying = false;
+        }
+    }
+    IEnumerator GeriSayim()
+    {
+        int value = CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].coolDown;
+        while (value> 0f)
+        {
+            isClickable = false;
+            Color imageColor = skillImage1.color;
+            imageColor.a = 0.5f;
+            skillImage1.color = imageColor;
+            value--;
+            yield return new WaitForSeconds(1f);
+            skillCountText1.text = value.ToString();
+            isClickable = true;
+            Color imageColor2 = skillImage1.color;
+            imageColor2.a = 1f;
+            skillImage1.color = imageColor2;
+            if (value==0)
+            {
+                skillCountText1.text = " ";
+            }
+        }
+    }
+    IEnumerator GeriSayim2()
+    {
+        int value = CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].coolDown;
+        while (value > 0f)
+        {
+            isClickable = false;
+            Color imageColor = skillImage2.color;
+            imageColor.a = 0.5f;
+            skillImage2.color = imageColor;
+            value--;
+            yield return new WaitForSeconds(1f);
+            skillCountText2.text = value.ToString();
+            isClickable = true;
+            Color imageColor2 = skillImage2.color;
+            imageColor2.a = 1f;
+            skillImage2.color = imageColor2;
+            if (value == 0)
+            {
+                skillCountText2.text = " ";
+            }
+        }
+    }
+    IEnumerator GeriSayim3()
+    {
+        int value = CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].coolDown;
+        while ( value > 0f)
+        {
+            isClickable = false;
+            Color imageColor = skillImage3.color;
+            imageColor.a = 0.5f;
+            skillImage3.color = imageColor;
+            value--;
+            yield return new WaitForSeconds(1f);
+            skillCountText3.text = value.ToString();
+            isClickable = true;
+            Color imageColor2 = skillImage3.color;
+            imageColor2.a = 1f;
+            skillImage3.color = imageColor2;
+            if (value == 0)
+            {
+                skillCountText3.text = " ";
+            }
         }
     }
     public void attackOne()
     {
-        Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
-        if (CharacterAnimation != null)
-            //CharacterAnimation.Play(CharacterManager.icharacter.skillList[0].skillName);
-            CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count-3].skillName);
-        StartCoroutine(StartCountdown());
-        healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-        healthBarSprite.fillAmount += 0.1f;
-            
+        if (isClickable)
+        {
+            Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
+            if (CharacterAnimation != null)
+                //CharacterAnimation.Play(CharacterManager.icharacter.skillList[0].skillName);
+                CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].skillName);
+            StartCoroutine(StartCountdown());
+            healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
+            healthBarSprite.fillAmount += 0.1f;
+            StartCoroutine(GeriSayim());
+        }   
         
 
     }
@@ -121,24 +197,26 @@ public class GameManager : MonoBehaviourPun
     {
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
         if (CharacterAnimation != null)
-            //CharacterAnimation.Play(CharacterManager.icharacter.skillList[1].skillName);
-            CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count-2].skillName);
-        StartCoroutine(StartCountdown());
+        //CharacterAnimation.Play(CharacterManager.icharacter.skillList[1].skillName);
+        CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count-2].skillName);
+        //StartCoroutine(StartCountdown());
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
         healthBarSprite.fillAmount += 0.1f;
+        StartCoroutine(GeriSayim2());
     }
     public void attackThree()
      {
         Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
         if (CharacterAnimation != null)
-            //CharacterAnimation.Play(CharacterManager.icharacter.skillList[2].skillName);
-            CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillName);
+        //CharacterAnimation.Play(CharacterManager.icharacter.skillList[2].skillName);
+        CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillName);
         Debug.Log(CharacterManager.selectedSkillList.Count - 1);
-        StartCoroutine(StartCountdown());
+        //StartCoroutine(StartCountdown());
         StartCoroutine(StartCountdown());
         healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
         healthBarSprite.fillAmount += 0.1f;
+        StartCoroutine(GeriSayim3());
     }
 
     }
