@@ -20,7 +20,7 @@ public class TargetHandler : MonoBehaviour
     {
 
     }
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount,ICharacter icharacter)
     {
         HealthBar.fillAmount -= damageAmount;
         if (HealthBar.fillAmount <= 0)

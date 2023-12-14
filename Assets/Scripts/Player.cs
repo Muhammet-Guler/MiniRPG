@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviourPun
 {
-    public ISkill iskill;
     void Start()
     {
+        
+    }
+    private void Update()
+    {
+        
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -16,7 +21,7 @@ public class Player : MonoBehaviourPun
             TargetHandler targetHandler = other.gameObject.GetComponent<TargetHandler>();
             if (targetHandler != null&&other.gameObject.name!= gameObject.name)
             {
-                targetHandler.TakeDamage(0.2f); // damageAmount, çarpýþmanýn ne kadar zarar verdiðini belirten bir deðer olmalý.
+                targetHandler.TakeDamage(0.2f, other.gameObject.GetComponent<ICharacter>());
             }
         }
 

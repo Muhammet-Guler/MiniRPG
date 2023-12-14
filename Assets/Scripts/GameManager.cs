@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviourPun
     private bool isClickable = true;
     public Image skillImage1,skillImage2,skillImage3;
     public UnityEngine.UI.Text skillCountText1, skillCountText2, skillCountText3;
+    public Button btn;
+    public Transform[] players;
+    public GameObject character;
+    public int health;
 
     void Start()
     {
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviourPun
         //skillImage2.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         skillImage3.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillSprite);
         //skillImage3.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        players = FindObjectsOfType<Transform>();
     }
 
 
@@ -68,7 +73,38 @@ void Update()
         {
             IdleAnimation();
         }
+        for (int i = 0; i < players.Length; i++)
+        {
 
+            float distance = Vector3.Distance(GameObject.Find(PlayerPrefs.GetString("selectedCharacter")+"(Clone)").transform.position, players[i].position);
+            if (distance < 5f) // Change 5f with your desired distance
+            {
+                btn.GetComponentInChildren<Text>().text = players[i].name;
+            }
+        }
+    }
+    void ListelePhotonNesneleri()
+    {
+        PhotonView[] photonViews = GameObject.FindObjectsOfType<PhotonView>();
+        List<PhotonView> photonViewListesi = new List<PhotonView>(photonViews);
+        List<PhotonView> bulunanPhotonViews = photonViewListesi.FindAll(pv => pv.name.Contains("Clone"));
+
+        if (bulunanPhotonViews.Count > 0)
+        {
+            Debug.Log("Aranan kelime içeren PhotonView'ler bulundu:");
+
+            foreach (PhotonView bulunanPhotonView in bulunanPhotonViews)
+            {
+                Debug.Log("ID: " + bulunanPhotonView.ViewID + ", Ýsim: " + bulunanPhotonView.name);
+                character = GameObject.Find(bulunanPhotonView.name);
+                health=character.GetComponent<ICharacter>().Health;
+                Debug.Log(health);
+            }
+        }
+        else
+        {
+            Debug.Log("Aranan kelime içeren PhotonView bulunamadý.");
+        }
     }
 
     private Vector3 GetNewVelocity()
@@ -189,8 +225,9 @@ void Update()
             healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
             healthBarSprite.fillAmount += 0.1f;
             StartCoroutine(GeriSayim());
-        }   
-        
+        }
+
+        ListelePhotonNesneleri();
 
     }
     public void attackTwo()

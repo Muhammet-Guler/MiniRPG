@@ -8,7 +8,7 @@ public class Warrior : ICharacter,IPunObservable
     public int SkillOneCoolDown, SkillTwoCoolDown, SkillThreeCoolDown, SkillFourCoolDown, SkillFiveCoolDown = 0;
     public Sprite sprite;
     public GameObject warrior;
-    public UnityEngine.UI.Text nickName;
+    public UnityEngine.UI.Text nickName; 
     public void Update()
     {
     }
