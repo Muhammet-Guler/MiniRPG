@@ -73,18 +73,6 @@ void Update()
         {
             IdleAnimation();
         }
-        for (int i = 0; i < players.Length; i++)
-        {
-
-            float distance = Vector3.Distance(GameObject.Find(PlayerPrefs.GetString("selectedCharacter")+"(Clone)").transform.position, players[i].position);
-            if (distance < 5f) // Change 5f with your desired distance
-            {
-                btn.GetComponentInChildren<Text>().text = players[i].name;
-            }
-        }
-    }
-    void ListelePhotonNesneleri()
-    {
         PhotonView[] photonViews = GameObject.FindObjectsOfType<PhotonView>();
         List<PhotonView> photonViewListesi = new List<PhotonView>(photonViews);
         List<PhotonView> bulunanPhotonViews = photonViewListesi.FindAll(pv => pv.name.Contains("Clone"));
@@ -97,14 +85,34 @@ void Update()
             {
                 Debug.Log("ID: " + bulunanPhotonView.ViewID + ", Ýsim: " + bulunanPhotonView.name);
                 character = GameObject.Find(bulunanPhotonView.name);
-                health=character.GetComponent<ICharacter>().Health;
-                Debug.Log(health);
+                health = character.GetComponent<ICharacter>().Health;
+                Debug.Log("health" + health);
+            }
+            for (int i = 0; i < bulunanPhotonViews.Count; i++)
+            {
+
+                //float distance = Vector3.Distance(GameObject.Find(PlayerPrefs.GetString("selectedCharacter") + "(Clone)").transform.position, players[i].position);
+                float distance = Vector3.Distance(GameObject.Find(bulunanPhotonViews[i].name).transform.position, GameObject.Find(bulunanPhotonViews[i + 1].name).transform.position);
+                if (distance < 5f)
+                {
+                    if (photonView.IsMine!)
+                    {
+                        character = GameObject.Find(bulunanPhotonViews[i].name);
+                        Image buttonImage = btn.GetComponent<Image>();
+                        buttonImage.sprite = character.GetComponent<ICharacter>().characterSprite;
+                        Debug.Log(bulunanPhotonViews[i].name);
+                    }
+                }
             }
         }
         else
         {
             Debug.Log("Aranan kelime içeren PhotonView bulunamadý.");
         }
+    }
+    void ListelePhotonNesneleri()
+    {
+       
     }
 
     private Vector3 GetNewVelocity()
