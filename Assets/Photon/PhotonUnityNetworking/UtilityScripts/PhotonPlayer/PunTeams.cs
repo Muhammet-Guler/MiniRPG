@@ -110,7 +110,7 @@ namespace Photon.Pun.UtilityScripts
             for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             {
                 Player player = PhotonNetwork.PlayerList[i];
-                Team playerTeam = player.GetTeam();
+                PunTeams.Team playerTeam = player.GetTeam();
                 PlayersPerTeam[playerTeam].Add(player);
             }
         }
@@ -129,7 +129,6 @@ namespace Photon.Pun.UtilityScripts
             {
                 return (PunTeams.Team)teamId;
             }
-
             return PunTeams.Team.none;
         }
 

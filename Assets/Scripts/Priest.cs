@@ -21,7 +21,7 @@ public class Priest : ICharacter,IPunObservable
     public  Priest()
     {
         characterType = "Priest";
-        characterSprite = sprite;
+        characterSprite = "CharacterSprites/Priest_One";
         Health = 100;
         Range = 7;
         Speed = 15;

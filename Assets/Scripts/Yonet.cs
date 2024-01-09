@@ -21,6 +21,9 @@ public class Yonet : MonoBehaviourPunCallbacks
     public UnityEngine.UI.Button Btn1;
     public FixedJoystick joystick;
     public Mage character;
+    public UnityEngine.UI.Toggle odaGorunurluk;
+    public UnityEngine.UI.Text maxPlayers;
+    public UnityEngine.UI.Text[] playerNicknameText;
 
 
     void Start()
@@ -56,10 +59,12 @@ public class Yonet : MonoBehaviourPunCallbacks
         Btn1 = GetComponentInChildren<UnityEngine.UI.Button>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterAndSkillSelection")
+        {
+            UpdatePlayerList();
+        }
     }
     public override void OnConnectedToMaster()
     {
@@ -97,7 +102,15 @@ public class Yonet : MonoBehaviourPunCallbacks
     }
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(input_Create.text);
+
+        RoomOptions roomOptions = new RoomOptions()
+        {
+            MaxPlayers = (byte)int.Parse(maxPlayers.text),
+            IsVisible = odaGorunurluk.isOn,
+
+        };
+
+        PhotonNetwork.CreateRoom(input_Create.text,roomOptions);
         Debug.Log("input create:" + input_Create.text);
     }
     public void JoinRoom()
@@ -113,5 +126,22 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("CharacterAndSkillSelection");
+        Debug.Log("odaya girildi"+" "+PhotonNetwork.CurrentRoom.Name+" "+PhotonNetwork.NickName+" Max Oyuncu: "+PhotonNetwork.CurrentRoom.MaxPlayers+" görünürlük: "+odaGorunurluk.isOn);
+    }
+    void UpdatePlayerList()
+    {
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            playerNicknameText[i].text = PhotonNetwork.PlayerList[i].NickName.ToString();
+        }
+        
+    }
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        UpdatePlayerList();
+    }
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        UpdatePlayerList();
     }
 }

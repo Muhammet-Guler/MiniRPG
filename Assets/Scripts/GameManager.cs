@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviourPun
     public Button btn;
     public Transform[] players;
     public GameObject character;
+    public GameObject rivalCharacter;
     public int health;
 
     void Start()
@@ -77,7 +78,7 @@ void Update()
         List<PhotonView> photonViewListesi = new List<PhotonView>(photonViews);
         List<PhotonView> bulunanPhotonViews = photonViewListesi.FindAll(pv => pv.name.Contains("Clone"));
 
-        if (bulunanPhotonViews.Count > 0)
+        if (bulunanPhotonViews.Count > 1)
         {
             Debug.Log("Aranan kelime içeren PhotonView'ler bulundu:");
 
@@ -85,8 +86,7 @@ void Update()
             {
                 Debug.Log("ID: " + bulunanPhotonView.ViewID + ", Ýsim: " + bulunanPhotonView.name);
                 character = GameObject.Find(bulunanPhotonView.name);
-                health = character.GetComponent<ICharacter>().Health;
-                Debug.Log("health" + health);
+                
             }
             for (int i = 0; i < bulunanPhotonViews.Count; i++)
             {
@@ -97,11 +97,14 @@ void Update()
                 {
                     if (photonView.IsMine!)
                     {
-                        character = GameObject.Find(bulunanPhotonViews[i].name);
+                        rivalCharacter = GameObject.Find(bulunanPhotonViews[i].name);
                         Image buttonImage = btn.GetComponent<Image>();
-                        buttonImage.sprite = character.GetComponent<ICharacter>().characterSprite;
+                        buttonImage.sprite = Resources.Load <Sprite>(rivalCharacter.GetComponent<ICharacter>().characterSprite);
                         Debug.Log(bulunanPhotonViews[i].name);
+                        health = rivalCharacter.GetComponent<ICharacter>().Health;
+                        Debug.Log("health" + health);
                     }
+                    
                 }
             }
         }

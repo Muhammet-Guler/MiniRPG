@@ -16,7 +16,7 @@ public class Mage : ICharacter, IPunObservable
     public Mage()
     {
         this.characterType = "Mage";
-        this.characterSprite = sprite;
+        this.characterSprite = "CharacterSprites/Mage";
         this.Health = 100;
         this.Range = 10;
         this.Speed = 5;
