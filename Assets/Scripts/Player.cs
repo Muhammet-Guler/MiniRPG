@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviourPun
 {
+    [SerializeField] private Image TowerhBarSprite;
     void Start()
     {
         
@@ -21,11 +22,15 @@ public class Player : MonoBehaviourPun
             TargetHandler targetHandler = other.gameObject.GetComponent<TargetHandler>();
             if (targetHandler != null&&other.gameObject.name!= gameObject.name)
             {
-                targetHandler.TakeDamage(0.2f, other.gameObject.GetComponent<ICharacter>());
+                targetHandler.TakeDamage(0.1f, other.gameObject.GetComponent<ICharacter>());
             }
         }
+        if (other.CompareTag("deneme"))
+        {
+            TowerhBarSprite.fillAmount-=0.2f;
+        }
 
-        Debug.Log("otherGameobject"+other.gameObject.name);
+        //Debug.Log("otherGameobject"+other.gameObject.name);
     }
     public void OnCollisionEnter(Collision collision)
     {

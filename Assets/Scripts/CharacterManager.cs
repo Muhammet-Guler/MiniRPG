@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-
+using WarriorAnimsFREE;
 
 public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -67,24 +67,13 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
         TeamsClone = GameObject.Find("Teams(Clone)");
         if (photonView.IsMine)
         {
-            // Senkronizasyonu sadece lokal oyuncu baþlatmalý
             photonView.RPC("SyncList", RpcTarget.AllBuffered, TeamsClone.GetComponent<Teams>().Human.ToArray());
         }
     }
 
     public void Update()
     {
-        //if (!photonView.IsMine)
-        //{
-        //    playerImage.sprite = gameObject.GetComponent<ICharacter>().characterSprite;
-        //}
             TeamsClone = GameObject.Find("Teams(Clone)");
-        //for (int i = 0; i < Teams.GetComponent<Teams>().Human.Count; i++)
-        //{
-
-        //    //Debug.Log(Teams.GetComponent<Teams>().Human[i].characterType);
-
-        //}
     }
 
     public void selectCharacter()
@@ -125,7 +114,6 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
         if (clickedButton != null)
         {
             selectedSkillList.Add(icharacter.skillList[int.Parse(clickedButton.GetComponentInChildren<Text>().text)]);
-            Debug.Log(":skill"+ int.Parse(clickedButton.GetComponentInChildren<Text>().text));
             selectedSkillImage[0].sprite = Resources.Load<Sprite>(selectedSkillList[selectedSkillList.Count-1].skillSprite);
             selectedSkillImage[1].sprite = Resources.Load<Sprite>(selectedSkillList[selectedSkillList.Count - 2].skillSprite);
             selectedSkillImage[2].sprite = Resources.Load<Sprite>(selectedSkillList[selectedSkillList.Count - 3].skillSprite);
@@ -188,7 +176,7 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void OnReadyButtonClick()
     {
-        // SetPlayerReady();
+        //SetPlayerReady();
         SceneManager.LoadScene(2);
     }
 
@@ -245,193 +233,102 @@ public class CharacterManager : MonoBehaviourPunCallbacks, IPunObservable
 
     public void AddMemberHuman()
     {
-        //player.SetTeam(PunTeams.Team.red);
-        //Teams.Human = PunTeams.PlayersPerTeam.GetTeam(PunTeams.Team.red);
-        string selectedCharacter = PlayerPrefs.GetString("selectedCharacter");
-        if (selectedCharacter == "PriestTwo")
-        {
-            obj = PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
-            //GameObject Teams = GameObject.Find("Teams(Clone)");
-            //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
-            //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
-
-             //Teams.Human.Add(obj.GetComponent<ICharacter>());
-            obj.name = PhotonNetwork.NickName;
-            obj.SetActive(false);
-
-            characterName = obj.name;
-        }
-        if (selectedCharacter == "Priest")
-        {
-            obj = PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
-            //GameObject Teams = GameObject.Find("Teams(Clone)");
-            //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
-            AddElement(obj.GetComponent<ICharacter>());
-            //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
-            obj.name = PhotonNetwork.NickName;
-            obj.SetActive(false);
-            characterName = obj.name;
-        }
-        if (selectedCharacter == "Warrior")
-        {
-            obj = PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
-            //GameObject Teams = GameObject.Find("Teams(Clone)");
-            //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
-            AddElement(obj.GetComponent<ICharacter>());
-            //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
-            obj.name = PhotonNetwork.NickName;
-            obj.SetActive(false);
-            characterName = obj.name;
-        }
-        if (selectedCharacter == "Mage")    
-        {
-            obj = PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
-            //GameObject Teams = GameObject.Find("Teams(Clone)");
-            //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
-            AddElement(obj.GetComponent<ICharacter>());
-            //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
-            obj.name = PhotonNetwork.NickName;
-            obj.SetActive(false);
-            characterName = obj.name;
-        }
-        for (int i = 0; i < Teams.Human.Count; i++)
-        {
-            GameObject Teams = GameObject.Find("Teams(Clone)");
-            playerImages[i].sprite = Resources.Load<Sprite>(Teams.GetComponent<Teams>().Human[i].characterSprite);
-            
-        }
-        //for (int i = 0; i < ; i++)
+        //string selectedCharacter = PlayerPrefs.GetString("selectedCharacter");
+        //if (selectedCharacter == "PriestTwo")
         //{
+        //    obj = PhotonNetwork.Instantiate(PriestTwo.name, Vector3.zero, Quaternion.identity);
+        //    obj.name = PhotonNetwork.NickName;
+        //    obj.SetActive(false);
 
+        //    characterName = obj.name;
         //}
-        //Teams.Human.Add(icharacter);
-        //if (!photonView.IsMine)
+        //if (selectedCharacter == "Priest")
         //{
+        //    obj = PhotonNetwork.Instantiate(Priest.name, Vector3.zero, Quaternion.identity);
+        //    //GameObject Teams = GameObject.Find("Teams(Clone)");
+        //    //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
+        //    AddElement(obj.GetComponent<ICharacter>());
+        //    //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
+        //    obj.name = PhotonNetwork.NickName;
+        //    obj.SetActive(false);
+        //    characterName = obj.name;
         //}
-
+        //if (selectedCharacter == "Warrior")
+        //{
+        //    obj = PhotonNetwork.Instantiate(Warrior.name, Vector3.zero, Quaternion.identity);
+        //    //GameObject Teams = GameObject.Find("Teams(Clone)");
+        //    //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
+        //    AddElement(obj.GetComponent<ICharacter>());
+        //    //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
+        //    obj.name = PhotonNetwork.NickName;
+        //    obj.SetActive(false);
+        //    characterName = obj.name;
+        //}
+        //if (selectedCharacter == "Mage")    
+        //{
+        //    obj = PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
+        //    //GameObject Teams = GameObject.Find("Teams(Clone)");
+        //    //TeamsClone.GetComponent<Teams>().Human.Add(obj.GetComponent<ICharacter>());
+        //    AddElement(obj.GetComponent<ICharacter>());
+        //    //photonView.RPC("SyncData", RpcTarget.OthersBuffered, obj.GetComponent<ICharacter>());
+        //    obj.name = PhotonNetwork.NickName;
+        //    obj.SetActive(false);
+        //    characterName = obj.name;
+        //}
         //for (int i = 0; i < Teams.Human.Count; i++)
         //{
-        //    playerImages[i].sprite = Resources.Load<Sprite>(Teams.Human[i].characterSprite);
+        //    GameObject Teams = GameObject.Find("Teams(Clone)");
+        //    playerImages[i].sprite = Resources.Load<Sprite>(Teams.GetComponent<Teams>().Human[i].characterSprite);
+
         //}
-        //if (!photonView.IsMine)
-        //{
-        //    PhotonNetwork.Instantiate(playerImage.name, Vector3.zero, Quaternion.identity);
-        //    UnityEngine.UI.Image playerImageComponent = playerImage.GetComponent<UnityEngine.UI.Image>();
-        //    GameObject.Find("PlayerImage1(Clone)").transform.transform.SetParent(canvasPrefab.transform);
-        //    playerImageComponent.rectTransform.sizeDelta = new Vector2(400, 75);
-        //    Vector3 playerImagePosition = new Vector3((float)500, 1200, 0);
-        //    playerImagePosition.y -= 50;
-        //    GameObject.Find("PlayerImage1(Clone)").transform.position = playerImagePosition;
-        //}
+
+
+        Teams.Human.Add(Warrior.GetComponent<Warrior>());
+        Teams.Human.Add(Mage.GetComponent<Mage>());
+        Teams.Human.Add(Priest.GetComponent<Priest>());
+        Teams.Human.Add(PriestTwo.GetComponent<PriestTwo>());
+        Teams.Human.Add(icharacter);
+
+        for (int i = 0; i < Teams.Human.Count; i++)
+        {
+            Debug.Log(Teams.Human[i].characterType);
+            playerImages[i].sprite = Resources.Load<Sprite>(Teams.Human[i].characterSprite);
+        }
+
     }
     [PunRPC]
     private void SyncList()
     {
-        //TeamsClone.GetComponent<Teams>().Human.Clear();
         TeamsClone.GetComponent<Teams>().Human = new List<ICharacter>();
     }
 
     public void AddElement(ICharacter newElement)
-    {
-        //if (photonView.IsMine)
-        //{
-        //    if (TeamsClone.GetComponent<Teams>().Human == null || TeamsClone.GetComponent<Teams>().Human.Count == 0)
-        //    {
-        //        photonView.RPC("SyncList", RpcTarget.AllBuffered, TeamsClone.GetComponent<Teams>().Human.ToArray());
-        //    }
-        //    TeamsClone.GetComponent<Teams>().Human.Add(newElement);
-
-        //    // Deðiþikliði tüm oyunculara bildir
-        //    photonView.RPC("SyncList", RpcTarget.AllBuffered, TeamsClone.GetComponent<Teams>().Human.ToArray());
-        //}
+    { 
+        photonView.RPC("SyncList", RpcTarget.AllBuffered, TeamsClone.GetComponent<Teams>().Human.ToArray());
     }
     [PunRPC]
     private void SyncData(ICharacter character)
     {
-        // Senkronize edilen veriyi diðer oyuncular üzerinde güncelle
         TeamsClone.GetComponent<Teams>().Human.Add(character);
     }
     public void OrcButton()
     {
         Teams.AddTeamOrc(icharacter);
-        //player.SetTeam(PunTeams.Team.blue);
     }
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(Teams.Human);
-
-    //    }
-    //    else
-    //    {
-    //        Teams.Human=(List<ICharacter>)stream.ReceiveNext();
-    //    }
 
 
     //}
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        //GameObject Teams = GameObject.Find("Teams(Clone)");
-        //Debug.Log(Teams.name);
-        //if (stream.IsWriting)
-        //{
-        //    //// Yazma iþlemi: Senkronize edilecek listeyi yaz
-        //    //// Listeyi direkt olarak gönderemeyiz, bu yüzden elemanlarý tek tek gönderiyoruz
-        //    //stream.SendNext(TeamsClone.GetComponent<Teams>().Human.Count);
-
-        //    //foreach (ICharacter item in TeamsClone.GetComponent<Teams>().Human)
-        //    //{
-        //    //    stream.SendNext(item);
-        //    //}
-        //    Debug.Log("if");
-        //        stream.SendNext(TeamsClone.GetComponent<Teams>().Human);
-            
-            
-        //}
-        //else
-        //{
-        //    //// Okuma iþlemi: Senkronize edilen listeyi oku
-        //    //int listCount = (int)stream.ReceiveNext();
-
-        //    //TeamsClone.GetComponent<Teams>().Human.Clear(); // Önceki listeyi temizle
-
-        //    //for (int i = 0; i < listCount; i++)
-        //    //{
-        //    //    ICharacter item = (ICharacter)stream.ReceiveNext();
-        //    //    TeamsClone.GetComponent<Teams>().Human.Add(item);
-        //    //    Debug.Log(item);
-        //    //}
-        //        TeamsClone.GetComponent<Teams>().Human = (List<ICharacter>)stream.ReceiveNext();
-        //    Debug.Log(TeamsClone.GetComponent<Teams>().Human[1]);
-            
-        //    Debug.Log("else");
-        //}
         if (stream.IsWriting)
         {
-            // Senkronize edilecek veriyi yazma (gönderme)
             stream.SendNext(characterName);
         }
         else
         {
-            // Senkronize edilen veriyi okuma (alma)
-            //TeamsClone.GetComponent<Teams>().Human = new List<ICharacter>((ICharacter[])stream.ReceiveNext());
-            //TeamsClone.GetComponent<Teams>().Human.Clear();
-            //TeamsClone.GetComponent<Teams>().Human.AddRange((List<ICharacter>)stream.ReceiveNext());
             characterName=(string)stream.ReceiveNext();
             Debug.Log(characterName);
         }
 
     }
-    //public void Serialize(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    // Senkronize edilecek veriyi yazma (gönderme)
-    //    stream.SendNext(TeamsClone.GetComponent<Teams>().Human.ToArray());
-    //}
-
-    //public void Deserialize(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    // Senkronize edilen veriyi okuma (alma)
-    //    TeamsClone.GetComponent<Teams>().Human = (List<ICharacter>)stream.ReceiveNext();
-    //}
 }

@@ -24,6 +24,7 @@ public class Yonet : MonoBehaviourPunCallbacks
     public UnityEngine.UI.Toggle odaGorunurluk;
     public UnityEngine.UI.Text maxPlayers;
     public UnityEngine.UI.Text[] playerNicknameText;
+    public int maxPlayerNumber;
 
 
     void Start()
@@ -50,8 +51,6 @@ public class Yonet : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate(Mage.name, Vector3.zero, Quaternion.identity);
             }
             character.Health = 100;
-            Debug.Log(character.Health);
-            Debug.Log("start calisti");
         }
     }
     private void Awake()
@@ -99,6 +98,7 @@ public class Yonet : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.LogWarningFormat("oyundan cikildi");
+        SceneManager.LoadScene(6);
     }
     public void CreateRoom()
     {
@@ -112,6 +112,7 @@ public class Yonet : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CreateRoom(input_Create.text,roomOptions);
         Debug.Log("input create:" + input_Create.text);
+        maxPlayerNumber = int.Parse(maxPlayers.text);
     }
     public void JoinRoom()
     {

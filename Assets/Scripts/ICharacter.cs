@@ -8,7 +8,7 @@ public  abstract class ICharacter:MonoBehaviourPun
 { 
     public string characterType;
     public string characterSprite { get; set; }
-    public int Health;
+    public float Health;
     public float Range;
     public float Speed;
     public int Damage;

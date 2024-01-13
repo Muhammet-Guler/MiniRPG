@@ -27,26 +27,22 @@ public class GameManager : MonoBehaviourPun
     [SerializeField] private Image healthBarSprite;
     public ICharacter icharacter;
     public ISkill iskill;
-    private bool isClickable = true;
+    private bool isClickable1 = true;
+    private bool isClickable2 = true;
+    private bool isClickable3 = true;
     public Image skillImage1,skillImage2,skillImage3;
     public UnityEngine.UI.Text skillCountText1, skillCountText2, skillCountText3;
     public Button btn;
     public Transform[] players;
     public GameObject character;
     public GameObject rivalCharacter;
-    public int health;
+    public float health;
 
     void Start()
     {
-        //btn4.image.sprite= Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].skillSprite);
-        //btn5.image.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].skillSprite);
-        //btn6.image.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillSprite);
         skillImage1.sprite= Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].skillSprite);
-       // skillImage1.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         skillImage2.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].skillSprite);
-        //skillImage2.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         skillImage3.sprite = Resources.Load<Sprite>(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillSprite);
-        //skillImage3.rectTransform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         players = FindObjectsOfType<Transform>();
     }
 
@@ -80,18 +76,17 @@ void Update()
 
         if (bulunanPhotonViews.Count > 1)
         {
-            Debug.Log("Aranan kelime içeren PhotonView'ler bulundu:");
+            //Debug.Log("Aranan kelime içeren PhotonView'ler bulundu:");
 
             foreach (PhotonView bulunanPhotonView in bulunanPhotonViews)
             {
-                Debug.Log("ID: " + bulunanPhotonView.ViewID + ", Ýsim: " + bulunanPhotonView.name);
+                //Debug.Log("ID: " + bulunanPhotonView.ViewID + ", Ýsim: " + bulunanPhotonView.name);
                 character = GameObject.Find(bulunanPhotonView.name);
                 
             }
             for (int i = 0; i < bulunanPhotonViews.Count; i++)
             {
 
-                //float distance = Vector3.Distance(GameObject.Find(PlayerPrefs.GetString("selectedCharacter") + "(Clone)").transform.position, players[i].position);
                 float distance = Vector3.Distance(GameObject.Find(bulunanPhotonViews[i].name).transform.position, GameObject.Find(bulunanPhotonViews[i + 1].name).transform.position);
                 if (distance < 5f)
                 {
@@ -100,9 +95,9 @@ void Update()
                         rivalCharacter = GameObject.Find(bulunanPhotonViews[i].name);
                         Image buttonImage = btn.GetComponent<Image>();
                         buttonImage.sprite = Resources.Load <Sprite>(rivalCharacter.GetComponent<ICharacter>().characterSprite);
-                        Debug.Log(bulunanPhotonViews[i].name);
-                        health = rivalCharacter.GetComponent<ICharacter>().Health;
-                        Debug.Log("health" + health);
+                        //Debug.Log(bulunanPhotonViews[i].name);
+                        rivalCharacter.GetComponent<ICharacter>().Health= healthBarSprite.fillAmount;
+                        Debug.Log(rivalCharacter.GetComponent<ICharacter>().Health);
                     }
                     
                 }
@@ -110,8 +105,9 @@ void Update()
         }
         else
         {
-            Debug.Log("Aranan kelime içeren PhotonView bulunamadý.");
+            //Debug.Log("Aranan kelime içeren PhotonView bulunamadý.");
         }
+        Debug.Log(rivalCharacter.GetComponent<ICharacter>().Health);
     }
     void ListelePhotonNesneleri()
     {
@@ -163,14 +159,14 @@ void Update()
         int value = CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].coolDown;
         while (value> 0f)
         {
-            isClickable = false;
+            isClickable1 = false;
             Color imageColor = skillImage1.color;
             imageColor.a = 0.5f;
             skillImage1.color = imageColor;
             value--;
             yield return new WaitForSeconds(1f);
             skillCountText1.text = value.ToString();
-            isClickable = true;
+            isClickable1 = true;
             Color imageColor2 = skillImage1.color;
             imageColor2.a = 1f;
             skillImage1.color = imageColor2;
@@ -185,14 +181,14 @@ void Update()
         int value = CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].coolDown;
         while (value > 0f)
         {
-            isClickable = false;
+            isClickable2 = false;
             Color imageColor = skillImage2.color;
             imageColor.a = 0.5f;
             skillImage2.color = imageColor;
             value--;
             yield return new WaitForSeconds(1f);
             skillCountText2.text = value.ToString();
-            isClickable = true;
+            isClickable2 = true;
             Color imageColor2 = skillImage2.color;
             imageColor2.a = 1f;
             skillImage2.color = imageColor2;
@@ -207,14 +203,14 @@ void Update()
         int value = CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].coolDown;
         while ( value > 0f)
         {
-            isClickable = false;
+            isClickable3 = false;
             Color imageColor = skillImage3.color;
             imageColor.a = 0.5f;
             skillImage3.color = imageColor;
             value--;
             yield return new WaitForSeconds(1f);
             skillCountText3.text = value.ToString();
-            isClickable = true;
+            isClickable3 = true;
             Color imageColor2 = skillImage3.color;
             imageColor2.a = 1f;
             skillImage3.color = imageColor2;
@@ -226,15 +222,15 @@ void Update()
     }
     public void attackOne()
     {
-        if (isClickable)
+        if (isClickable1)
         {
             Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
             if (CharacterAnimation != null)
-                //CharacterAnimation.Play(CharacterManager.icharacter.skillList[0].skillName);
                 CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 3].skillName);
             StartCoroutine(StartCountdown());
             healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-            healthBarSprite.fillAmount += 0.1f;
+            health = healthBarSprite.fillAmount;
+            health += 0.1f;
             StartCoroutine(GeriSayim());
         }
 
@@ -243,28 +239,30 @@ void Update()
     }
     public void attackTwo()
     {
-        Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
-        if (CharacterAnimation != null)
-        //CharacterAnimation.Play(CharacterManager.icharacter.skillList[1].skillName);
-        CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count-2].skillName);
-        //StartCoroutine(StartCountdown());
-        StartCoroutine(StartCountdown());
-        healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-        healthBarSprite.fillAmount += 0.1f;
-        StartCoroutine(GeriSayim2());
+        if (isClickable2)
+        {
+            Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
+            if (CharacterAnimation != null)
+                CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 2].skillName);
+            StartCoroutine(StartCountdown());
+            healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
+            healthBarSprite.fillAmount += 0.1f;
+            StartCoroutine(GeriSayim2());
+
+        }
     }
     public void attackThree()
      {
-        Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
-        if (CharacterAnimation != null)
-        //CharacterAnimation.Play(CharacterManager.icharacter.skillList[2].skillName);
-        CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillName);
-        Debug.Log(CharacterManager.selectedSkillList.Count - 1);
-        //StartCoroutine(StartCountdown());
-        StartCoroutine(StartCountdown());
-        healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
-        healthBarSprite.fillAmount += 0.1f;
-        StartCoroutine(GeriSayim3());
+        if (isClickable3)
+        {
+            Animator CharacterAnimation = SelectedCharacter.GetComponent<Animator>();
+            if (CharacterAnimation != null)
+                CharacterAnimation.Play(CharacterManager.selectedSkillList[CharacterManager.selectedSkillList.Count - 1].skillName);
+            StartCoroutine(StartCountdown());
+            healthBarSprite = SelectedCharacter.transform.Find("Canvas/Elite/Bars/Healthbar").GetComponent<Image>();
+            healthBarSprite.fillAmount += 0.1f;
+            StartCoroutine(GeriSayim3());
+        }
     }
 
     }
